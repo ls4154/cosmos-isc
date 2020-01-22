@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 		while (!isc_check_done(idx));
 
 		left -= write_size;
-		lba += toSect(write_size);
+		lba += to_sect(write_size);
 		write_size = MIN(WRITE_CHUNK, left);
 
 		if (left <= 0)

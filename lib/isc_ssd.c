@@ -30,7 +30,7 @@ int isc_read_request(int pp, int lba, int bytes)
 		return -1;
 	isc_shared[pp].opcode = ISC_OP_RD;
 	isc_shared[pp].lba = lba;
-	isc_shared[pp].sector_cnt = toSect(bytes);
+	isc_shared[pp].sector_cnt = to_sect(bytes);
 	isc_shared[pp].status = ISC_ST_REQ;
 	return 0;
 }
@@ -41,7 +41,7 @@ int isc_write_request(int pp, int lba, int bytes)
 		return -1;
 	isc_shared[pp].opcode = ISC_OP_WR;
 	isc_shared[pp].lba = lba;
-	isc_shared[pp].sector_cnt = toSect(bytes);
+	isc_shared[pp].sector_cnt = to_sect(bytes);
 	isc_shared[pp].status = ISC_ST_REQ;
 	return 0;
 }

@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 		int cur_read_size = read_size;
 
 		left -= read_size;
-		lba += toSect(read_size);
+		lba += to_sect(read_size);
 		read_size = MIN(READ_CHUNK, left);
 
 		if (left <= 0)
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 		memset(isc_shared[!idx].payload, 0, sizeof(isc_shared[!idx].payload));
 		isc_read_request(!idx, lba, read_size);
 print:
-		for (j = 0; j < toSect(cur_read_size)-1; j++)
+		for (j = 0; j < to_sect(cur_read_size)-1; j++)
 			process(isc_payload(idx, j), SECTSIZE);
 		if (cur_read_size % SECTSIZE > 0)
 			process(isc_payload(idx, j), cur_read_size % SECTSIZE);

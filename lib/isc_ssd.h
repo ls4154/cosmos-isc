@@ -33,7 +33,7 @@ typedef struct shared {
 
 Shared *isc_shared;
 
-static inline int toSect(int bytes)
+static inline int to_sect(int bytes)
 {
 	return (bytes + SECTSIZE - 1) / SECTSIZE;
 }
