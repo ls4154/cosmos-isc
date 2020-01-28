@@ -15,12 +15,12 @@ int main(int argc, char **argv)
 	isc_init_shared();
 
 	if (argc < 4) {
-		fprintf(stderr, "usage: %s <FILESIZE> <LBA> <LBA_RESULT>\n", argv[0]);
+		fprintf(stderr, "usage: %s <LBA> <FILESIZE> <LBA_RESULT>\n", argv[0]);
 		fprintf(stderr, "use LBA_RESULT 0 to print stdout\n");
 		return 1;
 	}
-	FILESIZE = atoi(argv[1]);
-	LBA = atoi(argv[2]);
+	LBA = atoi(argv[1]);
+	FILESIZE = atoi(argv[2]);
 	LBA_RESULT = atoi(argv[3]);
 
 	fprintf(stderr, "file size: %d\n", FILESIZE);
