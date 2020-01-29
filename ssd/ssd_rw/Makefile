@@ -1,4 +1,4 @@
-CFLAGS = -O2 -std=c11
+CFLAGS = -std=c11
 LDFLAGS = -liscssd
 
 ifeq ($(PREFIX),)

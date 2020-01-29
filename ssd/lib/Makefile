@@ -1,4 +1,4 @@
-CFLAGS = -O2 -std=c11 -fPIC
+CFLAGS = -std=c11 -fPIC
 
 ifeq ($(PREFIX),)
 	PREFIX := /usr
