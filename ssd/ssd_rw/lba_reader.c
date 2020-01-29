@@ -43,8 +43,8 @@ int main(int argc, char **argv)
 	LBA = atoi(argv[2]);
 	SIZE = atoi(argv[3]);
 
-	fprintf(stderr, "lba: %d\n", LBA);
-	fprintf(stderr, "size : %d bytes\n", SIZE);
+	dprint("lba: %d\n", LBA);
+	dprint("size : %d bytes\n", SIZE);
 
 	int left = SIZE;
 	int lba = LBA;

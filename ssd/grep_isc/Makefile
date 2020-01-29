@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++14
+CXXFLAGS = -std=c++14 -DDEBUG
 LDFLAGS = -liscssd
 
 ifeq ($(PREFIX),)

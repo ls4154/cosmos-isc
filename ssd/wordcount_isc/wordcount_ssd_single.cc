@@ -23,9 +23,9 @@ int main(int argc, char **argv)
 	FILESIZE = atoi(argv[2]);
 	LBA_RESULT = atoi(argv[3]);
 
-	fprintf(stderr, "file size: %d\n", FILESIZE);
-	fprintf(stderr, "lba: %d\n", LBA);
-	fprintf(stderr, "lba result: %d\n", LBA_RESULT);
+	dprint("file size: %d\n", FILESIZE);
+	dprint("lba: %d\n", LBA);
+	dprint("lba result: %d\n", LBA_RESULT);
 
 	int left = FILESIZE;
 	int lba = LBA;
@@ -124,5 +124,5 @@ static void print_result(void)
 		while (!isc_check_done(0));
 	}
 
-	fprintf(stderr, "result %d bytes\n", wr);
+	dprint("result %d bytes\n", wr);
 }

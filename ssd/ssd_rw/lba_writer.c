@@ -35,8 +35,8 @@ int main(int argc, char **argv)
 	SIZE = lseek(fd, 0, SEEK_END);
 	lseek(fd, 0, SEEK_SET);
 
-	fprintf(stderr, "lba: %d\n", LBA);
-	fprintf(stderr, "size : %d bytes\n", SIZE);
+	dprint("lba: %d\n", LBA);
+	dprint("size : %d bytes\n", SIZE);
 
 	int left = SIZE;
 	int lba = LBA;
