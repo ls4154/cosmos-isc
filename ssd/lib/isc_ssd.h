@@ -5,6 +5,12 @@
 extern "C" {
 #endif
 
+#ifdef DEBUG
+#define dprint(...) do { fprintf(stderr, __VA_ARGS__); } while (0)
+#else
+#define dprint(...) do { } while (0)
+#endif
+
 #define SECTSIZE 4096
 
 enum {
