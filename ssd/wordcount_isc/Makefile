@@ -5,6 +5,8 @@ ifeq ($(PREFIX),)
 	PREFIX := /usr
 endif
 
+all: wordcount wordcount_single
+
 wordcount: wordcount_ssd.cc
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
