@@ -118,18 +118,17 @@ static void process(char *payload, int payload_len)
 
 static void print_result(void)
 {
-	int wr = 0;
 	if (LBA_RESULT == 0) {
-		for (auto &it : mp)
-			wr += printf("%s %d\n", it.first.c_str(), it.second);
+		for (int i = 0; i < resl; i++)
+			printf("%d ", res[i]);
+		puts("");
 	} else {
 		char *payload = isc_shared[0].payload_write;
-		for (auto &it : mp)
-			wr += sprintf(payload + wr, "%s %d\n", it.first.c_str(), it.second);
+		memcpy(payload, res, resl * sizeof(int));
+		puts("");
 		// TODO: chunk output
 		isc_write_request(0, LBA_RESULT, wr);
 		while (!isc_check_done(0));
 	}
-
-	dprint("result %d bytes\n", wr);
+	dprint("result size:%d\n", resl * sizeof(int));
 }
