@@ -64,6 +64,23 @@ int isc_read_request(int pp, int lba, int bytes);
 
 int isc_write_request(int pp, int lba, int bytes);
 
+#include <stdio.h>
+#include <sys/time.h>
+
+#define TV_DEF(name) \
+	struct timeval name
+
+#define TV_GET(name) \
+	gettimeofday(&(name), NULL)
+
+#define TV_ABS(prefix, tv) \
+	fprintf(stderr, #prefix " %ld.%ld\n", (tv).tv_sec, (tv).tv_usec)
+
+#define TV_DIF(prefix, tv_s, tv_e) \
+	fprintf(stderr, #prefix " %ld.%ld\n", \
+			(tv_e).tv_sec - (tv_s).tv_sec - ((tv_e).tv_usec < (tv_s).tv_usec ), \
+			((tv_e).tv_usec - (tv_s).tv_usec + 1000000) % 1000000)
+
 #ifdef __cplusplus
 }
 #endif
