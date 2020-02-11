@@ -1,0 +1,969 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACL	hil/nvme/nvme.h	/^	unsigned char ACL;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+ACTIVE_BLOCK_BUFFERING_INDEX_BITS	common/cosmos_types.h	80;"	d
+ACTIVE_BLOCK_COUNT_BITS	common/cosmos_types.h	68;"	d
+ACWU	hil/nvme/nvme.h	/^	unsigned short ACWU;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+AD	hil/nvme/nvme.h	/^	unsigned int AD							:1;$/;"	m	struct:_IO_DATASET_MANAGEMENT_COMMAND_DW11
+ADDRESS_SPACE_H	target/address_space.h	2;"	d
+ADMIN_ABORT	hil/nvme/nvme.h	22;"	d
+ADMIN_ASYNCHRONOUS_EVENT_REQUEST	hil/nvme/nvme.h	25;"	d
+ADMIN_CMD_DRAM_DATA_BUFFER	target/address_space.c	/^void *ADMIN_CMD_DRAM_DATA_BUFFER;$/;"	v
+ADMIN_CREATE_IO_CQ	hil/nvme/nvme.h	20;"	d
+ADMIN_CREATE_IO_CQ_DW10	hil/nvme/nvme.h	/^} ADMIN_CREATE_IO_CQ_DW10;$/;"	t	typeref:struct:_ADMIN_CREATE_IO_CQ_DW10
+ADMIN_CREATE_IO_CQ_DW11	hil/nvme/nvme.h	/^} ADMIN_CREATE_IO_CQ_DW11;$/;"	t	typeref:struct:_ADMIN_CREATE_IO_CQ_DW11
+ADMIN_CREATE_IO_SQ	hil/nvme/nvme.h	17;"	d
+ADMIN_CREATE_IO_SQ_DW10	hil/nvme/nvme.h	/^} ADMIN_CREATE_IO_SQ_DW10;$/;"	t	typeref:struct:_ADMIN_CREATE_IO_SQ_DW10
+ADMIN_CREATE_IO_SQ_DW11	hil/nvme/nvme.h	/^} ADMIN_CREATE_IO_SQ_DW11;$/;"	t	typeref:struct:_ADMIN_CREATE_IO_SQ_DW11
+ADMIN_DELETE_IO_CQ	hil/nvme/nvme.h	19;"	d
+ADMIN_DELETE_IO_CQ_DW10	hil/nvme/nvme.h	/^} ADMIN_DELETE_IO_CQ_DW10;$/;"	t	typeref:struct:_ADMIN_DELETE_IO_CQ_DW10
+ADMIN_DELETE_IO_SQ	hil/nvme/nvme.h	16;"	d
+ADMIN_DELETE_IO_SQ_DW10	hil/nvme/nvme.h	/^} ADMIN_DELETE_IO_SQ_DW10;$/;"	t	typeref:struct:_ADMIN_DELETE_IO_SQ_DW10
+ADMIN_FIRMWARE_ACTIVATE	hil/nvme/nvme.h	26;"	d
+ADMIN_FIRMWARE_IMAGE_DOWNLOAD	hil/nvme/nvme.h	27;"	d
+ADMIN_FORMAT_NVM	hil/nvme/nvme.h	28;"	d
+ADMIN_GET_FEATURES	hil/nvme/nvme.h	24;"	d
+ADMIN_GET_FEATURES_DW10	hil/nvme/nvme.h	/^} ADMIN_GET_FEATURES_DW10;$/;"	t	typeref:struct:_ADMIN_GET_FEATURES_DW10
+ADMIN_GET_LOG_PAGE	hil/nvme/nvme.h	18;"	d
+ADMIN_GET_LOG_PAGE_DW10	hil/nvme/nvme.h	/^} ADMIN_GET_LOG_PAGE_DW10;$/;"	t	typeref:struct:_ADMIN_GET_LOG_PAGE_DW10
+ADMIN_IDENTIFY	hil/nvme/nvme.h	21;"	d
+ADMIN_IDENTIFY_COMMAND_DW10	hil/nvme/nvme.h	/^} ADMIN_IDENTIFY_COMMAND_DW10;$/;"	t	typeref:struct:_ADMIN_IDENTIFY_COMMAND_DW10
+ADMIN_IDENTIFY_CONTROLLER	hil/nvme/nvme.h	/^} ADMIN_IDENTIFY_CONTROLLER;$/;"	t	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER
+ADMIN_IDENTIFY_FORMAT_DATA	hil/nvme/nvme.h	/^} ADMIN_IDENTIFY_FORMAT_DATA;$/;"	t	typeref:struct:_ADMIN_IDENTIFY_FORMAT_DATA
+ADMIN_IDENTIFY_NAMESPACE	hil/nvme/nvme.h	/^} ADMIN_IDENTIFY_NAMESPACE;$/;"	t	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE
+ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR	hil/nvme/nvme.h	/^} ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR;$/;"	t	typeref:struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR
+ADMIN_SECURITY_RECEIVE	hil/nvme/nvme.h	30;"	d
+ADMIN_SECURITY_SEND	hil/nvme/nvme.h	29;"	d
+ADMIN_SET_FEATURES	hil/nvme/nvme.h	23;"	d
+ADMIN_SET_FEATURES_DW10	hil/nvme/nvme.h	/^} ADMIN_SET_FEATURES_DW10;$/;"	t	typeref:struct:_ADMIN_SET_FEATURES_DW10
+ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11	hil/nvme/nvme.h	/^} ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11;$/;"	t	typeref:struct:_ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11
+AERL	hil/nvme/nvme.h	/^	unsigned char AERL;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+AF	hil/nvme/nvme.h	/^	unsigned int AF							:4;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+AL	hil/nvme/nvme.h	/^	unsigned int AL							:2;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+APSTA	hil/nvme/nvme.h	/^	unsigned char APSTA											:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+ARBITRATION	hil/nvme/nvme.h	128;"	d
+ASSERT	common/debug.h	10;"	d
+ASSERT	common/debug.h	12;"	d
+ASYNCHRONOUS_EVENT_CONFIGURATION	hil/nvme/nvme.h	138;"	d
+AUTO_CPL_TYPE	hil/nvme/host_lld.h	16;"	d
+AVSCC	hil/nvme/nvme.h	/^	unsigned char AVSCC											:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+AWUN	hil/nvme/nvme.h	/^	unsigned short AWUN;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+AWUPF	hil/nvme/nvme.h	/^	unsigned short AWUPF;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+AccessFrequency	hil/nvme/nvme.h	/^				unsigned char AccessFrequency			:4;$/;"	m	struct:_IO_READ_COMMAND_DW13::__anon61::__anon62::__anon63
+AccessFrequency	hil/nvme/nvme.h	/^				unsigned char AccessFrequency			:4;$/;"	m	struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55::__anon56
+AccessLatency	hil/nvme/nvme.h	/^				unsigned char AccessLatency				:2;$/;"	m	struct:_IO_READ_COMMAND_DW13::__anon61::__anon62::__anon63
+AccessLatency	hil/nvme/nvme.h	/^				unsigned char AccessLatency				:2;$/;"	m	struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55::__anon56
+BAD_BLOCK_MARK_BYTE0	common/cosmos_plus_system.h	78;"	d
+BAD_BLOCK_MARK_BYTE1	common/cosmos_plus_system.h	79;"	d
+BAD_BLOCK_MARK_PAGE0	common/cosmos_plus_system.h	76;"	d
+BAD_BLOCK_MARK_PAGE1	common/cosmos_plus_system.h	77;"	d
+BASESRC	Makefile	/^BASESRC = $(wildcard common\/*.c) $(wildcard hil\/*.c) $(wildcard hil\/nvme\/*.c) $(wildcard fil\/*.c) $(wildcard target\/*.c)$/;"	m
+BITS_PER_CELL	common/cosmos_plus_system.h	43;"	d
+BIT_ERROR_THRESHOLD_PER_CHUNK	common/cosmos_plus_system.h	108;"	d
+BOOL	common/cosmos_types.h	/^typedef INT8				BOOL;$/;"	t
+BYTES_PER_DATA_REGION_OF_NAND_ROW	common/cosmos_plus_system.h	45;"	d
+BYTES_PER_DATA_REGION_OF_PAGE	common/cosmos_plus_system.h	94;"	d
+BYTES_PER_NAND_ROW	common/cosmos_plus_system.h	47;"	d
+BYTES_PER_NVME_BLOCK	common/cosmos_plus_system.h	114;"	d
+BYTES_PER_SPARE_REGION_OF_NAND_ROW	common/cosmos_plus_system.h	46;"	d
+BYTES_PER_SPARE_REGION_OF_PAGE	common/cosmos_plus_system.h	95;"	d
+CEIL	common/util.h	10;"	d
+CID	hil/nvme/nvme.h	/^				unsigned short CID;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
+CID	hil/nvme/nvme.h	/^				unsigned short CID;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
+CLEARBIT	common/util.h	15;"	d
+CMD_SLOT_RELEASE_TYPE	hil/nvme/host_lld.h	17;"	d
+CMIC	hil/nvme/nvme.h	/^	unsigned char CMIC;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+CNS	hil/nvme/nvme.h	/^			unsigned int CNS			:1;$/;"	m	struct:_ADMIN_IDENTIFY_COMMAND_DW10::__anon29::__anon30
+CNTLID	hil/nvme/nvme.h	/^	unsigned short CNTLID;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+COSMOS_PLUS_MEMORY_MAP_H	common/cosmos_plus_memory_map.h	2;"	d
+CQES	hil/nvme/nvme.h	/^	} CQES;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon39
+CQID	hil/nvme/nvme.h	/^			unsigned short CQID;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW11::__anon25::__anon26
+CommandAccessSize	hil/nvme/nvme.h	/^	unsigned int CommandAccessSize			:8;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+ContextAttributes	hil/nvme/nvme.h	/^    DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES ContextAttributes;$/;"	m	struct:_DATASET_MANAGEMENT_RANGE
+DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES	hil/nvme/nvme.h	/^} DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES;$/;"	t	typeref:struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+DATASET_MANAGEMENT_RANGE	hil/nvme/nvme.h	/^} DATASET_MANAGEMENT_RANGE;$/;"	t	typeref:struct:_DATASET_MANAGEMENT_RANGE
+DEBUG_ASSERT	common/debug.h	16;"	d
+DEBUG_ASSERT	common/debug.h	18;"	d
+DEBUG_H	common/debug.h	2;"	d
+DEV_IRQ_CLEAR_REG_ADDR	target/address_space.h	22;"	d
+DEV_IRQ_MASK_REG_ADDR	target/address_space.h	21;"	d
+DEV_IRQ_REG	hil/nvme/host_lld.h	/^} DEV_IRQ_REG;$/;"	t	typeref:struct:_DEV_IRQ_REG
+DEV_IRQ_STATUS_REG_ADDR	target/address_space.h	23;"	d
+DMA_MEMALLOC_ALIGNMENT	common/dma_memory.h	6;"	d
+DMA_MEMALLOC_BUF_ALIGNMENT	common/dma_memory.h	8;"	d
+DMA_MEMALLOC_DMA_ALIGNMENT	common/dma_memory.h	9;"	d
+DMA_MEMALLOC_FW_ALIGNMENT	common/dma_memory.h	7;"	d
+DMA_MEMORY_ADMIN_SIZE	common/cosmos_plus_memory_map.h	14;"	d
+DMA_MEMORY_BUFFER_SIZE	common/cosmos_plus_memory_map.h	13;"	d
+DMA_MEMORY_H	common/dma_memory.h	2;"	d
+DMA_MEMORY_START_ADDR	common/cosmos_plus_memory_map.h	9;"	d
+DMA_PHY	hil/nvme/host_lld.h	7;"	d
+DNR	hil/nvme/host_lld.h	/^					unsigned short DNR		:1;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+DNR	hil/nvme/nvme.h	/^					unsigned short DNR				:1;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+DPC	hil/nvme/nvme.h	/^	} DPC;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+DPS	hil/nvme/nvme.h	/^	} DPS;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon49
+DRAM_END_ADDR	common/cosmos_plus_memory_map.h	11;"	d
+DRAM_START_ADDR	common/cosmos_plus_memory_map.h	4;"	d
+DSM	hil/nvme/nvme.h	/^			} DSM;$/;"	m	struct:_IO_READ_COMMAND_DW13::__anon61::__anon62	typeref:struct:_IO_READ_COMMAND_DW13::__anon61::__anon62::__anon63
+DSM	hil/nvme/nvme.h	/^			} DSM;$/;"	m	struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55	typeref:struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55::__anon56
+ECC_CHUNKS_PER_PAGE	common/cosmos_plus_system.h	107;"	d
+ELBAT	hil/nvme/nvme.h	/^			unsigned short ELBAT;$/;"	m	struct:_IO_READ_COMMAND_DW15::__anon64::__anon65
+ELBAT	hil/nvme/nvme.h	/^			unsigned short ELBAT;$/;"	m	struct:_IO_WRITE_COMMAND_DW15::__anon57::__anon58
+ELBATM	hil/nvme/nvme.h	/^			unsigned short ELBATM;$/;"	m	struct:_IO_READ_COMMAND_DW15::__anon64::__anon65
+ELBATM	hil/nvme/nvme.h	/^			unsigned short ELBATM;$/;"	m	struct:_IO_WRITE_COMMAND_DW15::__anon57::__anon58
+ELPE	hil/nvme/nvme.h	/^	unsigned char ELPE;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+ENLAT	hil/nvme/nvme.h	/^			unsigned int ENLAT;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+ERROR_INFO_WORD_COUNT	common/cosmos_plus_system.h	109;"	d
+ERROR_RECOVERY	hil/nvme/nvme.h	132;"	d
+EUI64	hil/nvme/nvme.h	/^	unsigned char EUI64[8];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+EXLAT	hil/nvme/nvme.h	/^			unsigned int EXLAT;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+EXTENDED_BLOCKS_PER_LUN	common/cosmos_plus_system.h	65;"	d
+FALSE	common/cosmos_types.h	15;"	d
+FATAL	common/debug.h	21;"	d
+FID	hil/nvme/nvme.h	/^			unsigned char FID;$/;"	m	struct:_ADMIN_GET_FEATURES_DW10::__anon15::__anon16
+FID	hil/nvme/nvme.h	/^			unsigned char FID;$/;"	m	struct:_ADMIN_SET_FEATURES_DW10::__anon11::__anon12
+FIL_H	fil/fil.h	2;"	d
+FIRMWARE_REVISION	hil/nvme/nvme_identify.h	56;"	d
+FLAGS	Makefile	/^FLAGS = -I. -pthread -Wall$/;"	m
+FLBAS	hil/nvme/nvme.h	/^	} FLBAS;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon46
+FLOOR	common/util.h	11;"	d
+FNA	hil/nvme/nvme.h	/^	} FNA;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
+FR	hil/nvme/nvme.h	/^	unsigned char FR[8];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+FRMW	hil/nvme/nvme.h	/^	} FRMW;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon36
+FTL_H	ftl/ftl.h	2;"	d
+FTL_MANAGEMENT_START_ADDR	common/cosmos_plus_memory_map.h	8;"	d
+FTL_MOVE_INFO_INDEX_BITS	common/cosmos_types.h	69;"	d
+FTL_REQUEST_ID	common/cosmos_types.h	/^} FTL_REQUEST_ID;$/;"	t	typeref:struct:__anon101
+FTL_REQUEST_ID_COMMON	common/cosmos_types.h	/^} FTL_REQUEST_ID_COMMON;$/;"	t	typeref:struct:__anon96
+FTL_REQUEST_ID_GC	common/cosmos_types.h	/^} FTL_REQUEST_ID_GC;$/;"	t	typeref:struct:__anon99
+FTL_REQUEST_ID_HIL	common/cosmos_types.h	/^} FTL_REQUEST_ID_HIL;$/;"	t	typeref:struct:__anon97
+FTL_REQUEST_ID_META	common/cosmos_types.h	/^} FTL_REQUEST_ID_META;$/;"	t	typeref:struct:__anon100
+FTL_REQUEST_ID_PROGRAM	common/cosmos_types.h	/^} FTL_REQUEST_ID_PROGRAM;$/;"	t	typeref:struct:__anon98
+FTL_REQUEST_ID_REQUEST_INDEX_BITS	common/cosmos_types.h	67;"	d
+FTL_REQUEST_ID_TYPE	common/cosmos_types.h	/^} FTL_REQUEST_ID_TYPE;$/;"	t	typeref:enum:__anon95
+FTL_REQUEST_ID_TYPE_BITS	common/cosmos_types.h	66;"	d
+FTL_REQUEST_ID_TYPE_COUNT	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_COUNT,				\/\/ Must be end statement$/;"	e	enum:__anon95
+FTL_REQUEST_ID_TYPE_DEBUG	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_DEBUG,$/;"	e	enum:__anon95
+FTL_REQUEST_ID_TYPE_GC_READ	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_GC_READ,$/;"	e	enum:__anon95
+FTL_REQUEST_ID_TYPE_HIL_READ	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_HIL_READ,$/;"	e	enum:__anon95
+FTL_REQUEST_ID_TYPE_META_READ	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_META_READ,$/;"	e	enum:__anon95
+FTL_REQUEST_ID_TYPE_WRITE	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_WRITE,		\/\/ Comon HIL & GC & Meta Write$/;"	e	enum:__anon95
+FUA	hil/nvme/nvme.h	/^			unsigned short FUA						:1;			\/\/ dy, Force Unit Access$/;"	m	struct:_IO_READ_COMMAND_DW12::__anon59::__anon60
+FUA	hil/nvme/nvme.h	/^			unsigned short FUA						:1;$/;"	m	struct:_IO_WRITE_COMMAND_DW12::__anon52::__anon53
+FUSE	hil/nvme/nvme.h	/^				unsigned char FUSE			:2;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
+FUSE	hil/nvme/nvme.h	/^				unsigned char FUSE			:2;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
+FUSES	hil/nvme/nvme.h	/^	} FUSES;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon41
+GB	common/cosmos_types.h	8;"	d
+HIL_DEBUG	hil/hil_config.h	7;"	d
+HIL_DEBUG_PRINTF	hil/hil_config.h	10;"	d
+HIL_DEBUG_PRINTF	hil/hil_config.h	12;"	d
+HIL_Format	hil/hil.c	/^void HIL_Format(void)$/;"	f
+HIL_GetStorageBlocks	hil/hil.c	/^unsigned int HIL_GetStorageBlocks(void)$/;"	f
+HIL_Initialize	hil/hil.c	/^void HIL_Initialize(void)$/;"	f
+HIL_REQUEST_ID	common/cosmos_types.h	/^} HIL_REQUEST_ID;$/;"	t	typeref:struct:__anon94
+HIL_ReadBlock	hil/hil.c	/^void HIL_ReadBlock(unsigned int nCmdSlotTag, unsigned int nStartLBA, unsigned int nLBACount)$/;"	f
+HIL_Run	hil/hil.c	/^void HIL_Run(void)$/;"	f
+HIL_SetStorageBlocks	hil/hil.c	/^void HIL_SetStorageBlocks(unsigned int nStorageBlocks)$/;"	f
+HIL_WriteBlock	hil/hil.c	/^void HIL_WriteBlock(unsigned int nCmdSlotTag, unsigned int nStartLBA, unsigned int nLBACount)$/;"	f
+HOST_BLOCK_SIZE	hil/nvme/nvme.h	13;"	d
+HOST_DMA_ASSIST_STATUS	hil/nvme/host_lld.h	/^} HOST_DMA_ASSIST_STATUS;$/;"	t	typeref:struct:_HOST_DMA_ASSIST_STATUS
+HOST_DMA_AUTO_TYPE	hil/nvme/host_lld.h	10;"	d
+HOST_DMA_CMD_FIFO_REG	hil/nvme/host_lld.h	/^} HOST_DMA_CMD_FIFO_REG;$/;"	t	typeref:struct:_HOST_DMA_CMD_FIFO_REG
+HOST_DMA_CMD_FIFO_REG_ADDR	target/address_space.h	36;"	d
+HOST_DMA_DIRECT_TYPE	hil/nvme/host_lld.h	9;"	d
+HOST_DMA_FIFO_CNT_REG	hil/nvme/host_lld.h	/^} HOST_DMA_FIFO_CNT_REG;$/;"	t	typeref:struct:_HOST_DMA_FIFO_CNT_REG
+HOST_DMA_FIFO_CNT_REG_ADDR	target/address_space.h	29;"	d
+HOST_DMA_RX_DIRECTION	hil/nvme/host_lld.h	13;"	d
+HOST_DMA_STATUS	hil/nvme/host_lld.h	/^} HOST_DMA_STATUS;$/;"	t	typeref:struct:_HOST_DMA_STATUS
+HOST_DMA_TX_DIRECTION	hil/nvme/host_lld.h	12;"	d
+HOST_IP_ADDR	target/address_space.c	/^void *HOST_IP_ADDR;$/;"	v
+HOST_LLD_H	hil/nvme/host_lld.h	2;"	d
+HOST_REQUEST_BUF_COUNT	hil/hil_config.h	5;"	d
+HOST_REQUEST_COUNT	hil/hil_config.h	4;"	d
+IDR	hil/nvme/nvme.h	/^	unsigned int IDR						:1;$/;"	m	struct:_IO_DATASET_MANAGEMENT_COMMAND_DW11
+IDW	hil/nvme/nvme.h	/^	unsigned int IDW						:1;$/;"	m	struct:_IO_DATASET_MANAGEMENT_COMMAND_DW11
+IEEE	hil/nvme/nvme.h	/^	unsigned char IEEE[3];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+IEN	hil/nvme/nvme.h	/^			unsigned short IEN				:1;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW11::__anon19::__anon20
+INCREASE_IN_RANGE	common/util.h	19;"	d
+INIT_LIST_HEAD	common/list.h	/^static inline void INIT_LIST_HEAD(struct list_head *list)$/;"	f
+INT16	common/cosmos_types.h	/^typedef short				INT16;$/;"	t
+INT32	common/cosmos_types.h	/^typedef int					INT32;$/;"	t
+INT64	common/cosmos_types.h	/^typedef long long int		INT64;$/;"	t
+INT8	common/cosmos_types.h	/^typedef signed char			INT8;$/;"	t
+INTERRUPT_COALESCING	hil/nvme/nvme.h	135;"	d
+INTERRUPT_VECTOR_CONFIGURATION	hil/nvme/nvme.h	136;"	d
+INVALID_INDEX	common/cosmos_types.h	33;"	d
+IOCTL_INIT_PROFILE_COUNT	common/cosmos_types.h	/^	IOCTL_INIT_PROFILE_COUNT,				\/\/ Initializa profile count$/;"	e	enum:__anon104
+IOCTL_PRINT_PROFILE_COUNT	common/cosmos_types.h	/^	IOCTL_PRINT_PROFILE_COUNT,$/;"	e	enum:__anon104
+IOCTL_TYPE	common/cosmos_types.h	/^} IOCTL_TYPE;$/;"	t	typeref:enum:__anon104
+IO_NVM_COMPARE	hil/nvme/nvme.h	37;"	d
+IO_NVM_DATASET_MANAGEMENT	hil/nvme/nvme.h	38;"	d
+IO_NVM_FLUSH	hil/nvme/nvme.h	33;"	d
+IO_NVM_READ	hil/nvme/nvme.h	35;"	d
+IO_NVM_WRITE	hil/nvme/nvme.h	34;"	d
+IO_NVM_WRITE_UNCORRECTABLE	hil/nvme/nvme.h	36;"	d
+IO_READ32	common/io_access.h	5;"	d
+IO_READ_COMMAND_DW12	hil/nvme/nvme.h	/^} IO_READ_COMMAND_DW12;$/;"	t	typeref:struct:_IO_READ_COMMAND_DW12
+IO_READ_COMMAND_DW13	hil/nvme/nvme.h	/^} IO_READ_COMMAND_DW13;$/;"	t	typeref:struct:_IO_READ_COMMAND_DW13
+IO_READ_COMMAND_DW15	hil/nvme/nvme.h	/^} IO_READ_COMMAND_DW15;$/;"	t	typeref:struct:_IO_READ_COMMAND_DW15
+IO_TYPE_RD	ftl/ramftl/ram.c	19;"	d	file:
+IO_TYPE_WR	ftl/ramftl/ram.c	20;"	d	file:
+IO_WRITE32	common/io_access.h	4;"	d
+IO_WRITE_COMMAND_DW12	hil/nvme/nvme.h	/^} IO_WRITE_COMMAND_DW12;$/;"	t	typeref:struct:_IO_WRITE_COMMAND_DW12
+IO_WRITE_COMMAND_DW13	hil/nvme/nvme.h	/^} IO_WRITE_COMMAND_DW13;$/;"	t	typeref:struct:_IO_WRITE_COMMAND_DW13
+IO_WRITE_COMMAND_DW15	hil/nvme/nvme.h	/^} IO_WRITE_COMMAND_DW15;$/;"	t	typeref:struct:_IO_WRITE_COMMAND_DW15
+ISCLEAR	common/util.h	17;"	d
+ISSET	common/util.h	16;"	d
+IV	hil/nvme/nvme.h	/^			unsigned short IV;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW11::__anon19::__anon20
+Incompressible	hil/nvme/nvme.h	/^				unsigned char Incompressible			:1;$/;"	m	struct:_IO_READ_COMMAND_DW13::__anon61::__anon62::__anon63
+Incompressible	hil/nvme/nvme.h	/^				unsigned char Incompressible			:1;$/;"	m	struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55::__anon56
+KB	common/cosmos_types.h	6;"	d
+LBADS	hil/nvme/nvme.h	/^	unsigned char LBADS;							\/\/ dy, size of LBA, power of 2$/;"	m	struct:_ADMIN_IDENTIFY_FORMAT_DATA
+LBAFx	hil/nvme/nvme.h	/^	ADMIN_IDENTIFY_FORMAT_DATA LBAFx[16];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+LBA_RANGE_TYPE	hil/nvme/nvme.h	130;"	d
+LID	hil/nvme/nvme.h	/^			unsigned char LID;$/;"	m	struct:_ADMIN_GET_LOG_PAGE_DW10::__anon31::__anon32
+LIST_H	common/list.h	2;"	d
+LIST_HEAD	common/list.h	10;"	d
+LIST_HEAD_INIT	common/list.h	8;"	d
+LIST_SIZE	ftl/ramftl/ram.c	18;"	d	file:
+LOGICAL_PAGE_SIZE	common/cosmos_plus_system.h	99;"	d
+LOGICAL_PAGE_SIZE_KB	common/cosmos_plus_system.h	100;"	d
+LPA	hil/nvme/nvme.h	/^	} LPA;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon37
+LPN_PER_PHYSICAL_PAGE	common/cosmos_plus_system.h	101;"	d
+LR	hil/nvme/nvme.h	/^			unsigned short LR						:1;			\/\/ dy, limited retry$/;"	m	struct:_IO_READ_COMMAND_DW12::__anon59::__anon60
+LR	hil/nvme/nvme.h	/^			unsigned short LR						:1;$/;"	m	struct:_IO_WRITE_COMMAND_DW12::__anon52::__anon53
+LUNS_PER_DIE	common/cosmos_plus_system.h	71;"	d
+LUN_0_BASE_ADDR	common/cosmos_plus_system.h	8;"	d
+LUN_1_BASE_ADDR	common/cosmos_plus_system.h	9;"	d
+MAIN_BLOCKS_PER_DIE	common/cosmos_plus_system.h	73;"	d
+MAIN_BLOCKS_PER_LUN	common/cosmos_plus_system.h	63;"	d
+MAIN_ROWS_PER_MLC_LUN	common/cosmos_plus_system.h	69;"	d
+MAIN_ROWS_PER_SLC_LUN	common/cosmos_plus_system.h	68;"	d
+MAX	common/util.h	5;"	d
+MAX_NUM_OF_IO_CQ	hil/nvme/nvme.h	7;"	d
+MAX_NUM_OF_IO_SQ	hil/nvme/nvme.h	6;"	d
+MAX_NUM_OF_NLB	hil/nvme/nvme.h	12;"	d
+MB	common/cosmos_types.h	7;"	d
+MC	hil/nvme/nvme.h	/^	} MC;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon47
+MDTS	hil/nvme/nvme.h	/^	unsigned char MDTS;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+MEMORY_SEGMENTS_START_ADDR	common/cosmos_plus_memory_map.h	6;"	d
+MEMPOOL_H	ftl/ramftl/mempool.h	2;"	d
+MIN	common/util.h	4;"	d
+MN	hil/nvme/nvme.h	/^	unsigned char MN[40];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+MODEL_NUMBER	hil/nvme/nvme_identify.h	55;"	d
+MORE	hil/nvme/host_lld.h	/^					unsigned short MORE		:1;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+MORE	hil/nvme/nvme.h	/^					unsigned short MORE				:1;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+MP	hil/nvme/nvme.h	/^			unsigned short MP;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+MPS	hil/nvme/nvme.h	/^			unsigned short MPS					:1;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+MPTR	hil/nvme/nvme.h	/^			unsigned int MPTR[2];$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+MPTR	hil/nvme/nvme.h	/^			unsigned int MPTR[2];$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+MS	hil/nvme/nvme.h	/^	unsigned short MS;$/;"	m	struct:_ADMIN_IDENTIFY_FORMAT_DATA
+NAND_START_ADDR	common/cosmos_plus_memory_map.h	17;"	d
+NBBY	common/util.h	13;"	d
+NCAP	hil/nvme/nvme.h	/^	unsigned int NCAP[2];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+NCQR	hil/nvme/nvme.h	/^			unsigned short NCQR;$/;"	m	struct:_ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11::__anon13::__anon14
+NLB	hil/nvme/nvme.h	/^			unsigned short NLB;									\/\/ number of block, 0: 1block$/;"	m	struct:_IO_READ_COMMAND_DW12::__anon59::__anon60
+NLB	hil/nvme/nvme.h	/^			unsigned short NLB;$/;"	m	struct:_IO_WRITE_COMMAND_DW12::__anon52::__anon53
+NLBAF	hil/nvme/nvme.h	/^	unsigned char NLBAF;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+NMIC	hil/nvme/nvme.h	/^	} NMIC;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon50
+NN	hil/nvme/nvme.h	/^	unsigned int NN;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+NOPS	hil/nvme/nvme.h	/^			unsigned short NOPS					:1;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+NPSS	hil/nvme/nvme.h	/^	unsigned char NPSS;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+NR	hil/nvme/nvme.h	/^	unsigned int NR							:8;$/;"	m	struct:_IO_DATASET_MANAGEMENT_COMMAND_DW10
+NSC_0_BASEADDR	target/address_space.c	/^void *NSC_0_BASEADDR;$/;"	v
+NSC_0_CONNECTED	common/cosmos_plus_system.h	33;"	d
+NSC_1_BASEADDR	target/address_space.c	/^void *NSC_1_BASEADDR;$/;"	v
+NSC_1_CONNECTED	common/cosmos_plus_system.h	30;"	d
+NSC_2_BASEADDR	target/address_space.c	/^void *NSC_2_BASEADDR;$/;"	v
+NSC_2_CONNECTED	common/cosmos_plus_system.h	27;"	d
+NSC_3_BASEADDR	target/address_space.c	/^void *NSC_3_BASEADDR;$/;"	v
+NSC_3_CONNECTED	common/cosmos_plus_system.h	24;"	d
+NSC_4_BASEADDR	target/address_space.c	/^void *NSC_4_BASEADDR;$/;"	v
+NSC_4_CONNECTED	common/cosmos_plus_system.h	21;"	d
+NSC_5_BASEADDR	target/address_space.c	/^void *NSC_5_BASEADDR;$/;"	v
+NSC_5_CONNECTED	common/cosmos_plus_system.h	18;"	d
+NSC_6_BASEADDR	target/address_space.c	/^void *NSC_6_BASEADDR;$/;"	v
+NSC_6_CONNECTED	common/cosmos_plus_system.h	15;"	d
+NSC_7_BASEADDR	target/address_space.c	/^void *NSC_7_BASEADDR;$/;"	v
+NSC_7_CONNECTED	common/cosmos_plus_system.h	12;"	d
+NSC_MAX_CHANNELS	common/cosmos_plus_system.h	87;"	d
+NSC_MAX_WAYS	common/cosmos_plus_system.h	88;"	d
+NSFEAT	hil/nvme/nvme.h	/^	} NSFEAT;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon45
+NSID	hil/nvme/nvme.h	/^			unsigned int NSID;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+NSID	hil/nvme/nvme.h	/^			unsigned int NSID;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+NSQR	hil/nvme/nvme.h	/^			unsigned short NSQR;$/;"	m	struct:_ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11::__anon13::__anon14
+NSZE	hil/nvme/nvme.h	/^	unsigned int NSZE[2];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+NULL	common/cosmos_types.h	19;"	d
+NUMBER_OF_CONNECTED_CHANNEL	common/cosmos_plus_system.h	37;"	d
+NUMBER_OF_QUEUES	hil/nvme/nvme.h	134;"	d
+NUMD	hil/nvme/nvme.h	/^			unsigned short NUMD			:12;$/;"	m	struct:_ADMIN_GET_LOG_PAGE_DW10::__anon31::__anon32
+NUSE	hil/nvme/nvme.h	/^	unsigned int NUSE[2];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+NVME_ADMIN_COMMAND	hil/nvme/nvme.h	/^}NVME_ADMIN_COMMAND;$/;"	t	typeref:struct:_NVME_ADMIN_COMMAND
+NVME_ADMIN_QUEUE_SET_REG	hil/nvme/host_lld.h	/^} NVME_ADMIN_QUEUE_SET_REG;$/;"	t	typeref:struct:_NVME_ADMIN_QUEUE_SET_REG
+NVME_ADMIN_QUEUE_SET_REG_ADDR	target/address_space.h	30;"	d
+NVME_ADMIN_QUEUE_STATUS	hil/nvme/nvme.h	/^} NVME_ADMIN_QUEUE_STATUS;$/;"	t	typeref:struct:_NVME_ADMIN_QUEUE_STATUS
+NVME_BLOCKS_PER_PAGE	common/cosmos_plus_system.h	115;"	d
+NVME_CMD_FIFO_REG	hil/nvme/host_lld.h	/^} NVME_CMD_FIFO_REG;$/;"	t	typeref:struct:_NVME_CMD_FIFO_REG
+NVME_CMD_FIFO_REG_ADDR	target/address_space.h	34;"	d
+NVME_CMD_OPCODE	common/cosmos_types.h	/^} NVME_CMD_OPCODE;$/;"	t	typeref:enum:__anon93
+NVME_CMD_OPCODE_FLUASH	common/cosmos_types.h	/^	NVME_CMD_OPCODE_FLUASH = IO_NVM_FLUSH,$/;"	e	enum:__anon93
+NVME_CMD_OPCODE_READ	common/cosmos_types.h	/^	NVME_CMD_OPCODE_READ = IO_NVM_READ,$/;"	e	enum:__anon93
+NVME_CMD_OPCODE_WRITE	common/cosmos_types.h	/^	NVME_CMD_OPCODE_WRITE = IO_NVM_WRITE,$/;"	e	enum:__anon93
+NVME_CMD_SRAM_ADDR	target/address_space.h	38;"	d
+NVME_COMMAND	hil/nvme/nvme.h	/^}NVME_COMMAND;$/;"	t	typeref:struct:_NVME_COMMAND
+NVME_COMMAND_AUTO_COMPLETION_OFF	hil/nvme/nvme.h	152;"	d
+NVME_COMMAND_AUTO_COMPLETION_ON	hil/nvme/nvme.h	153;"	d
+NVME_COMPLETION	hil/nvme/nvme.h	/^}NVME_COMPLETION;$/;"	t	typeref:struct:_NVME_COMPLETION
+NVME_CONTEXT	hil/nvme/nvme.h	/^} NVME_CONTEXT;$/;"	t	typeref:struct:_NVME_STATUS
+NVME_CPL_FIFO_REG	hil/nvme/host_lld.h	/^} NVME_CPL_FIFO_REG;$/;"	t	typeref:struct:_NVME_CPL_FIFO_REG
+NVME_CPL_FIFO_REG_ADDR	target/address_space.h	35;"	d
+NVME_H	hil/nvme/nvme.h	2;"	d
+NVME_IO_COMMAND	hil/nvme/nvme.h	/^}NVME_IO_COMMAND;$/;"	t	typeref:struct:_NVME_IO_COMMAND
+NVME_IO_CQ_SET_REG	hil/nvme/host_lld.h	/^} NVME_IO_CQ_SET_REG;$/;"	t	typeref:struct:_NVME_IO_CQ_SET_REG
+NVME_IO_CQ_SET_REG_ADDR	target/address_space.h	32;"	d
+NVME_IO_CQ_STATUS	hil/nvme/nvme.h	/^} NVME_IO_CQ_STATUS;$/;"	t	typeref:struct:_NVME_IO_CQ_STATUS
+NVME_IO_SQ_SET_REG	hil/nvme/host_lld.h	/^} NVME_IO_SQ_SET_REG;$/;"	t	typeref:struct:_NVME_IO_SQ_SET_REG
+NVME_IO_SQ_SET_REG_ADDR	target/address_space.h	31;"	d
+NVME_IO_SQ_STATUS	hil/nvme/nvme.h	/^} NVME_IO_SQ_STATUS;$/;"	t	typeref:struct:_NVME_IO_SQ_STATUS
+NVME_MAIN_H	hil/nvme/nvme_main.h	2;"	d
+NVME_START_ADDR	common/cosmos_plus_memory_map.h	20;"	d
+NVME_STATUS_REG	hil/nvme/host_lld.h	/^} NVME_STATUS_REG;$/;"	t	typeref:struct:_NVME_STATUS_REG
+NVME_STATUS_REG_ADDR	target/address_space.h	28;"	d
+NVME_TASK_IDLE	hil/nvme/nvme.h	142;"	d
+NVME_TASK_RESET	hil/nvme/nvme.h	147;"	d
+NVME_TASK_RUNNING	hil/nvme/nvme.h	144;"	d
+NVME_TASK_SHUTDOWN	hil/nvme/nvme.h	145;"	d
+NVME_TASK_WAIT_CC_EN	hil/nvme/nvme.h	143;"	d
+NVME_TASK_WAIT_RESET	hil/nvme/nvme.h	146;"	d
+NVSCC	hil/nvme/nvme.h	/^	unsigned char NVSCC											:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+OACS	hil/nvme/nvme.h	/^	} OACS;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon35
+ONCS	hil/nvme/nvme.h	/^	} ONCS;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon40
+ONLY_CPL_TYPE	hil/nvme/host_lld.h	15;"	d
+OPC	hil/nvme/nvme.h	/^				unsigned char OPC;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
+OPC	hil/nvme/nvme.h	/^				unsigned char OPC;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
+PAGES_PER_BLOCK	common/cosmos_plus_system.h	54;"	d
+PAGES_PER_BLOCK	common/cosmos_plus_system.h	57;"	d
+PAGES_PER_BLOCK_BITS	common/cosmos_plus_system.h	55;"	d
+PAGES_PER_BLOCK_BITS	common/cosmos_plus_system.h	58;"	d
+PAGES_PER_MLC_BLOCK	common/cosmos_plus_system.h	104;"	d
+PAGES_PER_SLC_BLOCK	common/cosmos_plus_system.h	103;"	d
+PAGE_MAX	ftl/ramftl/mempool.c	7;"	d	file:
+PC	hil/nvme/nvme.h	/^			unsigned short PC				:1;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW11::__anon19::__anon20
+PC	hil/nvme/nvme.h	/^			unsigned short PC			:1;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW11::__anon25::__anon26
+PCIE_FUNC_REG	hil/nvme/host_lld.h	/^} PCIE_FUNC_REG;$/;"	t	typeref:struct:_PCIE_FUNC_REG
+PCIE_FUNC_REG_ADDR	target/address_space.h	26;"	d
+PCIE_STATUS_REG	hil/nvme/host_lld.h	/^} PCIE_STATUS_REG;$/;"	t	typeref:struct:_PCIE_STATUS_REG
+PCIE_STATUS_REG_ADDR	target/address_space.h	25;"	d
+PCI_SUBSYSTEM_VENDOR_ID	hil/nvme/nvme_identify.h	53;"	d
+PCI_VENDOR_ID	hil/nvme/nvme_identify.h	52;"	d
+PHYSICAL_PAGE_SIZE	common/cosmos_plus_system.h	98;"	d
+POWER_MANAGEMENT	hil/nvme/nvme.h	129;"	d
+PRINFO	hil/nvme/nvme.h	/^			unsigned short PRINFO					:4;			\/\/ dy, protection information$/;"	m	struct:_IO_READ_COMMAND_DW12::__anon59::__anon60
+PRINFO	hil/nvme/nvme.h	/^			unsigned short PRINFO					:4;$/;"	m	struct:_IO_WRITE_COMMAND_DW12::__anon52::__anon53
+PROGRAM_REQUEST_ID	common/cosmos_types.h	/^} PROGRAM_REQUEST_ID;$/;"	t	typeref:struct:__anon103
+PRP1	hil/nvme/nvme.h	/^			unsigned int PRP1[2];$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+PRP1	hil/nvme/nvme.h	/^			unsigned int PRP1[2];$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+PRP2	hil/nvme/nvme.h	/^			unsigned int PRP2[2];$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+PRP2	hil/nvme/nvme.h	/^			unsigned int PRP2[2];$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+PSDT	hil/nvme/nvme.h	/^				unsigned char PSDT			:1;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
+PSDT	hil/nvme/nvme.h	/^				unsigned char PSDT			:1;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
+PSDx	hil/nvme/nvme.h	/^	ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR PSDx[32];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+QID	hil/nvme/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW10::__anon17::__anon18
+QID	hil/nvme/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW10::__anon23::__anon24
+QID	hil/nvme/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_DELETE_IO_CQ_DW10::__anon21::__anon22
+QID	hil/nvme/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_DELETE_IO_SQ_DW10::__anon27::__anon28
+QPRIO	hil/nvme/nvme.h	/^			unsigned short QPRIO		:2;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW11::__anon25::__anon26
+QSIZE	hil/nvme/nvme.h	/^			unsigned short QSIZE;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW10::__anon17::__anon18
+QSIZE	hil/nvme/nvme.h	/^			unsigned short QSIZE;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW10::__anon23::__anon24
+RAB	hil/nvme/nvme.h	/^	unsigned char RAB;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+RESCAP	hil/nvme/nvme.h	/^	} RESCAP;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+ROTS_PER_MLC_BLOCK_BITS	common/cosmos_plus_system.h	51;"	d
+ROUND_DOWN	common/util.h	8;"	d
+ROUND_UP	common/util.h	7;"	d
+ROWS_PER_MLC_BLOCK	common/cosmos_plus_system.h	50;"	d
+ROWS_PER_SLC_BLOCK	common/cosmos_plus_system.h	49;"	d
+RP	hil/nvme/nvme.h	/^	unsigned char RP				:2;$/;"	m	struct:_ADMIN_IDENTIFY_FORMAT_DATA
+RRL	hil/nvme/nvme.h	/^			unsigned char RRL					:5;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+RRT	hil/nvme/nvme.h	/^			unsigned char RRT					:5;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+RWL	hil/nvme/nvme.h	/^			unsigned char RWL					:5;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+RWT	hil/nvme/nvme.h	/^			unsigned char RWT					:5;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+SC	hil/nvme/host_lld.h	/^					unsigned short SC		:8;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+SC	hil/nvme/nvme.h	/^					unsigned short SC				:8;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+SCT	hil/nvme/host_lld.h	/^					unsigned short SCT		:3;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+SCT	hil/nvme/nvme.h	/^					unsigned short SCT				:3;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+SCT_COMMAND_SPECIFIC_STATUS	hil/nvme/nvme.h	42;"	d
+SCT_GENERIC_COMMAND_STATUS	hil/nvme/nvme.h	41;"	d
+SCT_MEDIA_AND_DATA_INTEGRITY_ERRORS	hil/nvme/nvme.h	43;"	d
+SCT_VENDOR_SPECIFIC	hil/nvme/nvme.h	44;"	d
+SC_ABORT_COMMAND_LIMIT_EXCEEDED	hil/nvme/nvme.h	85;"	d
+SC_ACCESS_DENIED	hil/nvme/nvme.h	122;"	d
+SC_ASYNCHRONOUS_EVENT_REQUEST_LIMIT_EXCEEDED	hil/nvme/nvme.h	86;"	d
+SC_ATOMIC_WRITE_UNIT_EXCEEDED	hil/nvme/nvme.h	67;"	d
+SC_ATTEMPTED_WRITE_TO_READ_ONLY_RANGE	hil/nvme/nvme.h	113;"	d
+SC_CAPACITY_EXCEEDED	hil/nvme/nvme.h	76;"	d
+SC_COMMANDS_ABORTED_DUE_TO_POWER_LOSS_NOTIFICATION	hil/nvme/nvme.h	52;"	d
+SC_COMMAND_ABORTED_DUE_TO_FAILED_FUSED_COMMAND	hil/nvme/nvme.h	56;"	d
+SC_COMMAND_ABORTED_DUE_TO_MISSING_FUSED_COMMAND	hil/nvme/nvme.h	57;"	d
+SC_COMMAND_ABORTED_DUE_TO_SQ_DELETION	hil/nvme/nvme.h	55;"	d
+SC_COMMAND_ABORT_REQUESTED	hil/nvme/nvme.h	54;"	d
+SC_COMMAND_ID_CONFLICT	hil/nvme/nvme.h	50;"	d
+SC_COMMAND_SEQUENCE_ERROR	hil/nvme/nvme.h	59;"	d
+SC_COMPARE_FAILURE	hil/nvme/nvme.h	121;"	d
+SC_COMPLETION_QUEUE_INVALID	hil/nvme/nvme.h	82;"	d
+SC_CONFLICTING_ATTRIBUTES	hil/nvme/nvme.h	111;"	d
+SC_CONTROLLER_LIST_INVALID	hil/nvme/nvme.h	108;"	d
+SC_DATA_SGL_LENGTH_INVALID	hil/nvme/nvme.h	62;"	d
+SC_DATA_TRANSFER_ERROR	hil/nvme/nvme.h	51;"	d
+SC_DEALLOCATED_OR_UNWRITTEN_LOGICAL_BLOCK	hil/nvme/nvme.h	123;"	d
+SC_END_TO_END_APPLICATION_TAG_CHECK_ERROR	hil/nvme/nvme.h	119;"	d
+SC_END_TO_END_GUARD_CHECK_ERROR	hil/nvme/nvme.h	118;"	d
+SC_END_TO_END_REFERENCE_TAG_CHECK_ERROR	hil/nvme/nvme.h	120;"	d
+SC_FEATURE_IDENTIFIER_NOT_SAVEABLE	hil/nvme/nvme.h	94;"	d
+SC_FEATURE_NOT_CHANGEABLE	hil/nvme/nvme.h	95;"	d
+SC_FEATURE_NOT_NAMESPACE_SPECIFIC	hil/nvme/nvme.h	96;"	d
+SC_FIRMWARE_ACTIVATION_PROHIBITED	hil/nvme/nvme.h	100;"	d
+SC_FIRMWARE_ACTIVATION_REQUIRES_CONVENTIONAL_RESET	hil/nvme/nvme.h	92;"	d
+SC_FIRMWARE_ACTIVATION_REQUIRES_MAXIMUM_TIME_VIOLATION	hil/nvme/nvme.h	99;"	d
+SC_FIRMWARE_ACTIVATION_REQUIRES_NVM_SUBSYSTEM_RESET	hil/nvme/nvme.h	97;"	d
+SC_FIRMWARE_ACTIVATION_REQUIRES_RESET	hil/nvme/nvme.h	98;"	d
+SC_FORMAT_IN_PROGRESS	hil/nvme/nvme.h	79;"	d
+SC_HOST_IDENTIFIER_INCONSISTENT_FORMAT	hil/nvme/nvme.h	70;"	d
+SC_INTERNAL_DEVICE_ERROR	hil/nvme/nvme.h	53;"	d
+SC_INVALID_COMMAND_OPCODE	hil/nvme/nvme.h	48;"	d
+SC_INVALID_FIELD_IN_COMMAND	hil/nvme/nvme.h	49;"	d
+SC_INVALID_FIRMWARE_IMAGE	hil/nvme/nvme.h	88;"	d
+SC_INVALID_FIRMWARE_SLOT	hil/nvme/nvme.h	87;"	d
+SC_INVALID_FORMAT	hil/nvme/nvme.h	91;"	d
+SC_INVALID_INTERRUPT_VECTOR	hil/nvme/nvme.h	89;"	d
+SC_INVALID_LOG_PAGE	hil/nvme/nvme.h	90;"	d
+SC_INVALID_NAMESPACE_OR_FORMAT	hil/nvme/nvme.h	58;"	d
+SC_INVALID_NUMBER_OF_SGL_DESCRIPTORS	hil/nvme/nvme.h	61;"	d
+SC_INVALID_PROTECTION_INFORMATION	hil/nvme/nvme.h	112;"	d
+SC_INVALID_QUEUE_DELETION	hil/nvme/nvme.h	93;"	d
+SC_INVALID_QUEUE_IDENTIFIER	hil/nvme/nvme.h	83;"	d
+SC_INVALID_QUEUE_SIZE	hil/nvme/nvme.h	84;"	d
+SC_INVALID_SGL_SEGMENT_DESCRIPTOR	hil/nvme/nvme.h	60;"	d
+SC_INVALID_USE_OF_CONTROLLER_MEMORY_BUFFER	hil/nvme/nvme.h	65;"	d
+SC_KEEP_ALIVE_TIMEOUT_EXPIRED	hil/nvme/nvme.h	71;"	d
+SC_KEEP_ALIVE_TIMEOUT_INVALID	hil/nvme/nvme.h	72;"	d
+SC_LBA_OUT_OF_RANGE	hil/nvme/nvme.h	75;"	d
+SC_METADATA_SGL_LENGTH_INVALID	hil/nvme/nvme.h	63;"	d
+SC_NAMESPACE_ALREADY_ATTACHED	hil/nvme/nvme.h	104;"	d
+SC_NAMESPACE_IDENTIFIER_UNAVAILABLE	hil/nvme/nvme.h	103;"	d
+SC_NAMESPACE_INSUFFICIENT_CAPACITY	hil/nvme/nvme.h	102;"	d
+SC_NAMESPACE_IS_PRIVATE	hil/nvme/nvme.h	105;"	d
+SC_NAMESPACE_NOT_ATTACHED	hil/nvme/nvme.h	106;"	d
+SC_NAMESPACE_NOT_READY	hil/nvme/nvme.h	77;"	d
+SC_OVERLAPPING_RANGE	hil/nvme/nvme.h	101;"	d
+SC_PRP_OFFSET_INVALID	hil/nvme/nvme.h	66;"	d
+SC_RESERVATION_CONFLICT	hil/nvme/nvme.h	78;"	d
+SC_SGL_DESCRIPTOR_TYPE_INVALID	hil/nvme/nvme.h	64;"	d
+SC_SGL_OFFSET_INVALID	hil/nvme/nvme.h	68;"	d
+SC_SGL_SUB_TYPE_INVALID	hil/nvme/nvme.h	69;"	d
+SC_SUCCESSFUL_COMPLETION	hil/nvme/nvme.h	47;"	d
+SC_THIN_PROVISIONING_NOT_SUPPORTED	hil/nvme/nvme.h	107;"	d
+SC_UNRECOVERED_READ_ERROR	hil/nvme/nvme.h	117;"	d
+SC_WRITE_FAULT	hil/nvme/nvme.h	116;"	d
+SEL	hil/nvme/nvme.h	/^			unsigned char SEL				:3;$/;"	m	struct:_ADMIN_GET_FEATURES_DW10::__anon15::__anon16
+SERIAL_NUMBER	hil/nvme/nvme_identify.h	54;"	d
+SETBIT	common/util.h	14;"	d
+SGLS	hil/nvme/nvme.h	/^	} SGLS;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon44
+SN	hil/nvme/nvme.h	/^	unsigned char SN[20];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+SOFTWARE_PROGRESS_MARKER	hil/nvme/nvme.h	139;"	d
+SQES	hil/nvme/nvme.h	/^	} SQES;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon38
+SR	hil/nvme/nvme.h	/^	unsigned int SR							:1;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+SSVID	hil/nvme/nvme.h	/^	unsigned short SSVID;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+STORAGE_CAPACITY_H	hil/nvme/nvme.h	10;"	d
+STORAGE_CAPACITY_L	hil/nvme/nvme.h	9;"	d
+SV	hil/nvme/nvme.h	/^			unsigned char SV				:1;$/;"	m	struct:_ADMIN_SET_FEATURES_DW10::__anon11::__anon12
+SW	hil/nvme/nvme.h	/^	unsigned int SW							:1;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+SequentialRequest	hil/nvme/nvme.h	/^				unsigned char SequentialRequest			:1;$/;"	m	struct:_IO_READ_COMMAND_DW13::__anon61::__anon62::__anon63
+SequentialRequest	hil/nvme/nvme.h	/^				unsigned char SequentialRequest			:1;$/;"	m	struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55::__anon56
+TEMPERATURE_THRESHOLD	hil/nvme/nvme.h	131;"	d
+TOTAL_BLOCKS_PER_DIE	common/cosmos_plus_system.h	74;"	d
+TOTAL_BLOCKS_PER_LUN	common/cosmos_plus_system.h	66;"	d
+TRACE_EOF	common/cosmos_types.h	/^	TRACE_EOF,$/;"	e	enum:__anon92
+TRACE_READ	common/cosmos_types.h	/^	TRACE_READ = 0,$/;"	e	enum:__anon92
+TRACE_TYPE	common/cosmos_types.h	/^} TRACE_TYPE;$/;"	t	typeref:enum:__anon92
+TRACE_UNKNOWN	common/cosmos_types.h	/^	TRACE_UNKNOWN,$/;"	e	enum:__anon92
+TRACE_WRITE	common/cosmos_types.h	/^	TRACE_WRITE,$/;"	e	enum:__anon92
+TRUE	common/cosmos_types.h	11;"	d
+UINT16	common/cosmos_types.h	/^typedef unsigned short		UINT16;$/;"	t
+UINT32	common/cosmos_types.h	/^typedef unsigned int		UINT32;$/;"	t
+UINT64	common/cosmos_types.h	/^typedef unsigned long long	UINT64;$/;"	t
+UINT8	common/cosmos_types.h	/^typedef unsigned char		UINT8;$/;"	t
+USER_CHANNELS	common/cosmos_plus_system.h	90;"	d
+USER_WAYS	common/cosmos_plus_system.h	91;"	d
+UTIL_H	common/util.h	2;"	d
+VID	hil/nvme/nvme.h	/^	unsigned short VID;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+VOID	common/cosmos_types.h	/^typedef void				VOID;$/;"	t
+VOLATILE_WRITE_CACHE	hil/nvme/nvme.h	133;"	d
+VS	hil/nvme/nvme.h	/^	unsigned char VS[1024];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+VS	hil/nvme/nvme.h	/^	unsigned char VS[3712];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+VWC	hil/nvme/nvme.h	/^	} VWC;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon43
+WP	hil/nvme/nvme.h	/^	unsigned int WP							:1;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+WRITE_ATOMICITY	hil/nvme/nvme.h	137;"	d
+_ADMIN_CREATE_IO_CQ_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_CREATE_IO_CQ_DW10 {$/;"	s
+_ADMIN_CREATE_IO_CQ_DW11	hil/nvme/nvme.h	/^typedef struct _ADMIN_CREATE_IO_CQ_DW11 {$/;"	s
+_ADMIN_CREATE_IO_SQ_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_CREATE_IO_SQ_DW10 {$/;"	s
+_ADMIN_CREATE_IO_SQ_DW11	hil/nvme/nvme.h	/^typedef struct _ADMIN_CREATE_IO_SQ_DW11 {$/;"	s
+_ADMIN_DELETE_IO_CQ_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_DELETE_IO_CQ_DW10 {$/;"	s
+_ADMIN_DELETE_IO_SQ_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_DELETE_IO_SQ_DW10 {$/;"	s
+_ADMIN_GET_FEATURES_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_GET_FEATURES_DW10 {$/;"	s
+_ADMIN_GET_LOG_PAGE_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_GET_LOG_PAGE_DW10 {$/;"	s
+_ADMIN_IDENTIFY_COMMAND_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_IDENTIFY_COMMAND_DW10 {$/;"	s
+_ADMIN_IDENTIFY_CONTROLLER	hil/nvme/nvme.h	/^typedef struct _ADMIN_IDENTIFY_CONTROLLER {$/;"	s
+_ADMIN_IDENTIFY_FORMAT_DATA	hil/nvme/nvme.h	/^typedef struct _ADMIN_IDENTIFY_FORMAT_DATA {$/;"	s
+_ADMIN_IDENTIFY_NAMESPACE	hil/nvme/nvme.h	/^typedef struct _ADMIN_IDENTIFY_NAMESPACE {$/;"	s
+_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR	hil/nvme/nvme.h	/^typedef struct _ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR {$/;"	s
+_ADMIN_SET_FEATURES_DW10	hil/nvme/nvme.h	/^typedef struct _ADMIN_SET_FEATURES_DW10 {$/;"	s
+_ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11	hil/nvme/nvme.h	/^typedef struct _ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11 {$/;"	s
+_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES	hil/nvme/nvme.h	/^typedef struct _DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES {$/;"	s
+_DATASET_MANAGEMENT_RANGE	hil/nvme/nvme.h	/^typedef struct _DATASET_MANAGEMENT_RANGE {$/;"	s
+_DEV_IRQ_REG	hil/nvme/host_lld.h	/^typedef struct _DEV_IRQ_REG {$/;"	s
+_HOST_DMA_ASSIST_STATUS	hil/nvme/host_lld.h	/^typedef struct _HOST_DMA_ASSIST_STATUS {$/;"	s
+_HOST_DMA_CMD_FIFO_REG	hil/nvme/host_lld.h	/^typedef struct _HOST_DMA_CMD_FIFO_REG {$/;"	s
+_HOST_DMA_FIFO_CNT_REG	hil/nvme/host_lld.h	/^typedef struct _HOST_DMA_FIFO_CNT_REG$/;"	s
+_HOST_DMA_STATUS	hil/nvme/host_lld.h	/^typedef struct _HOST_DMA_STATUS {$/;"	s
+_IO_DATASET_MANAGEMENT_COMMAND_DW10	hil/nvme/nvme.h	/^typedef struct _IO_DATASET_MANAGEMENT_COMMAND_DW10 {$/;"	s
+_IO_DATASET_MANAGEMENT_COMMAND_DW10	hil/nvme/nvme.h	/^} _IO_DATASET_MANAGEMENT_COMMAND_DW10;$/;"	t	typeref:struct:_IO_DATASET_MANAGEMENT_COMMAND_DW10
+_IO_DATASET_MANAGEMENT_COMMAND_DW11	hil/nvme/nvme.h	/^typedef struct _IO_DATASET_MANAGEMENT_COMMAND_DW11 {$/;"	s
+_IO_DATASET_MANAGEMENT_COMMAND_DW11	hil/nvme/nvme.h	/^} _IO_DATASET_MANAGEMENT_COMMAND_DW11;$/;"	t	typeref:struct:_IO_DATASET_MANAGEMENT_COMMAND_DW11
+_IO_READ_COMMAND_DW12	hil/nvme/nvme.h	/^typedef struct _IO_READ_COMMAND_DW12 {$/;"	s
+_IO_READ_COMMAND_DW13	hil/nvme/nvme.h	/^typedef struct _IO_READ_COMMAND_DW13 {$/;"	s
+_IO_READ_COMMAND_DW15	hil/nvme/nvme.h	/^typedef struct _IO_READ_COMMAND_DW15 {$/;"	s
+_IO_WRITE_COMMAND_DW12	hil/nvme/nvme.h	/^typedef struct _IO_WRITE_COMMAND_DW12 {$/;"	s
+_IO_WRITE_COMMAND_DW13	hil/nvme/nvme.h	/^typedef struct _IO_WRITE_COMMAND_DW13 {$/;"	s
+_IO_WRITE_COMMAND_DW15	hil/nvme/nvme.h	/^typedef struct _IO_WRITE_COMMAND_DW15 {$/;"	s
+_NVME_ADMIN_COMMAND	hil/nvme/nvme.h	/^typedef struct _NVME_ADMIN_COMMAND {$/;"	s
+_NVME_ADMIN_QUEUE_SET_REG	hil/nvme/host_lld.h	/^typedef struct _NVME_ADMIN_QUEUE_SET_REG {$/;"	s
+_NVME_ADMIN_QUEUE_STATUS	hil/nvme/nvme.h	/^typedef struct _NVME_ADMIN_QUEUE_STATUS {$/;"	s
+_NVME_CMD_FIFO_REG	hil/nvme/host_lld.h	/^typedef struct _NVME_CMD_FIFO_REG {$/;"	s
+_NVME_CMD_SRAM	hil/nvme/host_lld.h	/^typedef struct _NVME_CMD_SRAM {$/;"	s
+_NVME_CMD_SRAM	hil/nvme/host_lld.h	/^} _NVME_CMD_SRAM;$/;"	t	typeref:struct:_NVME_CMD_SRAM
+_NVME_COMMAND	hil/nvme/nvme.h	/^typedef struct _NVME_COMMAND {$/;"	s
+_NVME_COMPLETION	hil/nvme/nvme.h	/^typedef struct _NVME_COMPLETION {$/;"	s
+_NVME_CPL_FIFO_REG	hil/nvme/host_lld.h	/^typedef struct _NVME_CPL_FIFO_REG {$/;"	s
+_NVME_IO_COMMAND	hil/nvme/nvme.h	/^typedef struct _NVME_IO_COMMAND {$/;"	s
+_NVME_IO_CQ_SET_REG	hil/nvme/host_lld.h	/^typedef struct _NVME_IO_CQ_SET_REG {$/;"	s
+_NVME_IO_CQ_STATUS	hil/nvme/nvme.h	/^typedef struct _NVME_IO_CQ_STATUS {$/;"	s
+_NVME_IO_SQ_SET_REG	hil/nvme/host_lld.h	/^typedef struct _NVME_IO_SQ_SET_REG {$/;"	s
+_NVME_IO_SQ_STATUS	hil/nvme/nvme.h	/^typedef struct _NVME_IO_SQ_STATUS {$/;"	s
+_NVME_STATUS	hil/nvme/nvme.h	/^typedef struct _NVME_STATUS {$/;"	s
+_NVME_STATUS_REG	hil/nvme/host_lld.h	/^typedef struct _NVME_STATUS_REG {$/;"	s
+_PCIE_FUNC_REG	hil/nvme/host_lld.h	/^typedef struct _PCIE_FUNC_REG {$/;"	s
+_PCIE_STATUS_REG	hil/nvme/host_lld.h	/^typedef struct _PCIE_STATUS_REG {$/;"	s
+__ASSERT	common/debug.h	7;"	d
+__COSMOS_PLUS_SYSTEM_H__	common/cosmos_plus_system.h	3;"	d
+__COSMOS_TYPES_H__	common/cosmos_types.h	2;"	d
+__HIL_CONFIG_H__	hil/hil_config.h	2;"	d
+__HIL_H__	hil/hil.h	2;"	d
+__IO_ACCESS_H_	common/io_access.h	2;"	d
+__NVME_ADMIN_CMD_H_	hil/nvme/nvme_admin_cmd.h	48;"	d
+__NVME_IDENTIFY_H_	hil/nvme/nvme_identify.h	50;"	d
+__NVME_IO_CMD_H_	hil/nvme/nvme_io_cmd.h	48;"	d
+__list_add	common/list.h	/^static inline void __list_add(struct list_head *new, struct list_head *prev,$/;"	f
+__list_del	common/list.h	/^static inline void __list_del(struct list_head *prev, struct list_head *next)$/;"	f
+address_space_init	target/address_space.c	/^void address_space_init(void)$/;"	f
+adminQueueInfo	hil/nvme/nvme.h	/^	NVME_ADMIN_QUEUE_STATUS adminQueueInfo;$/;"	m	struct:_NVME_STATUS
+autoCompletion	hil/nvme/host_lld.h	/^				unsigned int autoCompletion	:1;	\/\/ dy, NVME_COMMAND_AUTO_COMPLETION_ON or OFF$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
+autoDmaRx	hil/nvme/host_lld.h	/^			unsigned char autoDmaRx;	\/\/ dy, DMA index for Rx, DMA done\/request index, MAX 255, increment only$/;"	m	struct:_HOST_DMA_FIFO_CNT_REG::__anon87::__anon88
+autoDmaRxCnt	hil/nvme/host_lld.h	/^	unsigned int autoDmaRxCnt;		\/\/ dy, Total auto DMA Rx Count, (cumulative)$/;"	m	struct:_HOST_DMA_STATUS
+autoDmaRxOverFlowCnt	hil/nvme/host_lld.h	/^	unsigned int autoDmaRxOverFlowCnt;$/;"	m	struct:_HOST_DMA_ASSIST_STATUS
+autoDmaTx	hil/nvme/host_lld.h	/^			unsigned char autoDmaTx;	\/\/ dy, DMA index for Tx, DMA done\/request index, MAX 255, increment only$/;"	m	struct:_HOST_DMA_FIFO_CNT_REG::__anon87::__anon88
+autoDmaTxCnt	hil/nvme/host_lld.h	/^	unsigned int autoDmaTxCnt;		\/\/ dy, Total auto DMA Tx Count, (cumulative)$/;"	m	struct:_HOST_DMA_STATUS
+autoDmaTxOverFlowCnt	hil/nvme/host_lld.h	/^	unsigned int autoDmaTxOverFlowCnt;$/;"	m	struct:_HOST_DMA_ASSIST_STATUS
+base_DMA	target/address_space.c	/^void *base_DMA;$/;"	v
+base_NAND	target/address_space.c	/^void *base_NAND;$/;"	v
+base_NVME	target/address_space.c	/^void *base_NVME;$/;"	v
+buf	ftl/ramftl/ram.c	/^	void *buf;$/;"	m	struct:cmd_struct	file:
+buf	ftl/ramftl/ram.c	/^	void *buf;$/;"	m	struct:io_entry	file:
+busMaster	hil/nvme/host_lld.h	/^			unsigned int busMaster		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+busMaster	hil/nvme/host_lld.h	/^			unsigned int busMaster		:1;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
+cacheEn	hil/nvme/nvme.h	/^	unsigned int cacheEn;$/;"	m	struct:_NVME_STATUS
+ccEn	hil/nvme/host_lld.h	/^			unsigned int ccEn		:1;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+ccShn	hil/nvme/host_lld.h	/^			unsigned int ccShn		:2;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+check_auto_rx_dma_done	hil/nvme/host_lld.c	/^void check_auto_rx_dma_done()$/;"	f
+check_auto_rx_dma_partial_done	hil/nvme/host_lld.c	/^unsigned int check_auto_rx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex)$/;"	f
+check_auto_tx_dma_done	hil/nvme/host_lld.c	/^void check_auto_tx_dma_done()$/;"	f
+check_auto_tx_dma_partial_done	hil/nvme/host_lld.c	/^unsigned int check_auto_tx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex)$/;"	f
+check_direct_rx_dma_done	hil/nvme/host_lld.c	/^void check_direct_rx_dma_done()$/;"	f
+check_direct_tx_dma_done	hil/nvme/host_lld.c	/^void check_direct_tx_dma_done()$/;"	f
+check_nvme_cc_en	hil/nvme/host_lld.c	/^unsigned int check_nvme_cc_en()$/;"	f
+cid	hil/nvme/host_lld.h	/^				unsigned int cid			:16;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon78
+cmd	ftl/ramftl/ram.c	/^	struct cmd_struct *cmd;$/;"	m	struct:io_entry	typeref:struct:io_entry::cmd_struct	file:
+cmd4KBOffset	hil/nvme/host_lld.h	/^				unsigned int cmd4KBOffset	:9;	\/\/ dy, 4KB offset in a request$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
+cmdDword	hil/nvme/nvme.h	/^	unsigned int cmdDword[16];$/;"	m	struct:_NVME_COMMAND
+cmdSeqNum	hil/nvme/host_lld.h	/^			unsigned int cmdSeqNum			:8;$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+cmdSeqNum	hil/nvme/nvme.h	/^	unsigned int cmdSeqNum;$/;"	m	struct:_NVME_COMMAND
+cmdSlotTag	hil/nvme/host_lld.h	/^				unsigned int cmdSlotTag		:7;$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
+cmdSlotTag	hil/nvme/host_lld.h	/^			unsigned int cmdSlotTag			:7;	\/\/dy, index of command slot, base NVME_CMD_SRAM_ADDR, 64byte each$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+cmdSlotTag	hil/nvme/host_lld.h	/^			unsigned short cmdSlotTag			:7;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77
+cmdSlotTag	hil/nvme/nvme.h	/^	unsigned short cmdSlotTag;$/;"	m	struct:_NVME_COMMAND
+cmdValid	hil/nvme/host_lld.h	/^			unsigned int cmdValid			:1;$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+cmd_struct	ftl/ramftl/ram.c	/^struct cmd_struct {$/;"	s	file:
+cplType	hil/nvme/host_lld.h	/^			unsigned short cplType				:2;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77
+cqIrqEn	hil/nvme/host_lld.h	/^			unsigned int cqIrqEn			:1;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
+cqSize	hil/nvme/host_lld.h	/^			unsigned int cqSize			:8;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+cqValid	hil/nvme/host_lld.h	/^			unsigned int cqValid			:1;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
+cqValid	hil/nvme/nvme.h	/^	unsigned char cqValid;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
+cqVector	hil/nvme/host_lld.h	/^			unsigned int cqVector			:4;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+cqVector	hil/nvme/nvme.h	/^	unsigned char cqVector;$/;"	m	struct:_NVME_IO_SQ_STATUS
+cstsRdy	hil/nvme/host_lld.h	/^			unsigned int cstsRdy		:1;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+cstsShst	hil/nvme/host_lld.h	/^			unsigned int cstsShst		:2;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+devAddr	hil/nvme/host_lld.h	/^			unsigned int devAddr;				\/\/ dy, Memory Address$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90
+dev_irq_handler	hil/nvme/host_lld.c	/^void dev_irq_handler()$/;"	f
+dev_irq_init	hil/nvme/host_lld.c	/^void dev_irq_init()$/;"	f
+directDmaRx	hil/nvme/host_lld.h	/^			unsigned char directDmaRx;$/;"	m	struct:_HOST_DMA_FIFO_CNT_REG::__anon87::__anon88
+directDmaRxCnt	hil/nvme/host_lld.h	/^	unsigned int directDmaRxCnt;$/;"	m	struct:_HOST_DMA_STATUS
+directDmaTx	hil/nvme/host_lld.h	/^			unsigned char directDmaTx;$/;"	m	struct:_HOST_DMA_FIFO_CNT_REG::__anon87::__anon88
+directDmaTxCnt	hil/nvme/host_lld.h	/^	unsigned int directDmaTxCnt;$/;"	m	struct:_HOST_DMA_STATUS
+disk	ftl/ramftl/ram.c	/^static void *disk;$/;"	v	file:
+disk_block	ftl/ramftl/ram.c	/^	void *disk_block;$/;"	m	struct:io_entry	file:
+disk_size	ftl/ramftl/ram.c	/^static int disk_size = (1 << 26); \/\/ default 64 MiB$/;"	v	file:
+dmaDirection	hil/nvme/host_lld.h	/^				unsigned int dmaDirection	:1;	\/\/ dy, HOST_DMA_TX_DIRECTION, HOST_DMA_RX_DIRECTION$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
+dmaLen	hil/nvme/host_lld.h	/^				unsigned int dmaLen		:13;$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
+dmaType	hil/nvme/host_lld.h	/^				unsigned int dmaType		:1;	\/\/ dy, HOST_DMA_AUTO_TYPE or HOST_DMA_DIRECT_TYPE$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
+dma_address_init	target/address_space.c	/^static void dma_address_init(void)$/;"	f	file:
+dma_malloc	common/dma_memory.c	/^void *dma_malloc(size_t size, size_t alignment)$/;"	f
+dma_memory_init	common/dma_memory.c	/^void dma_memory_init(void)$/;"	f
+done	ftl/ramftl/ram.c	/^	int done;$/;"	m	struct:cmd_struct	file:
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_DEV_IRQ_REG::__anon66
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_HOST_DMA_FIFO_CNT_REG::__anon87
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_NVME_ADMIN_QUEUE_SET_REG::__anon81
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_NVME_CMD_FIFO_REG::__anon74
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_NVME_STATUS_REG::__anon72
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_PCIE_FUNC_REG::__anon70
+dword	hil/nvme/host_lld.h	/^		unsigned int dword;$/;"	m	union:_PCIE_STATUS_REG::__anon68
+dword	hil/nvme/host_lld.h	/^		unsigned int dword[2];$/;"	m	union:_NVME_IO_CQ_SET_REG::__anon85
+dword	hil/nvme/host_lld.h	/^		unsigned int dword[2];$/;"	m	union:_NVME_IO_SQ_SET_REG::__anon83
+dword	hil/nvme/host_lld.h	/^		unsigned int dword[3];$/;"	m	union:_NVME_CPL_FIFO_REG::__anon76
+dword	hil/nvme/host_lld.h	/^		unsigned int dword[4];$/;"	m	union:_HOST_DMA_CMD_FIFO_REG::__anon89
+dword	hil/nvme/host_lld.h	/^	unsigned int dword[128][16];$/;"	m	struct:_NVME_CMD_SRAM
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_CREATE_IO_CQ_DW10::__anon17
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_CREATE_IO_CQ_DW11::__anon19
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_CREATE_IO_SQ_DW10::__anon23
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_CREATE_IO_SQ_DW11::__anon25
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_DELETE_IO_CQ_DW10::__anon21
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_DELETE_IO_SQ_DW10::__anon27
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_GET_FEATURES_DW10::__anon15
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_GET_LOG_PAGE_DW10::__anon31
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_IDENTIFY_COMMAND_DW10::__anon29
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_SET_FEATURES_DW10::__anon11
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11::__anon13
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_IO_READ_COMMAND_DW12::__anon59
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_IO_READ_COMMAND_DW13::__anon61
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_IO_READ_COMMAND_DW15::__anon64
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_IO_WRITE_COMMAND_DW12::__anon52
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_IO_WRITE_COMMAND_DW13::__anon54
+dword	hil/nvme/nvme.h	/^		unsigned int dword;$/;"	m	union:_IO_WRITE_COMMAND_DW15::__anon57
+dword	hil/nvme/nvme.h	/^		unsigned int dword[16];$/;"	m	union:_NVME_ADMIN_COMMAND::__anon1
+dword	hil/nvme/nvme.h	/^		unsigned int dword[16];$/;"	m	union:_NVME_IO_COMMAND::__anon4
+dword	hil/nvme/nvme.h	/^		unsigned int dword[2];$/;"	m	union:_NVME_COMPLETION::__anon7
+dword	hil/nvme/nvme.h	/^		unsigned int dword[8];$/;"	m	union:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33
+dword10	hil/nvme/nvme.h	/^			unsigned int dword10;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+dword10	hil/nvme/nvme.h	/^			unsigned int dword10;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+dword11	hil/nvme/nvme.h	/^			unsigned int dword11;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+dword11	hil/nvme/nvme.h	/^			unsigned int dword11;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+dword12	hil/nvme/nvme.h	/^			unsigned int dword12;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+dword12	hil/nvme/nvme.h	/^			unsigned int dword12;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+dword13	hil/nvme/nvme.h	/^			unsigned int dword13;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+dword13	hil/nvme/nvme.h	/^			unsigned int dword13;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+dword14	hil/nvme/nvme.h	/^			unsigned int dword14;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+dword14	hil/nvme/nvme.h	/^			unsigned int dword14;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+dword15	hil/nvme/nvme.h	/^			unsigned int dword15;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+dword15	hil/nvme/nvme.h	/^			unsigned int dword15;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+enable	hil/nvme/nvme.h	/^	unsigned char enable;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
+fifoHead	hil/nvme/host_lld.h	/^	HOST_DMA_FIFO_CNT_REG fifoHead;		\/\/ dy, DMA IP SFR. HW update$/;"	m	struct:_HOST_DMA_STATUS
+fifoTail	hil/nvme/host_lld.h	/^	HOST_DMA_FIFO_CNT_REG fifoTail;		\/\/ dy, Insert Issue DMA, tail insert head, FW update$/;"	m	struct:_HOST_DMA_STATUS
+fil_init	fil/fil.c	/^void fil_init(void)$/;"	f
+fil_run	fil/fil.c	/^void fil_run(void)$/;"	f
+firstFirmwareSlotReadOnly	hil/nvme/nvme.h	/^		unsigned char firstFirmwareSlotReadOnly					:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon36
+formatAppliesToAllNamespaces	hil/nvme/nvme.h	/^		unsigned char formatAppliesToAllNamespaces				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
+ftl_init	ftl/ramftl/ram.c	/^void ftl_init(void)$/;"	f
+ftl_read	ftl/ramftl/ram.c	/^void ftl_read(unsigned int tag, unsigned int nlb, unsigned int start_lba)$/;"	f
+ftl_run	ftl/ramftl/ram.c	/^void ftl_run(void)$/;"	f
+ftl_write	ftl/ramftl/ram.c	/^void ftl_write(unsigned int tag, unsigned int nlb, unsigned int start_lba)$/;"	f
+g_hostDmaAssistStatus	hil/nvme/host_lld.c	/^HOST_DMA_ASSIST_STATUS g_hostDmaAssistStatus;$/;"	v
+g_hostDmaStatus	hil/nvme/host_lld.c	/^HOST_DMA_STATUS g_hostDmaStatus;$/;"	v
+g_nvmeTask	hil/nvme/nvme_main.c	/^volatile NVME_CONTEXT g_nvmeTask;$/;"	v
+get_num_of_queue	hil/nvme/nvme_admin_cmd.c	/^unsigned int get_num_of_queue(unsigned int dword11)$/;"	f
+get_nvme_cmd	hil/nvme/host_lld.c	/^unsigned int get_nvme_cmd(unsigned short *qID, unsigned short *cmdSlotTag, unsigned int *cmdSeqNum, unsigned int *cmdDword)$/;"	f
+handle_create_io_cq	hil/nvme/nvme_admin_cmd.c	/^void handle_create_io_cq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_create_io_sq	hil/nvme/nvme_admin_cmd.c	/^void handle_create_io_sq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_delete_io_cq	hil/nvme/nvme_admin_cmd.c	/^void handle_delete_io_cq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_delete_io_sq	hil/nvme/nvme_admin_cmd.c	/^void handle_delete_io_sq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_get_features	hil/nvme/nvme_admin_cmd.c	/^void handle_get_features(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_get_log_page	hil/nvme/nvme_admin_cmd.c	/^void handle_get_log_page(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_identify	hil/nvme/nvme_admin_cmd.c	/^void handle_identify(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+handle_nvme_admin_cmd	hil/nvme/nvme_admin_cmd.c	/^void handle_nvme_admin_cmd(NVME_COMMAND *nvmeCmd)$/;"	f
+handle_nvme_io_cmd	hil/nvme/nvme_io_cmd.c	/^void handle_nvme_io_cmd(NVME_COMMAND *nvmeCmd)$/;"	f
+handle_nvme_io_read	hil/nvme/nvme_io_cmd.c	/^void handle_nvme_io_read(unsigned int cmdSlotTag, NVME_IO_COMMAND *nvmeIOCmd)$/;"	f
+handle_nvme_io_write	hil/nvme/nvme_io_cmd.c	/^void handle_nvme_io_write(unsigned int cmdSlotTag, NVME_IO_COMMAND *nvmeIOCmd)$/;"	f
+handle_set_features	hil/nvme/nvme_admin_cmd.c	/^void handle_set_features(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
+head	ftl/ramftl/mempool.c	/^static int head;$/;"	v	file:
+identify_controller	hil/nvme/nvme_identify.c	/^void identify_controller(unsigned int pBuffer)$/;"	f
+identify_namespace	hil/nvme/nvme_identify.c	/^void identify_namespace(unsigned int pBuffer)$/;"	f
+ioCqInfo	hil/nvme/nvme.h	/^	NVME_IO_CQ_STATUS ioCqInfo[MAX_NUM_OF_IO_CQ];$/;"	m	struct:_NVME_STATUS
+ioSqInfo	hil/nvme/nvme.h	/^	NVME_IO_SQ_STATUS ioSqInfo[MAX_NUM_OF_IO_SQ];$/;"	m	struct:_NVME_STATUS
+io_entry	ftl/ramftl/ram.c	/^struct io_entry {$/;"	s	file:
+irqDisable	hil/nvme/host_lld.h	/^			unsigned int irqDisable		:1;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
+irqEn	hil/nvme/host_lld.h	/^			unsigned int irqEn			:1;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+irqEn	hil/nvme/nvme.h	/^	unsigned char irqEn;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
+irqEn	hil/nvme/nvme.h	/^	unsigned char irqEn;$/;"	m	struct:_NVME_IO_CQ_STATUS
+irqVector	hil/nvme/host_lld.h	/^			unsigned int irqVector			:3;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+irqVector	hil/nvme/nvme.h	/^	unsigned short irqVector;$/;"	m	struct:_NVME_IO_CQ_STATUS
+issue_read	ftl/ramftl/ram.c	/^static void issue_read(struct cmd_struct *cmd, void *disk_block, void *buf)$/;"	f	file:
+issue_write	ftl/ramftl/ram.c	/^static void issue_write(struct cmd_struct *cmd, void *disk_block, void *buf)$/;"	f	file:
+lengthInLogicalBlocks	hil/nvme/nvme.h	/^	unsigned int lengthInLogicalBlocks;$/;"	m	struct:_DATASET_MANAGEMENT_RANGE
+list	ftl/ramftl/ram.c	/^	struct list_head list;$/;"	m	struct:cmd_struct	typeref:struct:cmd_struct::list_head	file:
+list_add	common/list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
+list_add_tail	common/list.h	/^static inline void list_add_tail(struct list_head *new, struct list_head *head)$/;"	f
+list_del	common/list.h	/^static inline void list_del(struct list_head *entry)$/;"	f
+list_empty	common/list.h	/^static inline int list_empty(struct list_head *head)$/;"	f
+list_entry	common/list.h	67;"	d
+list_first_entry	common/list.h	70;"	d
+list_for_each	common/list.h	79;"	d
+list_for_each_entry	common/list.h	89;"	d
+list_for_each_prev	common/list.h	82;"	d
+list_for_each_safe	common/list.h	85;"	d
+list_head	common/list.h	/^struct list_head {$/;"	s
+list_io	ftl/ramftl/ram.c	/^static struct io_entry list_io[LIST_SIZE];$/;"	v	typeref:struct:io_entry	file:
+list_io_empty	ftl/ramftl/ram.c	/^static inline int list_io_empty()$/;"	f	file:
+list_io_full	ftl/ramftl/ram.c	/^static inline int list_io_full()$/;"	f	file:
+list_io_head	ftl/ramftl/ram.c	/^static volatile int list_io_head;$/;"	v	file:
+list_io_move_head	ftl/ramftl/ram.c	/^static inline void list_io_move_head()$/;"	f	file:
+list_io_move_tail	ftl/ramftl/ram.c	/^static inline void list_io_move_tail()$/;"	f	file:
+list_io_tail	ftl/ramftl/ram.c	/^static volatile int list_io_tail;$/;"	v	file:
+list_last_entry	common/list.h	73;"	d
+list_move	common/list.h	/^static inline void list_move(struct list_head *list, struct list_head *head)$/;"	f
+list_move_tail	common/list.h	/^static inline void list_move_tail(struct list_head *list, struct list_head *head)$/;"	f
+list_next_entry	common/list.h	76;"	d
+ltssm	hil/nvme/host_lld.h	/^			unsigned int ltssm		:6;$/;"	m	struct:_PCIE_STATUS_REG::__anon68::__anon69
+mAxiReadErr	hil/nvme/host_lld.h	/^			unsigned int mAxiReadErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+mAxiWriteErr	hil/nvme/host_lld.h	/^			unsigned int mAxiWriteErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+main	target/main.c	/^int main(int argc, char **argv)$/;"	f
+maximumCompletionQueueEntrySize	hil/nvme/nvme.h	/^		unsigned char maximumCompletionQueueEntrySize			:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon39
+maximumSubmissionQueueEntrySize	hil/nvme/nvme.h	/^		unsigned char maximumSubmissionQueueEntrySize			:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon38
+mem	ftl/ramftl/mempool.c	/^static void *mem;$/;"	v	file:
+mem_base	common/dma_memory.c	/^static unsigned long mem_base;$/;"	v	file:
+mem_fd	target/address_space.c	/^static int mem_fd;$/;"	v	file:
+mem_size	common/dma_memory.c	/^static unsigned long mem_size;$/;"	v	file:
+mem_top	common/dma_memory.c	/^static unsigned long mem_top;$/;"	v	file:
+mempool_dmabuf_get	ftl/ramftl/mempool.c	/^void *mempool_dmabuf_get(int nblocks)$/;"	f
+mempool_init	ftl/ramftl/mempool.c	/^void mempool_init(void)$/;"	f
+mempool_put	ftl/ramftl/mempool.c	/^void mempool_put(int nblocks)$/;"	f
+msiEnable	hil/nvme/host_lld.h	/^			unsigned int msiEnable		:1;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
+msiVecNum	hil/nvme/host_lld.h	/^			unsigned int msiVecNum		:3;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
+msixEnable	hil/nvme/host_lld.h	/^			unsigned int msixEnable		:1;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
+nActiveBlockIndex	common/cosmos_types.h	/^	unsigned int	nActiveBlockIndex : 16;			\/\/ Index of active block$/;"	m	struct:__anon103
+nActiveBlockIndex	common/cosmos_types.h	/^	unsigned int	nActiveBlockIndex : ACTIVE_BLOCK_COUNT_BITS;			\/\/ Index of HIL to FTL Request$/;"	m	struct:__anon98
+nBufferingIndex	common/cosmos_types.h	/^	unsigned int	nBufferingIndex : ACTIVE_BLOCK_BUFFERING_INDEX_BITS;	\/\/ index of active block buffering $/;"	m	struct:__anon98
+nIOType	common/cosmos_types.h	/^	unsigned int	nIOType : 3;											\/\/ IOTYPE to distinguish Host\/GC$/;"	m	struct:__anon98
+nMoveInfoIndex	common/cosmos_types.h	/^	unsigned int	nMoveInfoIndex : FTL_MOVE_INFO_INDEX_BITS;				\/\/ Index of GCMgr.astMoveInfo$/;"	m	struct:__anon99
+nProgramBufferingIndex	common/cosmos_types.h	/^	unsigned int	nProgramBufferingIndex : 16;	\/\/ buffering index$/;"	m	struct:__anon103
+nRequestBufIndex	common/cosmos_types.h	/^	unsigned int	nRequestBufIndex	: 16;		\/\/ HOST BUFFER INDEX$/;"	m	struct:__anon94
+nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex		: 16;		\/\/ HOST REQUEST INDEXS$/;"	m	struct:__anon94
+nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex : FTL_REQUEST_ID_REQUEST_INDEX_BITS;		\/\/ Index of HIL to FTL Request$/;"	m	struct:__anon97
+nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex: FTL_REQUEST_ID_REQUEST_INDEX_BITS;		\/\/ Index of GC Request$/;"	m	struct:__anon99
+nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex: FTL_REQUEST_ID_REQUEST_INDEX_BITS;		\/\/ Index of Meta Request$/;"	m	struct:__anon100
+nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon100
+nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon96
+nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon97
+nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon98
+nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon99
+nand_address_init	target/address_space.c	/^static void nand_address_init(void)$/;"	f	file:
+nblock	ftl/ramftl/ram.c	/^	int nblock;$/;"	m	struct:cmd_struct	file:
+next	common/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+nvmeCcEn	hil/nvme/host_lld.h	/^			unsigned int nvmeCcEn		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+nvmeCcShn	hil/nvme/host_lld.h	/^			unsigned int nvmeCcShn		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+nvme_address_init	target/address_space.c	/^static void nvme_address_init(void)$/;"	f	file:
+nvme_run	hil/nvme/nvme_main.c	/^void nvme_run(void)$/;"	f
+pcieAddrH	hil/nvme/host_lld.h	/^			unsigned int pcieAddrH;				\/\/ dy,$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90
+pcieAddrL	hil/nvme/host_lld.h	/^			unsigned int pcieAddrL;				\/\/ dy,$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90
+pcieBaseAddrH	hil/nvme/host_lld.h	/^			unsigned int pcieBaseAddrH		:4;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+pcieBaseAddrH	hil/nvme/host_lld.h	/^			unsigned int pcieBaseAddrH		:4;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+pcieBaseAddrH	hil/nvme/nvme.h	/^	unsigned int pcieBaseAddrH;$/;"	m	struct:_NVME_IO_CQ_STATUS
+pcieBaseAddrH	hil/nvme/nvme.h	/^	unsigned int pcieBaseAddrH;$/;"	m	struct:_NVME_IO_SQ_STATUS
+pcieBaseAddrL	hil/nvme/host_lld.h	/^			unsigned int pcieBaseAddrL;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+pcieBaseAddrL	hil/nvme/host_lld.h	/^			unsigned int pcieBaseAddrL;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+pcieBaseAddrL	hil/nvme/nvme.h	/^	unsigned int pcieBaseAddrL;$/;"	m	struct:_NVME_IO_CQ_STATUS
+pcieBaseAddrL	hil/nvme/nvme.h	/^	unsigned int pcieBaseAddrL;$/;"	m	struct:_NVME_IO_SQ_STATUS
+pcieCpldErr	hil/nvme/host_lld.h	/^			unsigned int pcieCpldErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+pcieCpldLenErr	hil/nvme/host_lld.h	/^			unsigned int pcieCpldLenErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+pcieIrq	hil/nvme/host_lld.h	/^			unsigned int pcieIrq		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+pcieLink	hil/nvme/host_lld.h	/^			unsigned int pcieLink		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+pcieLinkUp	hil/nvme/host_lld.h	/^			unsigned int pcieLinkUp		:1;$/;"	m	struct:_PCIE_STATUS_REG::__anon68::__anon69
+pcieMreqErr	hil/nvme/host_lld.h	/^			unsigned int pcieMreqErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+pcieMsi	hil/nvme/host_lld.h	/^			unsigned int pcieMsi		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+pcieMsix	hil/nvme/host_lld.h	/^			unsigned int pcieMsix		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+present	hil/nvme/nvme.h	/^		unsigned char present									:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon43
+prev	common/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
+protectionEnabled	hil/nvme/nvme.h	/^		unsigned char protectionEnabled						:3;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon49
+protectionInFirst8	hil/nvme/nvme.h	/^		unsigned char protectionInFirst8					:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon49
+qID	hil/nvme/host_lld.h	/^			unsigned int qID			:4;	\/\/dy, Command QID, 0:admin, 1: IO$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+qID	hil/nvme/nvme.h	/^	unsigned short qID;$/;"	m	struct:_NVME_COMMAND
+qSzie	hil/nvme/nvme.h	/^	unsigned short qSzie;$/;"	m	struct:_NVME_IO_CQ_STATUS
+qSzie	hil/nvme/nvme.h	/^	unsigned short qSzie;$/;"	m	struct:_NVME_IO_SQ_STATUS
+ram_disk_buf	ftl/ramftl/ram.c	/^static void *ram_disk_buf(unsigned int lba)$/;"	f	file:
+requiredCompletionQueueEntrySize	hil/nvme/nvme.h	/^		unsigned char requiredCompletionQueueEntrySize			:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon39
+requiredSubmissionQueueEntrySize	hil/nvme/nvme.h	/^		unsigned char requiredSubmissionQueueEntrySize			:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon38
+reserved	hil/nvme/nvme.h	/^	unsigned char reserved			:6;$/;"	m	struct:_ADMIN_IDENTIFY_FORMAT_DATA
+reserved0	hil/nvme/host_lld.h	/^					unsigned short reserved0	:1;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+reserved0	hil/nvme/host_lld.h	/^				unsigned int reserved0			:12;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon78
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0			:11;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0			:11;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0			:29;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0			:4;$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0		:1;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0		:20;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0		:25;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
+reserved0	hil/nvme/host_lld.h	/^			unsigned int reserved0		:2;$/;"	m	struct:_PCIE_STATUS_REG::__anon68::__anon69
+reserved0	hil/nvme/nvme.h	/^					unsigned short reserved0		:1;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+reserved0	hil/nvme/nvme.h	/^				unsigned char reserved0		:5;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
+reserved0	hil/nvme/nvme.h	/^				unsigned char reserved0		:5;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
+reserved0	hil/nvme/nvme.h	/^			unsigned char reserved0			:5;$/;"	m	struct:_ADMIN_GET_FEATURES_DW10::__anon15::__anon16
+reserved0	hil/nvme/nvme.h	/^			unsigned char reserved0;$/;"	m	struct:_ADMIN_GET_LOG_PAGE_DW10::__anon31::__anon32
+reserved0	hil/nvme/nvme.h	/^			unsigned char reserved0[2];$/;"	m	struct:_ADMIN_SET_FEATURES_DW10::__anon11::__anon12
+reserved0	hil/nvme/nvme.h	/^			unsigned char reserved0[3];$/;"	m	struct:_IO_READ_COMMAND_DW13::__anon61::__anon62
+reserved0	hil/nvme/nvme.h	/^			unsigned char reserved0[3];$/;"	m	struct:_IO_WRITE_COMMAND_DW13::__anon54::__anon55
+reserved0	hil/nvme/nvme.h	/^			unsigned int reserved0		:31;$/;"	m	struct:_ADMIN_IDENTIFY_COMMAND_DW10::__anon29::__anon30
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0				:10;$/;"	m	struct:_IO_READ_COMMAND_DW12::__anon59::__anon60
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0				:10;$/;"	m	struct:_IO_WRITE_COMMAND_DW12::__anon52::__anon53
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0			:8;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0		:14;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW11::__anon19::__anon20
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0	:13;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW11::__anon25::__anon26
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0;$/;"	m	struct:_ADMIN_DELETE_IO_CQ_DW10::__anon21::__anon22
+reserved0	hil/nvme/nvme.h	/^			unsigned short reserved0;$/;"	m	struct:_ADMIN_DELETE_IO_SQ_DW10::__anon27::__anon28
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0									:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon36
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0									:5;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0									:6;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon37
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0									:7;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon43
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:2;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:3;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon46
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:3;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:4;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon49
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:6;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon47
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:7;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon45
+reserved0	hil/nvme/nvme.h	/^		unsigned char reserved0								:7;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon50
+reserved0	hil/nvme/nvme.h	/^		unsigned int reserved0									:15;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon44
+reserved0	hil/nvme/nvme.h	/^		unsigned short reserved0								:13;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon35
+reserved0	hil/nvme/nvme.h	/^		unsigned short reserved0								:13;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon40
+reserved0	hil/nvme/nvme.h	/^		unsigned short reserved0								:15;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon41
+reserved0	hil/nvme/nvme.h	/^	unsigned char reserved0[176];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved0	hil/nvme/nvme.h	/^	unsigned char reserved0[88];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+reserved0	hil/nvme/nvme.h	/^	unsigned int reserved0					:24;$/;"	m	struct:_IO_DATASET_MANAGEMENT_COMMAND_DW10
+reserved0	hil/nvme/nvme.h	/^	unsigned int reserved0					:29;$/;"	m	struct:_IO_DATASET_MANAGEMENT_COMMAND_DW11
+reserved0	hil/nvme/nvme.h	/^	unsigned int reserved0					:2;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+reserved0	hil/nvme/nvme.h	/^	unsigned short reserved0;$/;"	m	struct:_NVME_IO_CQ_STATUS
+reserved1	hil/nvme/host_lld.h	/^					unsigned short reserved1	:2;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+reserved1	hil/nvme/host_lld.h	/^			unsigned int reserved1			:4;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+reserved1	hil/nvme/host_lld.h	/^			unsigned int reserved1			:4;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+reserved1	hil/nvme/host_lld.h	/^			unsigned int reserved1		:23;$/;"	m	struct:_PCIE_STATUS_REG::__anon68::__anon69
+reserved1	hil/nvme/host_lld.h	/^			unsigned int reserved1		:25;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+reserved1	hil/nvme/host_lld.h	/^			unsigned short reserved1			:7;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77
+reserved1	hil/nvme/nvme.h	/^					unsigned short reserved1		:2;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+reserved1	hil/nvme/nvme.h	/^			unsigned char reserved1			:7;$/;"	m	struct:_ADMIN_SET_FEATURES_DW10::__anon11::__anon12
+reserved1	hil/nvme/nvme.h	/^			unsigned char reserved1[2];$/;"	m	struct:_ADMIN_GET_FEATURES_DW10::__anon15::__anon16
+reserved1	hil/nvme/nvme.h	/^			unsigned int reserved1[2];$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
+reserved1	hil/nvme/nvme.h	/^			unsigned int reserved1[2];$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
+reserved1	hil/nvme/nvme.h	/^			unsigned short reserved1			:6;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved1	hil/nvme/nvme.h	/^			unsigned short reserved1	:4;$/;"	m	struct:_ADMIN_GET_LOG_PAGE_DW10::__anon31::__anon32
+reserved1	hil/nvme/nvme.h	/^		unsigned int reserved1									:15;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon44
+reserved1	hil/nvme/nvme.h	/^	unsigned char reserved1										:7;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved1	hil/nvme/nvme.h	/^	unsigned char reserved1[192];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
+reserved1	hil/nvme/nvme.h	/^	unsigned int reserved1					:13;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
+reserved2	hil/nvme/host_lld.h	/^			unsigned int reserved2			:1;$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+reserved2	hil/nvme/nvme.h	/^			unsigned char reserved2				:3;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved2	hil/nvme/nvme.h	/^	unsigned char reserved2										:7;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved3	hil/nvme/host_lld.h	/^			unsigned int reserved3			:7;$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
+reserved3	hil/nvme/nvme.h	/^			unsigned char reserved3				:3;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved3	hil/nvme/nvme.h	/^	unsigned char reserved3[246];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved4	hil/nvme/nvme.h	/^			unsigned char reserved4				:3;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved4	hil/nvme/nvme.h	/^	unsigned char reserved4[2];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved5	hil/nvme/nvme.h	/^			unsigned char reserved5				:3;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved5	hil/nvme/nvme.h	/^	unsigned char reserved5										:7;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved6	hil/nvme/nvme.h	/^			unsigned int reserved6[4];$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+reserved6	hil/nvme/nvme.h	/^	unsigned char reserved6;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved7	hil/nvme/nvme.h	/^	unsigned char reserved7[2];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved8	hil/nvme/nvme.h	/^	unsigned char reserved8[164];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+reserved9	hil/nvme/nvme.h	/^	unsigned char reserved9[1344];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+run_func_t	target/main.c	/^typedef void (*run_func_t)(void);$/;"	t	file:
+runs	target/main.c	/^static run_func_t runs[] = {$/;"	v	file:
+secureEraseAppliesToAllNamespaces	hil/nvme/nvme.h	/^		unsigned char secureEraseAppliesToAllNamespaces			:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
+set_auto_nvme_cpl	hil/nvme/host_lld.c	/^void set_auto_nvme_cpl(unsigned int cmdSlotTag, unsigned int specific, unsigned int statusFieldWord)$/;"	f
+set_auto_rx_dma	hil/nvme/host_lld.c	/^void set_auto_rx_dma(unsigned int cmdSlotTag, unsigned int cmd4KBOffset, unsigned int devAddr, unsigned int autoCompletion)$/;"	f
+set_auto_tx_dma	hil/nvme/host_lld.c	/^void set_auto_tx_dma(unsigned int cmdSlotTag, unsigned int cmd4KBOffset, unsigned int devAddr, unsigned int autoCompletion)$/;"	f
+set_direct_rx_dma	hil/nvme/host_lld.c	/^void set_direct_rx_dma(unsigned int devAddr, unsigned int pcieAddrH, unsigned int pcieAddrL, unsigned int len)$/;"	f
+set_direct_tx_dma	hil/nvme/host_lld.c	/^void set_direct_tx_dma(unsigned int devAddr, unsigned int pcieAddrH, unsigned int pcieAddrL, unsigned int len)$/;"	f
+set_io_cq	hil/nvme/host_lld.c	/^void set_io_cq(unsigned int ioCqIdx, unsigned int valid, unsigned int irqEn, unsigned int irqVector, unsigned int qSzie, unsigned int pcieBaseAddrL, unsigned int pcieBaseAddrH)$/;"	f
+set_io_sq	hil/nvme/host_lld.c	/^void set_io_sq(unsigned int ioSqIdx, unsigned int valid, unsigned int cqVector, unsigned int qSzie, unsigned int pcieBaseAddrL, unsigned int pcieBaseAddrH)$/;"	f
+set_nvme_admin_queue	hil/nvme/host_lld.c	/^void set_nvme_admin_queue(unsigned int sqValid, unsigned int cqValid, unsigned int cqIrqEn)$/;"	f
+set_nvme_cpl	hil/nvme/host_lld.c	/^void set_nvme_cpl(unsigned int sqId, unsigned int cid, unsigned int specific, unsigned int statusFieldWord)$/;"	f
+set_nvme_csts_rdy	hil/nvme/host_lld.c	/^void set_nvme_csts_rdy(unsigned int rdy)$/;"	f
+set_nvme_csts_shst	hil/nvme/host_lld.c	/^void set_nvme_csts_shst(unsigned int shst)$/;"	f
+set_nvme_slot_release	hil/nvme/host_lld.c	/^void set_nvme_slot_release(unsigned int cmdSlotTag)$/;"	f
+signal_handler	hil/nvme/host_lld.c	/^void signal_handler(int signo)$/;"	f
+skip	ftl/ramftl/mempool.c	/^static int skip;$/;"	v	file:
+specific	hil/nvme/host_lld.h	/^			unsigned int specific;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77
+specific	hil/nvme/nvme.h	/^			unsigned int specific;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8
+sqId	hil/nvme/host_lld.h	/^				unsigned int sqId			:4;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon78
+sqSize	hil/nvme/host_lld.h	/^			unsigned int sqSize			:8;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+sqValid	hil/nvme/host_lld.h	/^			unsigned int sqValid			:1;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
+sqValid	hil/nvme/nvme.h	/^	unsigned char sqValid;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
+stCommon	common/cosmos_types.h	/^		FTL_REQUEST_ID_COMMON		stCommon;$/;"	m	union:__anon101::__anon102
+stGC	common/cosmos_types.h	/^		FTL_REQUEST_ID_GC			stGC;$/;"	m	union:__anon101::__anon102
+stHIL	common/cosmos_types.h	/^		FTL_REQUEST_ID_HIL			stHIL;				\/\/ HIL Read \/ Write$/;"	m	union:__anon101::__anon102
+stMeta	common/cosmos_types.h	/^		FTL_REQUEST_ID_META			stMeta;$/;"	m	union:__anon101::__anon102
+stProgram	common/cosmos_types.h	/^		FTL_REQUEST_ID_PROGRAM		stProgram;			\/\/ FTL Program for host and GC$/;"	m	union:__anon101::__anon102
+startingLBA	hil/nvme/nvme.h	/^	unsigned int startingLBA[2];$/;"	m	struct:_DATASET_MANAGEMENT_RANGE
+status	hil/nvme/nvme.h	/^	unsigned int status;$/;"	m	struct:_NVME_STATUS
+statusField	hil/nvme/host_lld.h	/^				}statusField;$/;"	m	union:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79	typeref:struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
+statusField	hil/nvme/nvme.h	/^				}statusField;$/;"	m	union:_NVME_COMPLETION::__anon7::__anon8::__anon9	typeref:struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
+statusFieldWord	hil/nvme/host_lld.h	/^				unsigned short statusFieldWord;$/;"	m	union:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79
+statusFieldWord	hil/nvme/nvme.h	/^				unsigned short statusFieldWord;$/;"	m	union:_NVME_COMPLETION::__anon7::__anon8::__anon9
+storageCapacity_L	hil/hil.c	/^unsigned int storageCapacity_L;$/;"	v
+supportedCombination	hil/nvme/nvme.h	/^		unsigned char supportedCombination					:4;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon46
+supportedNumberOfFirmwareSlots	hil/nvme/nvme.h	/^		unsigned char supportedNumberOfFirmwareSlots			:3;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon36
+supportsCompare	hil/nvme/nvme.h	/^		unsigned short supportsCompare							:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon40
+supportsCompareWrite	hil/nvme/nvme.h	/^		unsigned short supportsCompareWrite						:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon41
+supportsCryptographicErase	hil/nvme/nvme.h	/^		unsigned char supportsCryptographicErase				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
+supportsDataSetManagement	hil/nvme/nvme.h	/^		unsigned short supportsDataSetManagement				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon40
+supportsExclusiveAccessAllRegistrants	hil/nvme/nvme.h	/^		unsigned char supportsExclusiveAccessAllRegistrants	:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+supportsExclusiveAccessRegistrants	hil/nvme/nvme.h	/^		unsigned char supportsExclusiveAccessRegistrants	:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+supportsFirmwareActivateFirmwareDownload	hil/nvme/nvme.h	/^		unsigned short supportsFirmwareActivateFirmwareDownload	:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon35
+supportsFormatNVM	hil/nvme/nvme.h	/^		unsigned short supportsFormatNVM						:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon35
+supportsMetadataAsPartOfLBA	hil/nvme/nvme.h	/^		unsigned char supportsMetadataAsPartOfLBA			:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon47
+supportsMetadataAsSeperate	hil/nvme/nvme.h	/^		unsigned char supportsMetadataAsSeperate			:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon47
+supportsMetadataAtEndOfLBA	hil/nvme/nvme.h	/^		unsigned char supportsMetadataAtEndOfLBA			:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon46
+supportsMultipathIOSharing	hil/nvme/nvme.h	/^		unsigned char supportsMultipathIOSharing			:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon50
+supportsPersistThroughPowerLoss	hil/nvme/nvme.h	/^		unsigned char supportsPersistThroughPowerLoss		:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+supportsProtectionFirst8	hil/nvme/nvme.h	/^		unsigned char supportsProtectionFirst8				:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+supportsProtectionLast8	hil/nvme/nvme.h	/^		unsigned char supportsProtectionLast8				:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+supportsProtectionType1	hil/nvme/nvme.h	/^		unsigned char supportsProtectionType1				:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+supportsProtectionType2	hil/nvme/nvme.h	/^		unsigned char supportsProtectionType2				:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+supportsProtectionType3	hil/nvme/nvme.h	/^		unsigned char supportsProtectionType3				:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon48
+supportsSGL	hil/nvme/nvme.h	/^		unsigned int supportsSGL								:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon44
+supportsSGLBitBucketDescriptor	hil/nvme/nvme.h	/^		unsigned int supportsSGLBitBucketDescriptor				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon44
+supportsSMARTHealthInformationLogPage	hil/nvme/nvme.h	/^		unsigned char supportsSMARTHealthInformationLogPage		:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon37
+supportsSecuritySendSecurityReceive	hil/nvme/nvme.h	/^		unsigned short supportsSecuritySendSecurityReceive		:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon35
+supportsThinProvisioning	hil/nvme/nvme.h	/^		unsigned char supportsThinProvisioning				:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon45
+supportsWriteExclusiveAllRegistrants	hil/nvme/nvme.h	/^		unsigned char supportsWriteExclusiveAllRegistrants	:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+supportsWriteExclusiveRegistrants	hil/nvme/nvme.h	/^		unsigned char supportsWriteExclusiveRegistrants		:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+supportsWriteExclusiveReservation	hil/nvme/nvme.h	/^		unsigned char supportsWriteExclusiveReservation		:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
+supportsWriteUncorrectable	hil/nvme/nvme.h	/^		unsigned short supportsWriteUncorrectable				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon40
+suppottsCommandEffectsLogPage	hil/nvme/nvme.h	/^		unsigned char suppottsCommandEffectsLogPage				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon37
+tag	ftl/ramftl/ram.c	/^	int tag;$/;"	m	struct:cmd_struct	file:
+tail	ftl/ramftl/mempool.c	/^static int tail;$/;"	v	file:
+th_func	target/main.c	/^void *th_func(void *args)$/;"	f
+th_memcpy	ftl/ramftl/ram.c	/^void *th_memcpy(void *arg)$/;"	f
+type	ftl/ramftl/ram.c	/^	int type;$/;"	m	struct:cmd_struct	file:
+type	ftl/ramftl/ram.c	/^	int type;$/;"	m	struct:io_entry	file:
+valid	hil/nvme/host_lld.h	/^			unsigned int valid			:1;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
+valid	hil/nvme/host_lld.h	/^			unsigned int valid			:1;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
+valid	hil/nvme/nvme.h	/^	unsigned char valid;$/;"	m	struct:_NVME_IO_CQ_STATUS
+valid	hil/nvme/nvme.h	/^	unsigned char valid;$/;"	m	struct:_NVME_IO_SQ_STATUS
