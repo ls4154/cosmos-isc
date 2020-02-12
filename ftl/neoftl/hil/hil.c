@@ -50,7 +50,6 @@ void hil_read_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int l
 	do {
 		cmd = new_cmd();
 	} while (cmd == NULL);
-	dprint("cmd allocated\n");
 
 	cmd->tag = cmd_tag;
 	cmd->type = CMD_TYPE_RD;
@@ -71,7 +70,6 @@ void hil_write_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int 
 	do {
 		cmd = new_cmd();
 	} while (cmd == NULL);
-	dprint("cmd allocated\n");
 
 	cmd->tag = cmd_tag;
 	cmd->type = CMD_TYPE_WR;
@@ -101,6 +99,7 @@ void hil_process_initq(void)
 			while (q_full(&write_dma_wait_q));
 			q_push_tail(&write_dma_wait_q, cmd);
 		}
+		dprint("pop from init_q\n");
 		q_pop_head(&init_q);
 	}
 }

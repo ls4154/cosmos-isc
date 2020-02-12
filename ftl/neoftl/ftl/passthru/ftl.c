@@ -7,7 +7,7 @@
 
 #include "util/debug.h"
 
-static int disk_size = (1 << 25); // default 32 MiB
+static int disk_size = (1 << 26); // default 64 MiB
 
 void ftl_init(void)
 {
@@ -17,7 +17,7 @@ void ftl_init(void)
 static void ftl_process_q(void)
 {
 	while (!q_empty(&ftl_wait_q)) {
-		dindent(2);
+		dindent(3);
 		dprint("[ftl_process_q]\n");
 		struct cmd *cmd = q_get_head(&ftl_wait_q);
 		while (q_full(&nand_wait_q));
