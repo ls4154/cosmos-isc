@@ -18,7 +18,7 @@ static void ftl_process_q(void)
 {
 	while (!q_empty(&ftl_wait_q)) {
 		dindent(2);
-		dprint("ftl_process_q\n");
+		dprint("[ftl_process_q]\n");
 		struct cmd *cmd = q_get_head(&ftl_wait_q);
 		while (q_full(&nand_wait_q));
 		q_push_tail(&nand_wait_q, cmd);

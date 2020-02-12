@@ -12,10 +12,22 @@ typedef void (*run_func_t)(void);
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <signal.h>
 
 void *th_func(void *args)
 {
+	int err;
 	run_func_t f = args;
+	sigset_t set;
+	sigemptyset(&set);
+	sigaddset(&set, SIGUSR1);
+
+	err = pthread_sigmask(SIG_BLOCK, &set, NULL);
+	if (err) {
+		perror("sigmask");
+		exit(1);
+	}
+
 	while (1)
 		f();
 	return NULL;
