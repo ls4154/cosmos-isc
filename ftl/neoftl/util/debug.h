@@ -22,6 +22,13 @@
 	do { \
 		fprintf(stderr, "\nError in %s: Line %d\n", __FILE__, __LINE__); \
 		exit(1); \
-	} while(0)
+	} while (0)
+
+#ifdef NO_DEBUG
+#define dprint(x...) do {} while (0)
+#else
+#define dprint(x...) printf(x);
+#endif
+#define dindent(x) dprint("%" #x "0s", "")
 
 #endif /* DEBUG_H */
