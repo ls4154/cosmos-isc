@@ -21,6 +21,7 @@ void *th_func(void *args)
 	sigset_t set;
 	sigemptyset(&set);
 	sigaddset(&set, SIGUSR1);
+	sigaddset(&set, SIGUSR2);
 
 	err = pthread_sigmask(SIG_BLOCK, &set, NULL);
 	if (err) {

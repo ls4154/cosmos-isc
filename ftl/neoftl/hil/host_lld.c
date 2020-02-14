@@ -409,57 +409,33 @@ void check_auto_rx_dma_done()
 		g_hostDmaStatus.fifoHead.dword = IO_READ32(HOST_DMA_FIFO_CNT_REG_ADDR);
 }
 
-unsigned int check_auto_tx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex)
-{
-	//printf("check_auto_tx_dma_partial_done \r\n");
-
+unsigned int check_auto_tx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex) {
 	g_hostDmaStatus.fifoHead.dword = IO_READ32(HOST_DMA_FIFO_CNT_REG_ADDR);
 
 	if (g_hostDmaStatus.fifoHead.autoDmaTx == g_hostDmaStatus.fifoTail.autoDmaTx)
-	{
 		return TRUE;
-	}
 
-	if(g_hostDmaStatus.fifoHead.autoDmaTx < tailIndex)
-	{
-		if(g_hostDmaStatus.fifoTail.autoDmaTx < tailIndex)
-		{
-			if (g_hostDmaStatus.fifoTail.autoDmaTx > g_hostDmaStatus.fifoHead.autoDmaTx)
-			{
+	if(g_hostDmaStatus.fifoHead.autoDmaTx < tailIndex) {
+		if(g_hostDmaStatus.fifoTail.autoDmaTx < tailIndex) {
+			if (g_hostDmaStatus.fifoTail.autoDmaTx > g_hostDmaStatus.fifoHead.autoDmaTx) {
+				return TRUE;
+			} else if (g_hostDmaAssistStatus.autoDmaTxOverFlowCnt != (tailAssistIndex + 1)) {
 				return TRUE;
 			}
-			else if (g_hostDmaAssistStatus.autoDmaTxOverFlowCnt != (tailAssistIndex + 1))
-			{
-				return TRUE;
-			}
-		}
-		else
-			if (g_hostDmaAssistStatus.autoDmaTxOverFlowCnt != tailAssistIndex)
-			{
-				return TRUE;
-			}
-
-	}
-	else if (g_hostDmaStatus.fifoHead.autoDmaTx == tailIndex)
-	{
-		return TRUE;
-	}
-	else
-	{
-		if (g_hostDmaStatus.fifoTail.autoDmaTx < tailIndex)
-		{
+		} else if (g_hostDmaAssistStatus.autoDmaTxOverFlowCnt != tailAssistIndex) {
 			return TRUE;
 		}
-		else
-		{
-			if(g_hostDmaStatus.fifoTail.autoDmaTx > g_hostDmaStatus.fifoHead.autoDmaTx)
-			{
+
+	} else if (g_hostDmaStatus.fifoHead.autoDmaTx == tailIndex) {
+		return TRUE;
+	} else {
+		if (g_hostDmaStatus.fifoTail.autoDmaTx < tailIndex) {
+			return TRUE;
+		} else {
+			if(g_hostDmaStatus.fifoTail.autoDmaTx > g_hostDmaStatus.fifoHead.autoDmaTx) {
 				return TRUE;
-			}
-			else
-			{
-				if (g_hostDmaAssistStatus.autoDmaTxOverFlowCnt != tailAssistIndex)
-				{
+			} else {
+				if (g_hostDmaAssistStatus.autoDmaTxOverFlowCnt != tailAssistIndex) {
 					return TRUE;
 				}
 			}
@@ -469,56 +445,33 @@ unsigned int check_auto_tx_dma_partial_done(unsigned int tailIndex, unsigned int
 	return FALSE;
 }
 
-unsigned int check_auto_rx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex)
-{
-	//printf("check_auto_rx_dma_partial_done \r\n");
-
+unsigned int check_auto_rx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex) {
 	g_hostDmaStatus.fifoHead.dword = IO_READ32(HOST_DMA_FIFO_CNT_REG_ADDR);
 
 	if (g_hostDmaStatus.fifoHead.autoDmaRx == g_hostDmaStatus.fifoTail.autoDmaRx)
-	{
 		return TRUE;
-	}
 
-	if(g_hostDmaStatus.fifoHead.autoDmaRx < tailIndex)
-	{
-		if(g_hostDmaStatus.fifoTail.autoDmaRx < tailIndex)
-		{
-			if (g_hostDmaStatus.fifoTail.autoDmaRx > g_hostDmaStatus.fifoHead.autoDmaRx)
-			{
+	if (g_hostDmaStatus.fifoHead.autoDmaRx < tailIndex) {
+		if(g_hostDmaStatus.fifoTail.autoDmaRx < tailIndex) {
+			if (g_hostDmaStatus.fifoTail.autoDmaRx > g_hostDmaStatus.fifoHead.autoDmaRx) {
 				return TRUE;
-			}
-			else
-			{
-				if (g_hostDmaAssistStatus.autoDmaRxOverFlowCnt != (tailAssistIndex + 1))
-				{
+			} else {
+				if (g_hostDmaAssistStatus.autoDmaRxOverFlowCnt != (tailAssistIndex + 1)) {
 					return TRUE;
 				}
 			}
-		}
-		else if (g_hostDmaAssistStatus.autoDmaRxOverFlowCnt != tailAssistIndex)
-		{
+		} else if (g_hostDmaAssistStatus.autoDmaRxOverFlowCnt != tailAssistIndex) {
 			return TRUE;
 		}
-	}
-	else if (g_hostDmaStatus.fifoHead.autoDmaRx == tailIndex)
-	{
+	} else if (g_hostDmaStatus.fifoHead.autoDmaRx == tailIndex) {
 		return TRUE;
-	}
-	else
-	{
-		if (g_hostDmaStatus.fifoTail.autoDmaRx < tailIndex)
-		{
+	} else {
+		if (g_hostDmaStatus.fifoTail.autoDmaRx < tailIndex) {
 			return TRUE;
-		}
-		else
-		{
-			if (g_hostDmaStatus.fifoTail.autoDmaRx > g_hostDmaStatus.fifoHead.autoDmaRx)
-			{
+		} else {
+			if (g_hostDmaStatus.fifoTail.autoDmaRx > g_hostDmaStatus.fifoHead.autoDmaRx) {
 				return TRUE;
-			}
-			else if (g_hostDmaAssistStatus.autoDmaRxOverFlowCnt != tailAssistIndex)
-			{
+			} else if (g_hostDmaAssistStatus.autoDmaRxOverFlowCnt != tailAssistIndex) {
 				return TRUE;
 			}
 		}

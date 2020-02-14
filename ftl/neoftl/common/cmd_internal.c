@@ -7,7 +7,9 @@
 
 #include "util/debug.h"
 
-#define DEFAULT_QSIZE 64
+#define DEFAULT_QSIZE 128
+
+#define BLOCK_SIZE 4096
 
 struct cmd_queue init_q;
 struct cmd_queue ftl_wait_q;
@@ -20,7 +22,7 @@ struct cmd_queue done_q;
 
 static struct cmd_queue cmd_pool_q;
 
-#define CMD_POOL_SIZE 64
+#define CMD_POOL_SIZE 512
 static struct cmd *cmd_mem;
 
 static void init_cmd_queue(struct cmd_queue *q, int size)
@@ -47,14 +49,13 @@ void del_cmd(struct cmd *cmd)
 	q_push_tail(&cmd_pool_q, cmd);
 }
 
-#define PAGE_MAX 4096
 /* static void *dma_mem; */
 /* static int dma_head; */
 /* static int dma_tail; */
 /* static int dma_skip; */
 
 #define PAGE_MAX_1 256
-#define PAGE_MAX_256 16
+#define PAGE_MAX_256 64
 
 static struct dma_buf *dma_meta_1;
 static struct dma_buf *dma_meta_256;
@@ -84,39 +85,19 @@ void *dmabuf_get(int nblock)
 	}
 	printf("dmabuf_get: outof dmabuf\n");
 	return NULL;
-	/* void *ret = mem + 4096 * dma_tail; */
-
-	/* if (dma_tail + nblock > PAGE_MAX) { */
-	/*         dma_skip = dma_tail; */
-	/*         dma_tail = 0; */
-	/* } */
-	/* if (dma_tail < dma_head && dma_tail + nblocks >= dma_head) { */
-	/*         printf("    dmabuf_get: full\n"); */
-	/*         exit(1); */
-	/* } */
-	/* printf("    dmabuf_get: %d %d %d\n", dma_head, dma_skip, dma_tail); */
-
-	/* dma_tail = dma_tail + nblocks; */
-	/* return ret; */
 }
 void dmabuf_put(void *ptr)
 {
 	struct dma_buf *db;
-	if (ptr >= dma_mem_1 && ptr < dma_mem_1 + 2096 * PAGE_MAX_1) {
-		db = dma_meta_1 + ((ptr - dma_mem_1) / 4096);
+	if (ptr >= dma_mem_1 && ptr < dma_mem_1 + BLOCK_SIZE * PAGE_MAX_1) {
+		db = dma_meta_1 + ((ptr - dma_mem_1) / BLOCK_SIZE);
 		ASSERT(db->size == 1);
 		list_add_tail(&db->list, &dma_list_1);
 	} else {
-		db = dma_meta_256 + ((ptr - dma_mem_256) / (256 * 4096));
+		db = dma_meta_256 + ((ptr - dma_mem_256) / (256 * BLOCK_SIZE));
 		list_add_tail(&db->list, &dma_list_256);
 		ASSERT(db->size == 256);
 	}
-	/* dma_head = dma_head + nblock; */
-	/* if (dma_head == skip || dma_head >= PAGE_MAX) { */
-	/*         dma_skip = -1; */
-	/*         dma_head = 0; */
-	/* } */
-	/* printf("    dmabuf_put: %d %d %d\n", dma_head, dma_skip, dma_tail); */
 }
 
 void cmd_internal_init(void)
@@ -143,27 +124,22 @@ void cmd_internal_init(void)
 		q_push_tail(&cmd_pool_q, c);
 	}
 
-	dma_mem_1 = dma_malloc(4096 * PAGE_MAX_1, 0);
-	dma_mem_256 = dma_malloc(4096 * 256 * PAGE_MAX_256, 0);
+	dma_mem_1 = dma_malloc(BLOCK_SIZE * PAGE_MAX_1, 0);
+	dma_mem_256 = dma_malloc(BLOCK_SIZE * 256 * PAGE_MAX_256, 0);
 	dma_meta_1 = malloc(sizeof(struct dma_buf) * PAGE_MAX_1);
 	dma_meta_256 = malloc(sizeof(struct dma_buf) * PAGE_MAX_256);
-	printf("cmd_internal_init: dma_mem_1   %p to %p\n", dma_mem_1, dma_mem_1 + 4096 * PAGE_MAX_1);
-	printf("cmd_internal_init: dma_mem_256 %p to %p\n", dma_mem_256, dma_mem_256 + 4096 * 256 * PAGE_MAX_256);
+	printf("cmd_internal_init: dma_mem_1   %p to %p\n", dma_mem_1, dma_mem_1 + BLOCK_SIZE * PAGE_MAX_1);
+	printf("cmd_internal_init: dma_mem_256 %p to %p\n", dma_mem_256, dma_mem_256 + BLOCK_SIZE * 256 * PAGE_MAX_256);
 	for (int i = 0; i < PAGE_MAX_1; i++) {
 		struct dma_buf *db = dma_meta_1 + i;
 		db->size = 1;
-		db->buf = dma_mem_1 + 4096 * i;
+		db->buf = dma_mem_1 + BLOCK_SIZE * i;
 		list_add_tail(&db->list, &dma_list_1);
 	}
 	for (int i = 0; i < PAGE_MAX_256; i++) {
 		struct dma_buf *db = dma_meta_256 + i;
 		db->size = 256;
-		db->buf = dma_mem_256 + 256 * 4096 * i;
+		db->buf = dma_mem_256 + 256 * BLOCK_SIZE * i;
 		list_add_tail(&db->list, &dma_list_256);
 	}
-
-	/* dma_mem = dma_dmalloc(4096 * PAGE_MAX, 0); */
-	/* dma_head = 0; */
-	/* dma_tail = 0; */
-	/* dma_skip = 0; */
 }
