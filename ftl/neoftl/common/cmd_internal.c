@@ -17,7 +17,7 @@ struct cmd_queue nand_wait_q;
 struct cmd_queue nand_issue_q;
 struct cmd_queue write_dma_wait_q;
 struct cmd_queue read_dma_wait_q;
-//struct cmd_queue dma_issue_q;
+struct cmd_queue dma_issue_q;
 struct cmd_queue done_q;
 
 static struct cmd_queue cmd_pool_q;
@@ -55,7 +55,7 @@ void del_cmd(struct cmd *cmd)
 /* static int dma_skip; */
 
 #define PAGE_MAX_1 256
-#define PAGE_MAX_256 64
+#define PAGE_MAX_256 128
 
 static struct dma_buf *dma_meta_1;
 static struct dma_buf *dma_meta_256;
@@ -108,7 +108,7 @@ void cmd_internal_init(void)
 	init_cmd_queue(&nand_issue_q, DEFAULT_QSIZE);
 	init_cmd_queue(&write_dma_wait_q, DEFAULT_QSIZE);
 	init_cmd_queue(&read_dma_wait_q, DEFAULT_QSIZE);
-	//init_cmd_queue(&dma_issue_q, DEFAULT_QSIZE);
+	init_cmd_queue(&dma_issue_q, DEFAULT_QSIZE);
 	init_cmd_queue(&done_q, DEFAULT_QSIZE);
 
 	init_cmd_queue(&cmd_pool_q, CMD_POOL_SIZE + 1);

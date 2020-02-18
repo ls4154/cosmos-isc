@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <assert.h>
+#include <sys/time.h>
 
 #define __ASSERT 1
 
@@ -30,5 +31,19 @@
 #define dprint(x...) printf(x);
 #endif
 #define dindent(x) dprint("%" #x "0s", "")
+
+#define TV_DEF(name) \
+	struct timeval name
+
+#define TV_GET(name) \
+	gettimeofday(&(name), NULL)
+
+#define TV_ABS(prefix, tv) \
+	fprintf(stderr, #prefix " %ld.%ld\n", (tv).tv_sec, (tv).tv_usec)
+
+#define TV_DIF(prefix, tv_s, tv_e) \
+	fprintf(stderr, #prefix " %ld.%06ld\n", \
+			(tv_e).tv_sec - (tv_s).tv_sec - ((tv_e).tv_usec < (tv_s).tv_usec), \
+			((tv_e).tv_usec - (tv_s).tv_usec + 1000000) % 1000000)
 
 #endif /* DEBUG_H */

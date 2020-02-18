@@ -16,6 +16,12 @@
 
 #include "run.h"
 
+void tttt(void)
+{
+	hil_run();
+	ftl_run();
+}
+
 LIST_RUN(init_list,
 	address_space_init,
 	dma_memory_init,
@@ -27,8 +33,9 @@ LIST_RUN(init_list,
 );
 
 LIST_RUN(run_list,
-	hil_run,
-	ftl_run,
+	//hil_run,
+	//ftl_run,
+	tttt,
 	fil_run
 );
 

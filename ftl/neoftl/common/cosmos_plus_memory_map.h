@@ -10,8 +10,8 @@
 
 #define DRAM_END_ADDR				0x3fffffff
 
-#define DMA_MEMORY_BUFFER_SIZE			0x8000000
-#define DMA_MEMORY_ADMIN_SIZE			0x8000000
+#define DMA_MEMORY_BUFFER_SIZE			0xf000000
+#define DMA_MEMORY_ADMIN_SIZE			0x1000000 // for admin identify
 
 
 #define NAND_START_ADDR 	0x43c00000

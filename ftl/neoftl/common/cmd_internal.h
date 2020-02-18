@@ -27,7 +27,7 @@ extern struct cmd_queue nand_wait_q;
 extern struct cmd_queue nand_issue_q;
 extern struct cmd_queue write_dma_wait_q;
 extern struct cmd_queue read_dma_wait_q;
-//extern struct cmd_queue dma_issue_q;
+extern struct cmd_queue dma_issue_q;
 extern struct cmd_queue dma_done_q;
 extern struct cmd_queue done_q;
 
