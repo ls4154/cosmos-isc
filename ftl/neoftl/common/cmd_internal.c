@@ -49,59 +49,67 @@ void del_cmd(struct cmd *cmd)
 	q_push_tail(&cmd_pool_q, cmd);
 }
 
-/* static void *dma_mem; */
-/* static int dma_head; */
-/* static int dma_tail; */
-/* static int dma_skip; */
+#define DMA_PAGE_MAX (256 * 64)
 
-#define PAGE_MAX_1 256
-#define PAGE_MAX_256 128
+static struct dma_buf *dma_meta;
+static void *dma_mem;
 
-static struct dma_buf *dma_meta_1;
-static struct dma_buf *dma_meta_256;
-static void *dma_mem_1;
-static void *dma_mem_256;
+static int dma_buf_cnt;
+static LIST_HEAD(dma_buf_list);
 
-LIST_HEAD(dma_list_1);
-LIST_HEAD(dma_list_256);
-
-struct dma_buf {
-	int size;
-	void *buf;
-	struct list_head list;
-};
-
-void *dmabuf_get(int nblock)
+static void dmabuf_init(void)
 {
-	if (nblock == 1 && !list_empty(&dma_list_1)) {
-		struct dma_buf *db = list_first_entry(&dma_list_1, struct dma_buf, list);
-		list_del(&db->list);
-		return db->buf;
+	dma_mem = dma_malloc(BLOCK_SIZE * DMA_PAGE_MAX, 0);
+	dma_meta = malloc(sizeof(struct dma_buf) * DMA_PAGE_MAX);
+	for (int i = 0; i < DMA_PAGE_MAX; i++) {
+		struct dma_buf *db = dma_meta + i;
+		db->buf = dma_mem + BLOCK_SIZE * i;
+		list_add(&db->list, &dma_buf_list);
 	}
-	if (!list_empty(&dma_list_256)) {
-		struct dma_buf *db = list_first_entry(&dma_list_256, struct dma_buf, list);
-		list_del(&db->list);
-		return db->buf;
-	}
-	printf("dmabuf_get: outof dmabuf\n");
-	return NULL;
+	dma_buf_cnt = DMA_PAGE_MAX;
 }
-void dmabuf_put(void *ptr)
+
+struct list_head *dmabuf_get(int nblock)
 {
-	struct dma_buf *db;
-	if (ptr >= dma_mem_1 && ptr < dma_mem_1 + BLOCK_SIZE * PAGE_MAX_1) {
-		db = dma_meta_1 + ((ptr - dma_mem_1) / BLOCK_SIZE);
-		ASSERT(db->size == 1);
-		list_add_tail(&db->list, &dma_list_1);
-	} else {
-		db = dma_meta_256 + ((ptr - dma_mem_256) / (256 * BLOCK_SIZE));
-		list_add_tail(&db->list, &dma_list_256);
-		ASSERT(db->size == 256);
+	if (dma_buf_cnt < nblock)
+		return NULL;
+
+	struct list_head *ret = dma_buf_list.next;
+	if (dma_buf_cnt == nblock) {
+		dma_buf_list.prev->next = dma_buf_list.next;
+		dma_buf_list.next->prev = dma_buf_list.prev;
+		LIST_HEAD_INIT(&dma_buf_list);
+		return ret;
 	}
+	struct list_head *p = &dma_buf_list;
+	for (int i = 0; i < n; i++)
+		p = p->next;
+
+	p->next->prev = &dma_buf_list;
+	dma_buf_list.next = p->next;
+
+	p->next = ret;
+	ret->prev = p;
+	
+	dma_buf_cnt -= nblock;
+
+	return ret;
+}
+
+void dmabuf_put(struct list_head *buf_list, int nblock)
+{
+	dma_buf_list.next->prev = buf_list->prev;
+	buf_list->prev->next = dma_buf_list.next->prev;
+
+	buf_list->prev = &dma_buf_list;
+	dma_buf_list.next = buf_list;
+
+	dma_buf_cnt += nblock;
 }
 
 void cmd_internal_init(void)
 {
+	/* queue init */
 	init_cmd_queue(&init_q, DEFAULT_QSIZE);
 	init_cmd_queue(&ftl_wait_q, DEFAULT_QSIZE);
 	init_cmd_queue(&nand_wait_q, DEFAULT_QSIZE);
@@ -111,6 +119,7 @@ void cmd_internal_init(void)
 	init_cmd_queue(&dma_issue_q, DEFAULT_QSIZE);
 	init_cmd_queue(&done_q, DEFAULT_QSIZE);
 
+	/* cmd struct pool init */
 	init_cmd_queue(&cmd_pool_q, CMD_POOL_SIZE + 1);
 
 	cmd_mem = malloc(CMD_POOL_SIZE * sizeof(struct cmd));
@@ -124,22 +133,5 @@ void cmd_internal_init(void)
 		q_push_tail(&cmd_pool_q, c);
 	}
 
-	dma_mem_1 = dma_malloc(BLOCK_SIZE * PAGE_MAX_1, 0);
-	dma_mem_256 = dma_malloc(BLOCK_SIZE * 256 * PAGE_MAX_256, 0);
-	dma_meta_1 = malloc(sizeof(struct dma_buf) * PAGE_MAX_1);
-	dma_meta_256 = malloc(sizeof(struct dma_buf) * PAGE_MAX_256);
-	printf("cmd_internal_init: dma_mem_1   %p to %p\n", dma_mem_1, dma_mem_1 + BLOCK_SIZE * PAGE_MAX_1);
-	printf("cmd_internal_init: dma_mem_256 %p to %p\n", dma_mem_256, dma_mem_256 + BLOCK_SIZE * 256 * PAGE_MAX_256);
-	for (int i = 0; i < PAGE_MAX_1; i++) {
-		struct dma_buf *db = dma_meta_1 + i;
-		db->size = 1;
-		db->buf = dma_mem_1 + BLOCK_SIZE * i;
-		list_add_tail(&db->list, &dma_list_1);
-	}
-	for (int i = 0; i < PAGE_MAX_256; i++) {
-		struct dma_buf *db = dma_meta_256 + i;
-		db->size = 256;
-		db->buf = dma_mem_256 + 256 * BLOCK_SIZE * i;
-		list_add_tail(&db->list, &dma_list_256);
-	}
+	dmabuf_init();
 }
