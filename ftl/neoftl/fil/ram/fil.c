@@ -9,13 +9,15 @@
 
 #include "util/debug.h"
 
-#define BLOCK_SIZE 4096
+#define HOST_BLOCK_SIZE 4096
 
 static void *disk;
 
+LIST_HEAD(nand0_q);
+
 void fil_init(void)
 {
-	unsigned int disk_size = hil_get_storage_blocks() * BLOCK_SIZE;
+	unsigned int disk_size = hil_get_storage_blocks() * HOST_BLOCK_SIZE;
 
 	printf("fil init: disk size %u\n", disk_size);
 
@@ -28,43 +30,75 @@ void fil_init(void)
 	printf("start %p, end %p\n", disk, disk + disk_size);
 }
 
-
-static void fil_process_nandq(void)
+void fil_add_req(struct cmd *cmd, int type, void *buf, nand_addr_t addr)
 {
-	if (!q_empty(&nand_wait_q)) {
-		struct cmd *cmd = q_get_head(&nand_wait_q);
+	dindent(6);
+	dprint("[fil_add_req]\n");
+
+	struct nand_req *req = malloc(sizeof(struct nand_req));
+	req->type = type;
+	req->addr = addr;
+	req->cmd = cmd;
+	req->buf = buf;
+
+	list_add_tail(&req->list, &nand0_q);
+	dindent(6);
+	dprint("added to nand_q\n");
+}
+
+static void fil_nand0(void)
+{
+	while (!list_empty(&nand0_q)) {
 		dindent(6);
-		dprint("[fil_process_nandq]\n");
-		cmd->ndone = cmd->nblock;
+		dprint("[fil_nand]\n");
+
+		struct nand_req *req = list_first_entry(&nand0_q, struct nand_req, list);
+		struct cmd *cmd = req->cmd;
 		dindent(6);
-		dprint("tag %d,%c, lba:%u, cnt:%u\n", cmd->tag, cmd->type == CMD_TYPE_RD ? 'R' : 'W',
-									cmd->lba, cmd->nblock);
-		if (cmd->type == CMD_TYPE_RD) {
-			memcpy(cmd->buf, disk + BLOCK_SIZE * cmd->lba, BLOCK_SIZE * cmd->nblock);
+		dprint("tag: %d lba %u cnt %u\n", cmd->tag, cmd->lba, cmd->nblock);
+		dindent(6);
+		dprint("buf: %p, disk %p\n", req->buf, disk + HOST_BLOCK_SIZE * req->addr);
+
+		if (req->type == NAND_TYPE_READ) {
+			memcpy(req->buf, disk + HOST_BLOCK_SIZE * req->addr, HOST_BLOCK_SIZE);
+
 			dindent(6);
 			dprint("rd copy done\n");
-			while (q_full(&read_dma_wait_q)) {
-				puts("fil nandq q full");
-			}
-			q_push_tail(&read_dma_wait_q, cmd);
 		} else {
-			memcpy(disk + BLOCK_SIZE * cmd->lba, cmd->buf, BLOCK_SIZE * cmd->nblock);
+			memcpy(disk + HOST_BLOCK_SIZE * req->addr, req->buf, HOST_BLOCK_SIZE);
+
 			dindent(6);
 			dprint("wr copy done\n");
-			while (q_full(&done_q)) {
-				puts("fil nandq q full");
-				sleep(1);
-			};
+		}
+
+		list_del(&req->list);
+		free(req);
+
+		if (cmd->ndone == 0) {
+			dindent(6);
+			dprint("[%d] [%d]\n", ((char *)req->buf)[0], ((char *)disk + HOST_BLOCK_SIZE * req->addr)[0]);
+		}
+
+		cmd->ndone++;
+		dindent(6);
+		dprint("%u/%u\n", cmd->ndone, cmd->nblock);
+		if (cmd->ndone < cmd->nblock)
+			continue;
+
+		dindent(6);
+		if (cmd->type == CMD_TYPE_RD) {
+			dprint("rd cmd done\n");
+			q_push_tail(&read_dma_wait_q, cmd);
+		} else {
+			dprint("wr cmd done\n");
 			q_push_tail(&done_q, cmd);
 		}
-		dindent(6);
-		dprint("q_pop\n");
-		q_pop_head(&nand_wait_q);
+		break;
 	}
 }
 
 void fil_run(void)
 {
-	fil_process_nandq();
+	fil_nand0();
 }
 

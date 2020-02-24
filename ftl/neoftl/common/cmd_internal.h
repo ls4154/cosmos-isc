@@ -4,6 +4,8 @@
 #define CMD_TYPE_RD 0
 #define CMD_TYPE_WR 1
 
+#include <util/list.h>
+
 struct cmd {
 	int tag;
 	int type;
@@ -11,7 +13,6 @@ struct cmd {
 	unsigned int nblock;
 	unsigned int ndone;
 	struct list_head *buf;
-	// v2p mapping
 };
 
 struct cmd_queue {
@@ -31,21 +32,32 @@ extern struct cmd_queue dma_issue_q;
 extern struct cmd_queue dma_done_q;
 extern struct cmd_queue done_q;
 
+/*
 typedef struct _nand_addr {
 	unsigned int ch: 3;
 	unsigned int way: 3;
 	unsigned int page: 8;
 	unsigned int block: 14;
 } nand_addr_t;
+*/
+
+typedef unsigned int nand_addr_t;
+
+#define NAND_TYPE_READ 0
+#define NAND_TYPE_WRITE 1
+#define NAND_TYPE_ERASE 2
 
 struct nand_req {
 	int type;
-	struct cmd_struct *cmd;
+	nand_addr_t addr;
+	struct cmd *cmd;
+	struct list_head list;
 	void *buf;
 };
 
 
 struct dma_buf {
+	int id;
 	void *buf;
 	struct list_head list;
 };
@@ -77,8 +89,8 @@ static inline void q_pop_head(struct cmd_queue *q)
 struct cmd *new_cmd(void);
 void del_cmd(struct cmd *cmd);
 
-struct dma_buf *dmabuf_get(int nblock);
-void dmabuf_put(void* ptr);
+struct list_head *dmabuf_get(int nblock);
+void dmabuf_put(struct list_head *buf_list, int nblock);
 
 void cmd_internal_init(void);
 

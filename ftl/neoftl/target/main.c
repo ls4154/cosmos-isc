@@ -43,6 +43,17 @@ int main(int argc, char **argv)
 {
 	RUN_ONCE(init_list);
 
+/* struct list_head *x1 = dmabuf_get(10); */
+/* struct list_head *x2 = dmabuf_get(10); */
+/* struct list_head *x3 = dmabuf_get(10); */
+/* dmabuf_put(x1, 10); */
+/* dmabuf_put(x2, 10); */
+/* dmabuf_put(x3, 10); */
+/* x1 = dmabuf_get(10); */
+/* x2 = dmabuf_get(10); */
+/* x3 = dmabuf_get(10); */
+/* return 0; */
+
 	printf("Turn on the host PC.\n");
 
 	RUN(run_list);

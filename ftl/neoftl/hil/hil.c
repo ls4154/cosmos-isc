@@ -25,6 +25,7 @@ static unsigned int dma_tx_head = 0;
 static unsigned int dma_tx_tail = 0;
 static unsigned int dma_rx_head = 0;
 static unsigned int dma_rx_tail = 0;
+
 static inline int dma_tx_slots(void)
 {
 	return (dma_tx_tail - dma_tx_head + 256) % 256;
@@ -108,6 +109,7 @@ void hil_read_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int l
 	cmd->type = CMD_TYPE_RD;
 	cmd->lba = start_lba;
 	cmd->nblock = lba_count;
+	cmd->ndone = 0;
 	cmd->buf = NULL;
 
 	dprint("tag: %d, lba: %u, cnt: %u\n", cmd_tag, start_lba, lba_count);
@@ -139,6 +141,7 @@ void hil_write_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int 
 	cmd->type = CMD_TYPE_WR;
 	cmd->lba = start_lba;
 	cmd->nblock = lba_count;
+	cmd->ndone = 0;
 	cmd->buf = NULL;
 
 	dprint("tag: %u, lba: %u, cnt: %u\n", cmd_tag, start_lba, lba_count);
@@ -183,13 +186,16 @@ void hil_process_dmawait(void)
 		dprint("[hil_process_dmawait] write dma\n");
 		struct cmd *cmd = q_get_head(&write_dma_wait_q);
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
+		struct list_head *lp = cmd->buf;
 		for (int i = 0; i < cmd->nblock; i++) {
-			set_auto_rx_dma(cmd->tag, i, (unsigned int)(cmd->buf + i * 4096),
+			set_auto_rx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf,
 					NVME_COMMAND_AUTO_COMPLETION_ON);
+			lp = lp->next;
 			dma_rx_tail++;
 		}
 		check_auto_rx_dma_done();
 		dprint("dma done\n");
+		printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf)[0]);
 		while (q_full(&ftl_wait_q)) {
 			dprint("ftl wait q full\n");
 		}
@@ -199,18 +205,22 @@ void hil_process_dmawait(void)
 	if (!q_empty(&read_dma_wait_q)) {
 		dprint("[hil_process_dmawait] read dma\n");
 		struct cmd *cmd = q_get_head(&read_dma_wait_q);
+		printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf)[0]);
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
+		struct list_head *lp = cmd->buf;
 		for (int i = 0; i < cmd->nblock; i++) {
-			set_auto_tx_dma(cmd->tag, i, (unsigned int)(cmd->buf + i * 4096),
+			set_auto_tx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf,
 					NVME_COMMAND_AUTO_COMPLETION_ON);
+			lp = lp->next;
 			dma_tx_tail++;
 		}
 		check_auto_tx_dma_done();
 		dprint("dma done\n");
 
-		dmabuf_put(cmd->buf);
-		del_cmd(cmd);
 		q_pop_head(&read_dma_wait_q);
+		dmabuf_put(cmd->buf, cmd->nblock);
+		dprint("delet cmd\n");
+		del_cmd(cmd);
 	}
 }
 
@@ -225,7 +235,8 @@ void hil_process_doneq(void)
 		struct cmd *cmd = q_get_head(&done_q);
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
 		q_pop_head(&done_q);
-		dmabuf_put(cmd->buf);
+		dmabuf_put(cmd->buf, cmd->nblock);
+		dprint("delete cmd\n");
 		del_cmd(cmd);
 	}
 }
@@ -244,6 +255,7 @@ void hil_proces_tmp(void)
 	cmd->type = tmp_cmd.type;
 	cmd->lba = tmp_cmd.lba;
 	cmd->nblock = tmp_cmd.nblock;
+	cmd->ndone = 0;
 	cmd->buf = tmp_cmd.buf;
 
 	dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
