@@ -4,6 +4,7 @@
 
 #include "hil/hil.h"
 #include "common/cmd_internal.h"
+#include "common/cosmos_plus_system.h"
 
 #include "fil/fil.h"
 
@@ -12,10 +13,15 @@
 #define HOST_BLOCK_SIZE 4096
 #define NAND_PAGE_SIZE 16384
 
-#define HOST_BLOCK_CNT 16384
-static int disk_size = 4096 * HOST_BLOCK_CNT; // default 64 MiB
+#define HOST_BLOCK_CNT (16384 * 1024)
+static int disk_size = 4096 * HOST_BLOCK_CNT; // default 64 GiB
 
 static nand_addr_t l2p_table[HOST_BLOCK_CNT];
+
+static unsigned int i_ch = 0;
+static unsigned int i_way = 0;
+static unsigned int i_block = 50;
+static unsigned int i_page = 0;
 
 void ftl_init(void)
 {
@@ -44,15 +50,13 @@ static void ftl_process_q(void)
             for (int i = 0; i < cmd->nblock; i++)
             {
                 nand_addr_t *addr = &list_entry(lp, struct dma_buf, list)->addr;
-                addr->ch = 0;
-                addr->way = 0;
-                addr->page = cmd->lba + i;
-                addr->block = cmd->lba + i;
+
+                *addr = l2p_table[cmd->lba + i];
 
                 lp = lp->next;
             }
         }
-        else
+        else // CMD_TYPE_WR
         {
             dindent(3);
             dprint("adding req wr\n");
@@ -60,10 +64,39 @@ static void ftl_process_q(void)
             for (int i = 0; i < cmd->nblock; i++)
             {
                 nand_addr_t *addr = &list_entry(lp, struct dma_buf, list)->addr;
-                addr->ch = 0;
-                addr->way = 0;
-                addr->page = cmd->lba + i;
-                addr->block = cmd->lba + i;
+
+                l2p_table[cmd->lba + i].ch = i_ch;
+                l2p_table[cmd->lba + i].way = i_way;
+                l2p_table[cmd->lba + i].block = i_block;
+                l2p_table[cmd->lba + i].page = i_page;
+                l2p_table[cmd->lba + i].valid = 1;
+
+                dindent(3);
+                dprint("%d/%d/%d/%d\n", i_ch, i_way, i_block, i_page);
+
+                i_ch++;
+                if (i_ch >= USER_CHANNELS)
+                {
+                    i_ch = 0;
+                    i_way++;
+                    if (i_way >= USER_WAYS)
+                    {
+                        i_way = 0;
+                        i_page++;
+                        if (i_page >= PAGES_PER_BLOCK)
+                        {
+                            i_page = 0;
+                            i_block++;
+                            if (i_block >= 512) //TODO
+                            {
+                                assert(0);
+                                printf("need gc\n");
+                            }
+                        }
+                    }
+                }
+
+                *addr = l2p_table[cmd->lba + i];
 
                 lp = lp->next;
             }

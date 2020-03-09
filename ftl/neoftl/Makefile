@@ -1,10 +1,14 @@
 BASESRC = $(wildcard common/*.c) $(wildcard hil/*.c) $(wildcard target/*.c)
-FLAGS = -I. -pthread -Wall
+FLAGS = -I. -Wall
 
+nand:
+	gcc $(BASESRC) $(wildcard ftl/simple/*.c) $(wildcard fil/nand_jh/*.c) $(FLAGS)
+nand_cross:
+	arm-linux-gnueabi-gcc $(BASESRC) $(wildcard ftl/simple/*.c) $(wildcard fil/nand_jh/*.c) $(FLAGS)
 single:
 	gcc $(BASESRC) $(wildcard ftl/passthru/*.c) $(wildcard fil/ram/*.c) $(FLAGS)
 thread:
-	gcc $(BASESRC) $(wildcard ftl/passthru/*.c) $(wildcard fil/ram/*.c) $(FLAGS) -D FTL_MULTI_THREAD
+	gcc $(BASESRC) $(wildcard ftl/passthru/*.c) $(wildcard fil/ram/*.c) $(FLAGS) -pthread -D FTL_MULTI_THREAD
 cross:
 	arm-linux-gnueabi-gcc $(BASESRC) $(wildcard ftl/passthru/*.c) $(wildcard fil/ram/*.c) $(FLAGS)
 clean:

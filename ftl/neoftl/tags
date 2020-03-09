@@ -65,7 +65,6 @@ BASESRC	Makefile	/^BASESRC = $(wildcard common\/*.c) $(wildcard hil\/*.c) $(wild
 BITS_PER_CELL	common/cosmos_plus_system.h	43;"	d
 BIT_ERROR_THRESHOLD_PER_CHUNK	common/cosmos_plus_system.h	108;"	d
 BLOCK_SIZE	common/cmd_internal.c	12;"	d	file:
-BLOCK_SIZE	fil/ram/fil.c	12;"	d	file:
 BOOL	common/cosmos_types.h	/^typedef INT8				BOOL;$/;"	t
 BYTES_PER_DATA_REGION_OF_NAND_ROW	common/cosmos_plus_system.h	45;"	d
 BYTES_PER_DATA_REGION_OF_PAGE	common/cosmos_plus_system.h	94;"	d
@@ -74,11 +73,15 @@ BYTES_PER_NVME_BLOCK	common/cosmos_plus_system.h	114;"	d
 BYTES_PER_SPARE_REGION_OF_NAND_ROW	common/cosmos_plus_system.h	46;"	d
 BYTES_PER_SPARE_REGION_OF_PAGE	common/cosmos_plus_system.h	95;"	d
 CEIL	util/util.h	10;"	d
+CHANNEL_BITS	fil/nand_orig/fil2.h	10;"	d
+CHANNEL_BITS	fil/nand_orig/fil2.h	12;"	d
+CHANNEL_BITS	fil/nand_orig/fil2.h	14;"	d
+CHANNEL_BITS	fil/nand_orig/fil2.h	16;"	d
 CID	hil/nvme.h	/^				unsigned short CID;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
 CID	hil/nvme.h	/^				unsigned short CID;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
 CLEARBIT	util/util.h	15;"	d
 CMD_INTERNAL_H	common/cmd_internal.h	2;"	d
-CMD_POOL_SIZE	common/cmd_internal.c	25;"	d	file:
+CMD_POOL_SIZE	common/cmd_internal.c	28;"	d	file:
 CMD_SLOT_RELEASE_TYPE	hil/host_lld.h	17;"	d
 CMD_TYPE_RD	common/cmd_internal.h	4;"	d
 CMD_TYPE_WR	common/cmd_internal.h	5;"	d
@@ -108,6 +111,9 @@ DMA_MEMORY_ADMIN_SIZE	common/cosmos_plus_memory_map.h	14;"	d
 DMA_MEMORY_BUFFER_SIZE	common/cosmos_plus_memory_map.h	13;"	d
 DMA_MEMORY_H	common/dma_memory.h	2;"	d
 DMA_MEMORY_START_ADDR	common/cosmos_plus_memory_map.h	9;"	d
+DMA_PAGE_MAX	common/cmd_internal.c	57;"	d	file:
+DMA_PHY	fil/nand/nsc_driver.h	37;"	d
+DMA_PHY	fil/nand_orig/nsc_driver.h	35;"	d
 DMA_PHY	hil/host_lld.h	7;"	d
 DNR	hil/host_lld.h	/^					unsigned short DNR		:1;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon79::__anon80
 DNR	hil/nvme.h	/^					unsigned short DNR				:1;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8::__anon9::__anon10
@@ -124,6 +130,9 @@ ELBATM	hil/nvme.h	/^			unsigned short ELBATM;$/;"	m	struct:_IO_READ_COMMAND_DW15
 ELBATM	hil/nvme.h	/^			unsigned short ELBATM;$/;"	m	struct:_IO_WRITE_COMMAND_DW15::__anon57::__anon58
 ELPE	hil/nvme.h	/^	unsigned char ELPE;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
 ENLAT	hil/nvme.h	/^			unsigned int ENLAT;$/;"	m	struct:_ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR::__anon33::__anon34
+ERROR_INFO_FAIL	fil/nand/fil_nand.c	17;"	d	file:
+ERROR_INFO_PASS	fil/nand/fil_nand.c	18;"	d	file:
+ERROR_INFO_WARNING	fil/nand/fil_nand.c	19;"	d	file:
 ERROR_INFO_WORD_COUNT	common/cosmos_plus_system.h	109;"	d
 ERROR_RECOVERY	hil/nvme.h	132;"	d
 EUI64	hil/nvme.h	/^	unsigned char EUI64[8];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
@@ -133,17 +142,47 @@ FALSE	common/cosmos_types.h	15;"	d
 FATAL	util/debug.h	22;"	d
 FID	hil/nvme.h	/^			unsigned char FID;$/;"	m	struct:_ADMIN_GET_FEATURES_DW10::__anon15::__anon16
 FID	hil/nvme.h	/^			unsigned char FID;$/;"	m	struct:_ADMIN_SET_FEATURES_DW10::__anon11::__anon12
+FIL2_H	fil/nand_orig/fil2.h	2;"	d
+FIL_AddToRequestWaitQ	fil/nand_orig/fil_request.c	/^void FIL_AddToRequestWaitQ(FTL_REQUEST* pstRequest, int bHead)$/;"	f
+FIL_AllocateRequest	fil/nand_orig/fil_request.c	/^FTL_REQUEST* FIL_AllocateRequest(void)$/;"	f
+FIL_EraseBlock	fil/nand_orig/fil.c	/^void FIL_EraseBlock(FTL_REQUEST_ID	stReqID, NAND_ADDR stPhyAddr)$/;"	f
+FIL_GetPagesPerBlock	fil/nand_orig/fil.c	/^int FIL_GetPagesPerBlock(void)$/;"	f
 FIL_H	fil/fil.h	2;"	d
+FIL_InitRequest	fil/nand_orig/fil_request.c	/^void FIL_InitRequest(void)$/;"	f
+FIL_IsBad	fil/nand_orig/fil.c	/^BOOL FIL_IsBad(INT32 nPBN)$/;"	f
+FIL_IsIdle	fil/nand_orig/fil_request.c	/^int FIL_IsIdle(void)$/;"	f
+FIL_NAND_H	fil/nand/fil_nand.h	2;"	d
+FIL_ProcessDoneQ	fil/nand_orig/fil_request.c	/^void FIL_ProcessDoneQ(void)$/;"	f
+FIL_ProcessIssuedQ	fil/nand_orig/fil_request.c	/^void FIL_ProcessIssuedQ(void)$/;"	f
+FIL_ProcessWaitQ	fil/nand_orig/fil_request.c	/^void FIL_ProcessWaitQ(void)$/;"	f
+FIL_ProgramPage	fil/nand_orig/fil.c	/^void FIL_ProgramPage(FTL_REQUEST_ID	stReqID, NAND_ADDR stPhyAddr, void* pMainBuf, void* pSpareBuf)$/;"	f
+FIL_READ_RETRY	fil/nand/fil_nand.c	21;"	d	file:
+FIL_READ_RETRY	fil/nand_orig/fil_config.h	23;"	d
+FIL_ReadPage	fil/nand_orig/fil.c	/^void FIL_ReadPage(FTL_REQUEST_ID stReqID, NAND_ADDR stPhyAddr, void* pMainBuf, void* pSpareBuf)$/;"	f
 FIRMWARE_REVISION	hil/nvme_identify.h	8;"	d
-FLAGS	Makefile	/^FLAGS = -I. -pthread -Wall$/;"	m
+FLAGS	Makefile	/^FLAGS = -I. -Wall$/;"	m
 FLBAS	hil/nvme.h	/^	} FLBAS;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE	typeref:struct:_ADMIN_IDENTIFY_NAMESPACE::__anon46
 FLOOR	util/util.h	11;"	d
+FMC_DRIVER_H	fil/nand/nsc_driver.h	2;"	d
+FMC_DRIVER_H	fil/nand_orig/nsc_driver.h	2;"	d
 FNA	hil/nvme.h	/^	} FNA;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
 FR	hil/nvme.h	/^	unsigned char FR[8];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
 FRMW	hil/nvme.h	/^	} FRMW;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon36
 FTL_H	ftl/ftl.h	2;"	d
 FTL_MANAGEMENT_START_ADDR	common/cosmos_plus_memory_map.h	8;"	d
 FTL_MOVE_INFO_INDEX_BITS	common/cosmos_types.h	69;"	d
+FTL_REQUEST	fil/nand_orig/fil_request.h	/^} FTL_REQUEST;$/;"	t	typeref:struct:__anon130
+FTL_REQUEST_COUNT	fil/nand_orig/fil_config.h	21;"	d
+FTL_REQUEST_DMA_DONE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_DMA_DONE,$/;"	e	enum:__anon128
+FTL_REQUEST_DMA_ISSUE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_DMA_ISSUE,$/;"	e	enum:__anon128
+FTL_REQUEST_ERASE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE$/;"	e	enum:__anon127
+FTL_REQUEST_ERASE_DONE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE_DONE,$/;"	e	enum:__anon128
+FTL_REQUEST_ERASE_FOR_PROGRAM_DONE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE_FOR_PROGRAM_DONE,$/;"	e	enum:__anon128
+FTL_REQUEST_ERASE_FOR_PROGRAM_ISSUED	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE_FOR_PROGRAM_ISSUED,		\/\/ FOR PAGE NUMBER 0, auto erase$/;"	e	enum:__anon128
+FTL_REQUEST_ERASE_FOR_PROGRAM_WAIT	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE_FOR_PROGRAM_WAIT,$/;"	e	enum:__anon128
+FTL_REQUEST_ERASE_ISSUED	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE_ISSUED,$/;"	e	enum:__anon128
+FTL_REQUEST_ERASE_WAIT	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ERASE_WAIT,$/;"	e	enum:__anon128
+FTL_REQUEST_FREE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_FREE,$/;"	e	enum:__anon128
 FTL_REQUEST_ID	common/cosmos_types.h	/^} FTL_REQUEST_ID;$/;"	t	typeref:struct:__anon101
 FTL_REQUEST_ID_COMMON	common/cosmos_types.h	/^} FTL_REQUEST_ID_COMMON;$/;"	t	typeref:struct:__anon96
 FTL_REQUEST_ID_GC	common/cosmos_types.h	/^} FTL_REQUEST_ID_GC;$/;"	t	typeref:struct:__anon99
@@ -159,6 +198,18 @@ FTL_REQUEST_ID_TYPE_GC_READ	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_GC_READ
 FTL_REQUEST_ID_TYPE_HIL_READ	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_HIL_READ,$/;"	e	enum:__anon95
 FTL_REQUEST_ID_TYPE_META_READ	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_META_READ,$/;"	e	enum:__anon95
 FTL_REQUEST_ID_TYPE_WRITE	common/cosmos_types.h	/^	FTL_REQUEST_ID_TYPE_WRITE,		\/\/ Comon HIL & GC & Meta Write$/;"	e	enum:__anon95
+FTL_REQUEST_INFO	fil/nand_orig/fil_request.c	/^} FTL_REQUEST_INFO;$/;"	t	typeref:struct:__anon132	file:
+FTL_REQUEST_POOL	fil/nand_orig/fil_request.h	/^} FTL_REQUEST_POOL;$/;"	t	typeref:struct:__anon131
+FTL_REQUEST_PROGRAM	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_PROGRAM,$/;"	e	enum:__anon127
+FTL_REQUEST_PROGRAM_DONE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_PROGRAM_DONE,$/;"	e	enum:__anon128
+FTL_REQUEST_PROGRAM_ISSUED	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_PROGRAM_ISSUED,$/;"	e	enum:__anon128
+FTL_REQUEST_PROGRAM_WAIT	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_PROGRAM_WAIT,$/;"	e	enum:__anon128
+FTL_REQUEST_READ	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_READ,$/;"	e	enum:__anon127
+FTL_REQUEST_READ_DONE	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_READ_DONE,$/;"	e	enum:__anon128
+FTL_REQUEST_READ_ISSUED	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_READ_ISSUED,$/;"	e	enum:__anon128
+FTL_REQUEST_READ_WAIT	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_READ_WAIT,			\/\/ At the wait list$/;"	e	enum:__anon128
+FTL_REQUEST_STATUS	fil/nand_orig/fil_request.h	/^} FTL_REQUEST_STATUS;$/;"	t	typeref:enum:__anon128
+FTL_REQUEST_TYPE	fil/nand_orig/fil_request.h	/^} FTL_REQUEST_TYPE;$/;"	t	typeref:enum:__anon127
 FUA	hil/nvme.h	/^			unsigned short FUA						:1;			\/\/ dy, Force Unit Access$/;"	m	struct:_IO_READ_COMMAND_DW12::__anon59::__anon60
 FUA	hil/nvme.h	/^			unsigned short FUA						:1;$/;"	m	struct:_IO_WRITE_COMMAND_DW12::__anon52::__anon53
 FUSE	hil/nvme.h	/^				unsigned char FUSE			:2;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
@@ -167,6 +218,13 @@ FUSES	hil/nvme.h	/^	} FUSES;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:str
 GB	common/cosmos_types.h	8;"	d
 HIL_H	hil/hil.h	2;"	d
 HIL_REQUEST_ID	common/cosmos_types.h	/^} HIL_REQUEST_ID;$/;"	t	typeref:struct:__anon94
+HOST_BLOCK_CNT	ftl/passthru/ftl.c	15;"	d	file:
+HOST_BLOCK_CNT	ftl/simple/ftl.c	16;"	d	file:
+HOST_BLOCK_SIZE	fil/nand/fil.c	14;"	d	file:
+HOST_BLOCK_SIZE	fil/nand/fil_nand.c	12;"	d	file:
+HOST_BLOCK_SIZE	fil/ram/fil.c	12;"	d	file:
+HOST_BLOCK_SIZE	ftl/passthru/ftl.c	12;"	d	file:
+HOST_BLOCK_SIZE	ftl/simple/ftl.c	13;"	d	file:
 HOST_BLOCK_SIZE	hil/nvme.h	13;"	d
 HOST_DMA_ASSIST_STATUS	hil/host_lld.h	/^} HOST_DMA_ASSIST_STATUS;$/;"	t	typeref:struct:_HOST_DMA_ASSIST_STATUS
 HOST_DMA_AUTO_TYPE	hil/host_lld.h	10;"	d
@@ -255,7 +313,122 @@ MPS	hil/nvme.h	/^			unsigned short MPS					:1;$/;"	m	struct:_ADMIN_IDENTIFY_POWE
 MPTR	hil/nvme.h	/^			unsigned int MPTR[2];$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
 MPTR	hil/nvme.h	/^			unsigned int MPTR[2];$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
 MS	hil/nvme.h	/^	unsigned short MS;$/;"	m	struct:_ADMIN_IDENTIFY_FORMAT_DATA
+NAND_ADDR	fil/nand_orig/fil2.h	/^} NAND_ADDR;$/;"	t	typeref:struct:__anon125
+NAND_ADDR_BLOCK_MASK	fil/nand_orig/fil2.h	48;"	d
+NAND_ADDR_BLOCK_SHIFT	fil/nand_orig/fil2.h	41;"	d
+NAND_ADDR_CHANNEL_MASK	fil/nand_orig/fil2.h	46;"	d
+NAND_ADDR_CHANNEL_SHIFT	fil/nand_orig/fil2.h	38;"	d
+NAND_ADDR_LPN_OFFSET_SHIFT	fil/nand_orig/fil2.h	44;"	d
+NAND_ADDR_LPN_PER_PAGE_MASK	fil/nand_orig/fil2.h	50;"	d
+NAND_ADDR_PPAGE_MASK	fil/nand_orig/fil2.h	49;"	d
+NAND_ADDR_PPAGE_SHIFT	fil/nand_orig/fil2.h	40;"	d
+NAND_ADDR_VBN_SHIFT	fil/nand_orig/fil2.h	42;"	d
+NAND_ADDR_VPAGE_MASK	fil/nand_orig/fil2.h	51;"	d
+NAND_ADDR_VPAGE_SHIFT	fil/nand_orig/fil2.h	43;"	d
+NAND_ADDR_WAY_MASK	fil/nand_orig/fil2.h	47;"	d
+NAND_ADDR_WAY_SHIFT	fil/nand_orig/fil2.h	39;"	d
+NAND_COMPLETION	fil/nand/fil_nand.c	/^} NAND_COMPLETION;$/;"	t	typeref:struct:__anon110	file:
+NAND_COMPLETION	fil/nand_orig/fil_nand.c	/^} NAND_COMPLETION;$/;"	t	typeref:struct:__anon119	file:
+NAND_DEBUG	fil/nand_orig/fil_nand.c	/^} NAND_DEBUG;$/;"	t	typeref:struct:__anon122	file:
+NAND_DEBUG_PRINTF	fil/nand_orig/fil_nand.c	105;"	d	file:
+NAND_DEBUG_PRINTF	fil/nand_orig/fil_nand.c	107;"	d	file:
+NAND_ERASE_STEP	fil/nand/fil_nand.c	/^} NAND_ERASE_STEP;$/;"	t	typeref:enum:__anon107	file:
+NAND_ERASE_STEP	fil/nand_orig/fil_nand.c	/^} NAND_ERASE_STEP;$/;"	t	typeref:enum:__anon116	file:
+NAND_ERASE_STEP_CHECK_ERASE_ISSUABLE	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_CHECK_ERASE_ISSUABLE,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_CHECK_ERASE_ISSUABLE	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_CHECK_ERASE_ISSUABLE,$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_CHECK_STATUS	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_CHECK_STATUS,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_CHECK_STATUS	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_CHECK_STATUS,				\/\/ --> NAND_ERASE_STATUS_NON$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_COUNT	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_COUNT$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_COUNT	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_COUNT,$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_DONE	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_DONE,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_DONE	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_DONE,$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_ISSUE_ERASE	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_ISSUE_ERASE,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_ISSUE_ERASE	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_ISSUE_ERASE,$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_ISSUE_GET_STATUS	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_ISSUE_GET_STATUS,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_ISSUE_GET_STATUS	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_ISSUE_GET_STATUS,$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_NONE	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_NONE = OPERATION_STEP_START,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_NONE	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_NONE = OPERATION_STEP_START,		\/\/ must be 0$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_WAIT_ERASE_DONE	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_WAIT_ERASE_DONE,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_WAIT_ERASE_DONE	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_WAIT_ERASE_DONE,			\/\/ issue GetStatus just right after checking way idle$/;"	e	enum:__anon116	file:
+NAND_ERASE_STEP_WAIT_GET_STATUS_DONE	fil/nand/fil_nand.c	/^    NAND_ERASE_STEP_WAIT_GET_STATUS_DONE,$/;"	e	enum:__anon107	file:
+NAND_ERASE_STEP_WAIT_GET_STATUS_DONE	fil/nand_orig/fil_nand.c	/^	NAND_ERASE_STEP_WAIT_GET_STATUS_DONE,$/;"	e	enum:__anon116	file:
+NAND_ERROR	fil/nand/fil_nand.c	/^} NAND_ERROR;$/;"	t	typeref:struct:__anon112	file:
+NAND_ERROR	fil/nand_orig/fil_nand.c	/^} NAND_ERROR;$/;"	t	typeref:struct:__anon121	file:
+NAND_GLOBAL	fil/nand_orig/fil_nand.c	/^} NAND_GLOBAL;$/;"	t	typeref:struct:__anon123	file:
+NAND_IO_BUF	fil/nand_orig/fil_request.h	/^} NAND_IO_BUF;$/;"	t	typeref:struct:__anon129
+NAND_IO_PRINT	fil/nand_orig/fil_config.h	26;"	d
+NAND_InitChCtlReg	fil/nand_orig/fil_nand.c	/^void NAND_InitChCtlReg(void)$/;"	f
+NAND_InitNandArray	fil/nand_orig/fil_nand.c	/^void NAND_InitNandArray(void)$/;"	f
+NAND_Initialize	fil/nand_orig/fil_nand.c	/^void NAND_Initialize(void)$/;"	f
+NAND_IssueErase	fil/nand_orig/fil_nand.c	/^NAND_RESULT NAND_IssueErase(int nPCh, int nPWay, int nBlock, int bSync)$/;"	f
+NAND_IssueProgram	fil/nand_orig/fil_nand.c	/^NAND_RESULT NAND_IssueProgram(int nPCh, int nPWay, int nBlock, int nPage, void* pMainBuf, void* pSpareBuf, int bSync)$/;"	f
+NAND_IssueRead	fil/nand_orig/fil_nand.c	/^NAND_RESULT NAND_IssueRead(int nPCh, int nPWay, int nBlock, int nPage, void* pMainBuf, void* pSpareBuf, int bECCOn, int bSync)$/;"	f
+NAND_PAGE_SIZE	common/cmd_internal.c	13;"	d	file:
+NAND_PAGE_SIZE	ftl/passthru/ftl.c	13;"	d	file:
+NAND_PAGE_SIZE	ftl/simple/ftl.c	14;"	d	file:
+NAND_PGM_STEP_CHECK_PROGRAM_ISSUABLE	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_CHECK_PROGRAM_ISSUABLE,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_CHECK_PROGRAM_ISSUABLE	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_CHECK_PROGRAM_ISSUABLE,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_CHECK_STATUS	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_CHECK_STATUS,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_CHECK_STATUS	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_CHECK_STATUS,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_COUNT	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_COUNT$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_COUNT	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_COUNT,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_DONE	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_DONE,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_DONE	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_DONE,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_ISSUE_GET_STATUS	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_ISSUE_GET_STATUS,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_ISSUE_GET_STATUS	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_ISSUE_GET_STATUS,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_ISSUE_PROGRAM	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_ISSUE_PROGRAM,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_ISSUE_PROGRAM	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_ISSUE_PROGRAM,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_NONE	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_NONE = OPERATION_STEP_START,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_NONE	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_NONE = OPERATION_STEP_START,		\/\/ must be 0$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_WAIT_GET_STATUS_DONE	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_WAIT_GET_STATUS_DONE,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_WAIT_GET_STATUS_DONE	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_WAIT_GET_STATUS_DONE,$/;"	e	enum:__anon115	file:
+NAND_PGM_STEP_WAIT_PROGRAM_DONE	fil/nand/fil_nand.c	/^    NAND_PGM_STEP_WAIT_PROGRAM_DONE,$/;"	e	enum:__anon106	file:
+NAND_PGM_STEP_WAIT_PROGRAM_DONE	fil/nand_orig/fil_nand.c	/^	NAND_PGM_STEP_WAIT_PROGRAM_DONE,$/;"	e	enum:__anon115	file:
+NAND_PROGRAM_STEP	fil/nand/fil_nand.c	/^} NAND_PROGRAM_STEP;$/;"	t	typeref:enum:__anon106	file:
+NAND_PROGRAM_STEP	fil/nand_orig/fil_nand.c	/^} NAND_PROGRAM_STEP;$/;"	t	typeref:enum:__anon115	file:
+NAND_ProcessErase	fil/nand_orig/fil_nand.c	/^NAND_RESULT NAND_ProcessErase(int nPCh, int nPWay, int nBlock, int bSync)$/;"	f
+NAND_ProcessProgram	fil/nand_orig/fil_nand.c	/^NAND_RESULT NAND_ProcessProgram(int nPCh, int nPWay, int nBlock, int nPage, void* pMainBuf, void* pSpareBuf, int bSync)$/;"	f
+NAND_ProcessRead	fil/nand_orig/fil_nand.c	/^NAND_RESULT NAND_ProcessRead(int nPCh, int nPWay, int nBlock, int nPage, void* pMainBuf, void* pSpareBuf, int bECCOn, int bSync)$/;"	f
+NAND_READ_STEP	fil/nand/fil_nand.c	/^} NAND_READ_STEP;$/;"	t	typeref:enum:__anon105	file:
+NAND_READ_STEP	fil/nand_orig/fil_nand.c	/^} NAND_READ_STEP;$/;"	t	typeref:enum:__anon114	file:
+NAND_READ_STEP_CHECK_READ_ISSUABLE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_CHECK_READ_ISSUABLE,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_CHECK_READ_ISSUABLE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_CHECK_READ_ISSUABLE,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_CHECK_READ_RESULT	fil/nand/fil_nand.c	/^    NAND_READ_STEP_CHECK_READ_RESULT,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_CHECK_READ_RESULT	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_CHECK_READ_RESULT,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_CHECK_TRANSFER_ISSUABLE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_CHECK_TRANSFER_ISSUABLE,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_CHECK_TRANSFER_ISSUABLE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_CHECK_TRANSFER_ISSUABLE,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_CHECK_TRANSFER_RESULT	fil/nand/fil_nand.c	/^    NAND_READ_STEP_CHECK_TRANSFER_RESULT,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_CHECK_TRANSFER_RESULT	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_CHECK_TRANSFER_RESULT,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_COUNT	fil/nand/fil_nand.c	/^    NAND_READ_STEP_COUNT$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_COUNT	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_COUNT,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_DONE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_DONE,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_DONE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_DONE,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_ISSUE_GET_STATUS_READ	fil/nand/fil_nand.c	/^    NAND_READ_STEP_ISSUE_GET_STATUS_READ,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_ISSUE_GET_STATUS_READ	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_ISSUE_GET_STATUS_READ,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_ISSUE_READ	fil/nand/fil_nand.c	/^    NAND_READ_STEP_ISSUE_READ,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_ISSUE_READ	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_ISSUE_READ,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_ISSUE_TRANSFER	fil/nand/fil_nand.c	/^    NAND_READ_STEP_ISSUE_TRANSFER,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_ISSUE_TRANSFER	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_ISSUE_TRANSFER,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_NONE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_NONE = OPERATION_STEP_START,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_NONE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_NONE = OPERATION_STEP_START,		\/\/ must be 0$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_WAIT_GET_STATUS_READ_DONE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_WAIT_GET_STATUS_READ_DONE,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_WAIT_GET_STATUS_READ_DONE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_WAIT_GET_STATUS_READ_DONE,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_WAIT_READ_DONE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_WAIT_READ_DONE,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_WAIT_READ_DONE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_WAIT_READ_DONE,$/;"	e	enum:__anon114	file:
+NAND_READ_STEP_WAIT_TRASFER_DONE	fil/nand/fil_nand.c	/^    NAND_READ_STEP_WAIT_TRASFER_DONE,$/;"	e	enum:__anon105	file:
+NAND_READ_STEP_WAIT_TRASFER_DONE	fil/nand_orig/fil_nand.c	/^	NAND_READ_STEP_WAIT_TRASFER_DONE,$/;"	e	enum:__anon114	file:
+NAND_RESULT	fil/nand_orig/fil2.h	/^} NAND_RESULT;$/;"	t	typeref:enum:__anon124
+NAND_RESULT_DONE	fil/nand_orig/fil2.h	/^    NAND_RESULT_DONE,        \/\/ operation done$/;"	e	enum:__anon124
+NAND_RESULT_OP_RUNNING	fil/nand_orig/fil2.h	/^    NAND_RESULT_OP_RUNNING,  \/\/ operation running status$/;"	e	enum:__anon124
+NAND_RESULT_SUCCESS	fil/nand_orig/fil2.h	/^    NAND_RESULT_SUCCESS,$/;"	e	enum:__anon124
+NAND_RESULT_UECC	fil/nand_orig/fil2.h	/^    NAND_RESULT_UECC,        \/\/ Uncorrectable ECC$/;"	e	enum:__anon124
+NAND_SPARE_SIZE	common/cmd_internal.c	14;"	d	file:
 NAND_START_ADDR	common/cosmos_plus_memory_map.h	17;"	d
+NAND_STATUS	fil/nand/fil_nand.c	/^} NAND_STATUS;$/;"	t	typeref:struct:__anon111	file:
+NAND_STATUS	fil/nand_orig/fil_nand.c	/^} NAND_STATUS;$/;"	t	typeref:struct:__anon120	file:
+NAND_TYPE_ERASE	common/cmd_internal.h	49;"	d
+NAND_TYPE_PROGRAM	common/cmd_internal.h	48;"	d
+NAND_TYPE_READ	common/cmd_internal.h	47;"	d
 NBBY	util/util.h	13;"	d
 NCAP	hil/nvme.h	/^	unsigned int NCAP[2];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
 NCQR	hil/nvme.h	/^			unsigned short NCQR;$/;"	m	struct:_ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11::__anon13::__anon14
@@ -294,6 +467,14 @@ NULL	common/cosmos_types.h	19;"	d
 NUMBER_OF_CONNECTED_CHANNEL	common/cosmos_plus_system.h	37;"	d
 NUMBER_OF_QUEUES	hil/nvme.h	134;"	d
 NUMD	hil/nvme.h	/^			unsigned short NUMD			:12;$/;"	m	struct:_ADMIN_GET_LOG_PAGE_DW10::__anon31::__anon32
+NUM_BIT_BLOCK	fil/nand_orig/fil2.h	32;"	d
+NUM_BIT_LPN_PER_PAGE	fil/nand_orig/fil2.h	33;"	d
+NUM_BIT_PPAGE	fil/nand_orig/fil2.h	34;"	d
+NUM_BIT_VPAGE	fil/nand_orig/fil2.h	35;"	d
+NUM_BIT_WAY	fil/nand_orig/fil2.h	22;"	d
+NUM_BIT_WAY	fil/nand_orig/fil2.h	24;"	d
+NUM_BIT_WAY	fil/nand_orig/fil2.h	26;"	d
+NUM_BIT_WAY	fil/nand_orig/fil2.h	28;"	d
 NUSE	hil/nvme.h	/^	unsigned int NUSE[2];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
 NVME_ADMIN_CMD_H	hil/nvme_admin_cmd.h	2;"	d
 NVME_ADMIN_COMMAND	hil/nvme.h	/^}NVME_ADMIN_COMMAND;$/;"	t	typeref:struct:_NVME_ADMIN_COMMAND
@@ -341,14 +522,14 @@ ONCS	hil/nvme.h	/^	} ONCS;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struc
 ONLY_CPL_TYPE	hil/host_lld.h	15;"	d
 OPC	hil/nvme.h	/^				unsigned char OPC;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
 OPC	hil/nvme.h	/^				unsigned char OPC;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
+OPERATION_STEP_START	fil/nand/fil_nand.c	23;"	d	file:
+OPERATION_STEP_START	fil/nand_orig/fil_nand.c	13;"	d	file:
 PAGES_PER_BLOCK	common/cosmos_plus_system.h	54;"	d
 PAGES_PER_BLOCK	common/cosmos_plus_system.h	57;"	d
 PAGES_PER_BLOCK_BITS	common/cosmos_plus_system.h	55;"	d
 PAGES_PER_BLOCK_BITS	common/cosmos_plus_system.h	58;"	d
 PAGES_PER_MLC_BLOCK	common/cosmos_plus_system.h	104;"	d
 PAGES_PER_SLC_BLOCK	common/cosmos_plus_system.h	103;"	d
-PAGE_MAX_1	common/cmd_internal.c	57;"	d	file:
-PAGE_MAX_256	common/cmd_internal.c	58;"	d	file:
 PC	hil/nvme.h	/^			unsigned short PC				:1;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW11::__anon19::__anon20
 PC	hil/nvme.h	/^			unsigned short PC			:1;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW11::__anon25::__anon26
 PCIE_FUNC_REG	hil/host_lld.h	/^} PCIE_FUNC_REG;$/;"	t	typeref:struct:_PCIE_FUNC_REG
@@ -369,6 +550,7 @@ PRP2	hil/nvme.h	/^			unsigned int PRP2[2];$/;"	m	struct:_NVME_IO_COMMAND::__anon
 PSDT	hil/nvme.h	/^				unsigned char PSDT			:1;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
 PSDT	hil/nvme.h	/^				unsigned char PSDT			:1;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6
 PSDx	hil/nvme.h	/^	ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR PSDx[32];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+PhyChWway2VDie	fil/nand_orig/fil2.h	7;"	d
 QID	hil/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_CREATE_IO_CQ_DW10::__anon17::__anon18
 QID	hil/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_CREATE_IO_SQ_DW10::__anon23::__anon24
 QID	hil/nvme.h	/^			unsigned short QID;$/;"	m	struct:_ADMIN_DELETE_IO_CQ_DW10::__anon21::__anon22
@@ -493,23 +675,95 @@ TRACE_TYPE	common/cosmos_types.h	/^} TRACE_TYPE;$/;"	t	typeref:enum:__anon92
 TRACE_UNKNOWN	common/cosmos_types.h	/^	TRACE_UNKNOWN,$/;"	e	enum:__anon92
 TRACE_WRITE	common/cosmos_types.h	/^	TRACE_WRITE,$/;"	e	enum:__anon92
 TRUE	common/cosmos_types.h	11;"	d
-TV_ABS	util/debug.h	41;"	d
-TV_DEF	util/debug.h	35;"	d
-TV_DIF	util/debug.h	44;"	d
-TV_GET	util/debug.h	38;"	d
+TV_ABS	util/debug.h	43;"	d
+TV_DEF	util/debug.h	37;"	d
+TV_DIF	util/debug.h	46;"	d
+TV_GET	util/debug.h	40;"	d
 UINT16	common/cosmos_types.h	/^typedef unsigned short		UINT16;$/;"	t
 UINT32	common/cosmos_types.h	/^typedef unsigned int		UINT32;$/;"	t
 UINT64	common/cosmos_types.h	/^typedef unsigned long long	UINT64;$/;"	t
 UINT8	common/cosmos_types.h	/^typedef unsigned char		UINT8;$/;"	t
 USER_CHANNELS	common/cosmos_plus_system.h	90;"	d
+USER_CHANNELS	fil/ram/fil.c	16;"	d	file:
 USER_WAYS	common/cosmos_plus_system.h	91;"	d
+USER_WAYS	fil/ram/fil.c	17;"	d	file:
 UTIL_H	util/util.h	2;"	d
+V2FCommand_BlockErase	fil/nand/nsc_driver.h	13;"	d
+V2FCommand_BlockErase	fil/nand_orig/nsc_driver.h	13;"	d
+V2FCommand_GetFeatures	fil/nand/nsc_driver.h	9;"	d
+V2FCommand_GetFeatures	fil/nand_orig/nsc_driver.h	9;"	d
+V2FCommand_NOP	fil/nand/nsc_driver.h	6;"	d
+V2FCommand_NOP	fil/nand_orig/nsc_driver.h	6;"	d
+V2FCommand_ProgramPage	fil/nand/nsc_driver.h	12;"	d
+V2FCommand_ProgramPage	fil/nand_orig/nsc_driver.h	12;"	d
+V2FCommand_ReadPageTransfer	fil/nand/nsc_driver.h	11;"	d
+V2FCommand_ReadPageTransfer	fil/nand_orig/nsc_driver.h	11;"	d
+V2FCommand_ReadPageTransferRaw	fil/nand/nsc_driver.h	15;"	d
+V2FCommand_ReadPageTransferRaw	fil/nand_orig/nsc_driver.h	15;"	d
+V2FCommand_ReadPageTrigger	fil/nand/nsc_driver.h	10;"	d
+V2FCommand_ReadPageTrigger	fil/nand_orig/nsc_driver.h	10;"	d
+V2FCommand_Reset	fil/nand/nsc_driver.h	7;"	d
+V2FCommand_Reset	fil/nand_orig/nsc_driver.h	7;"	d
+V2FCommand_SetFeatures	fil/nand/nsc_driver.h	8;"	d
+V2FCommand_SetFeatures	fil/nand_orig/nsc_driver.h	8;"	d
+V2FCommand_StatusCheck	fil/nand/nsc_driver.h	14;"	d
+V2FCommand_StatusCheck	fil/nand_orig/nsc_driver.h	14;"	d
+V2FCrcValid	fil/nand/nsc_driver.h	17;"	d
+V2FCrcValid	fil/nand_orig/nsc_driver.h	17;"	d
+V2FEliminateReportDoneFlag	fil/nand/nsc_driver.h	27;"	d
+V2FEliminateReportDoneFlag	fil/nand_orig/nsc_driver.h	27;"	d
+V2FEnterToggleMode	fil/nand/nsc_driver.h	22;"	d
+V2FEnterToggleMode	fil/nand_orig/nsc_driver.h	22;"	d
+V2FEraseBlockAsync	fil/nand/nsc_driver.c	/^V2FEraseBlockAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)$/;"	f
+V2FEraseBlockAsync	fil/nand_orig/nsc_driver.c	/^V2FEraseBlockAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)$/;"	f
+V2FGetFeaturesSync	fil/nand/nsc_driver.c	/^V2FGetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int* feature0x01, unsigned int* feature0x02, unsigned int* feature0x10, unsigned int* feature0x30)$/;"	f
+V2FGetFeaturesSync	fil/nand_orig/nsc_driver.c	/^V2FGetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int* feature0x01, unsigned int* feature0x02, unsigned int* feature0x10, unsigned int* feature0x30)$/;"	f
+V2FIsControllerBusy	fil/nand/nsc_driver.c	/^V2FIsControllerBusy(V2FMCRegisters* dev)$/;"	f
+V2FIsControllerBusy	fil/nand_orig/nsc_driver.c	/^V2FIsControllerBusy(V2FMCRegisters* dev)$/;"	f
+V2FMCRegisters	fil/nand/nsc_driver.h	/^} V2FMCRegisters;$/;"	t	typeref:struct:__anon113
+V2FMCRegisters	fil/nand_orig/nsc_driver.h	/^} V2FMCRegisters;$/;"	t	typeref:struct:__anon126
+V2FPageChunkValid	fil/nand/nsc_driver.h	19;"	d
+V2FPageChunkValid	fil/nand_orig/nsc_driver.h	19;"	d
+V2FProgramPageAsync	fil/nand/nsc_driver.c	/^V2FProgramPageAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress, void* pageDataBuffer, void* spareDataBuffer)$/;"	f
+V2FProgramPageAsync	fil/nand_orig/nsc_driver.c	/^V2FProgramPageAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress, void* pageDataBuffer, void* spareDataBuffer)$/;"	f
+V2FReadPageTransferAsync	fil/nand/nsc_driver.c	/^V2FReadPageTransferAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, void* spareDataBuffer, unsigned int* errorInformation, unsigned int* completion, unsigned int rowAddress)$/;"	f
+V2FReadPageTransferAsync	fil/nand_orig/nsc_driver.c	/^V2FReadPageTransferAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, void* spareDataBuffer, unsigned int* errorInformation, unsigned int* completion, unsigned int rowAddress)$/;"	f
+V2FReadPageTransferRawAsync	fil/nand/nsc_driver.c	/^V2FReadPageTransferRawAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, unsigned int* completion)$/;"	f
+V2FReadPageTransferRawAsync	fil/nand_orig/nsc_driver.c	/^V2FReadPageTransferRawAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, unsigned int* completion)$/;"	f
+V2FReadPageTriggerAsync	fil/nand/nsc_driver.c	/^V2FReadPageTriggerAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)$/;"	f
+V2FReadPageTriggerAsync	fil/nand_orig/nsc_driver.c	/^V2FReadPageTriggerAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)$/;"	f
+V2FReadyBusyAsync	fil/nand/nsc_driver.c	/^V2FReadyBusyAsync(V2FMCRegisters* dev)$/;"	f
+V2FReadyBusyAsync	fil/nand_orig/nsc_driver.c	/^V2FReadyBusyAsync(V2FMCRegisters* dev)$/;"	f
+V2FRequestComplete	fil/nand/nsc_driver.h	28;"	d
+V2FRequestComplete	fil/nand_orig/nsc_driver.h	28;"	d
+V2FRequestFail	fil/nand/nsc_driver.h	29;"	d
+V2FRequestFail	fil/nand_orig/nsc_driver.h	29;"	d
+V2FRequestReportDone	fil/nand/nsc_driver.h	26;"	d
+V2FRequestReportDone	fil/nand_orig/nsc_driver.h	26;"	d
+V2FResetSync	fil/nand/nsc_driver.c	/^V2FResetSync(V2FMCRegisters* dev, int way)$/;"	f
+V2FResetSync	fil/nand_orig/nsc_driver.c	/^V2FResetSync(V2FMCRegisters* dev, int way)$/;"	f
+V2FSetFeaturesSync	fil/nand/nsc_driver.c	/^V2FSetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int feature0x02, unsigned int feature0x10, unsigned int feature0x01, unsigned int payLoadAddr)$/;"	f
+V2FSetFeaturesSync	fil/nand_orig/nsc_driver.c	/^V2FSetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int feature0x02, unsigned int feature0x10, unsigned int feature0x01, unsigned int payLoadAddr)$/;"	f
+V2FSpareChunkValid	fil/nand/nsc_driver.h	18;"	d
+V2FSpareChunkValid	fil/nand_orig/nsc_driver.h	18;"	d
+V2FStatusCheckAsync	fil/nand/nsc_driver.c	/^V2FStatusCheckAsync(V2FMCRegisters* dev, int way, unsigned int* statusReport)$/;"	f
+V2FStatusCheckAsync	fil/nand_orig/nsc_driver.c	/^V2FStatusCheckAsync(V2FMCRegisters* dev, int way, unsigned int* statusReport)$/;"	f
+V2FStatusCheckSync	fil/nand/nsc_driver.c	/^V2FStatusCheckSync(V2FMCRegisters* dev, int way)$/;"	f
+V2FStatusCheckSync	fil/nand_orig/nsc_driver.c	/^V2FStatusCheckSync(V2FMCRegisters* dev, int way)$/;"	f
+V2FTransferComplete	fil/nand/nsc_driver.h	25;"	d
+V2FTransferComplete	fil/nand_orig/nsc_driver.h	25;"	d
+V2FWayReady	fil/nand/nsc_driver.h	24;"	d
+V2FWayReady	fil/nand_orig/nsc_driver.h	24;"	d
+V2FWorstChunkErrorCount	fil/nand/nsc_driver.h	20;"	d
+V2FWorstChunkErrorCount	fil/nand_orig/nsc_driver.h	20;"	d
 VID	hil/nvme.h	/^	unsigned short VID;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
 VOID	common/cosmos_types.h	/^typedef void				VOID;$/;"	t
 VOLATILE_WRITE_CACHE	hil/nvme.h	133;"	d
 VS	hil/nvme.h	/^	unsigned char VS[1024];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
 VS	hil/nvme.h	/^	unsigned char VS[3712];$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE
 VWC	hil/nvme.h	/^	} VWC;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER	typeref:struct:_ADMIN_IDENTIFY_CONTROLLER::__anon43
+WAY_STATUS	fil/nand/fil_nand.c	/^} WAY_STATUS;$/;"	t	typeref:struct:__anon108	file:
+WAY_STATUS	fil/nand_orig/fil_nand.c	/^} WAY_STATUS;$/;"	t	typeref:struct:__anon117	file:
 WP	hil/nvme.h	/^	unsigned int WP							:1;$/;"	m	struct:_DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES
 WRITE_ATOMICITY	hil/nvme.h	137;"	d
 _ADMIN_CREATE_IO_CQ_DW10	hil/nvme.h	/^typedef struct _ADMIN_CREATE_IO_CQ_DW10 {$/;"	s
@@ -527,9 +781,15 @@ _ADMIN_IDENTIFY_NAMESPACE	hil/nvme.h	/^typedef struct _ADMIN_IDENTIFY_NAMESPACE 
 _ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR	hil/nvme.h	/^typedef struct _ADMIN_IDENTIFY_POWER_STATE_DESCRIPTOR {$/;"	s
 _ADMIN_SET_FEATURES_DW10	hil/nvme.h	/^typedef struct _ADMIN_SET_FEATURES_DW10 {$/;"	s
 _ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11	hil/nvme.h	/^typedef struct _ADMIN_SET_FEATURES_NUMBER_OF_QUEUES_DW11 {$/;"	s
+_AddToRequestDoneQ	fil/nand_orig/fil_request.c	/^static void _AddToRequestDoneQ(FTL_REQUEST* pstRequest)$/;"	f	file:
+_AddToRequestIssuedQ	fil/nand_orig/fil_request.c	/^static void _AddToRequestIssuedQ(FTL_REQUEST* pstRequest)$/;"	f	file:
+_AddToWaitQ	fil/nand_orig/fil.c	/^static void _AddToWaitQ(FTL_REQUEST_TYPE nReqType, FTL_REQUEST_ID stReqID, NAND_ADDR stPhyAddr, void* pMainBuf, void* pSpareBuf)$/;"	f	file:
 _DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES	hil/nvme.h	/^typedef struct _DATASET_MANAGEMENT_CONTEXT_ATTRIBUTES {$/;"	s
 _DATASET_MANAGEMENT_RANGE	hil/nvme.h	/^typedef struct _DATASET_MANAGEMENT_RANGE {$/;"	s
 _DEV_IRQ_REG	hil/host_lld.h	/^typedef struct _DEV_IRQ_REG {$/;"	s
+_GetLUNBaseAddr	fil/nand_orig/fil_nand.c	/^static unsigned int _GetLUNBaseAddr(int nLUN)$/;"	f	file:
+_GetRowAddress	fil/nand_orig/fil_nand.c	/^static unsigned int _GetRowAddress(int nPCh, int nPWay, int nBlock, int nPage)$/;"	f	file:
+_GetTransferResult	fil/nand_orig/fil_nand.c	/^static int _GetTransferResult(unsigned int *panErrorFlag)$/;"	f	file:
 _HOST_DMA_ASSIST_STATUS	hil/host_lld.h	/^typedef struct _HOST_DMA_ASSIST_STATUS {$/;"	s
 _HOST_DMA_CMD_FIFO_REG	hil/host_lld.h	/^typedef struct _HOST_DMA_CMD_FIFO_REG {$/;"	s
 _HOST_DMA_FIFO_CNT_REG	hil/host_lld.h	/^typedef struct _HOST_DMA_FIFO_CNT_REG$/;"	s
@@ -544,6 +804,17 @@ _IO_READ_COMMAND_DW15	hil/nvme.h	/^typedef struct _IO_READ_COMMAND_DW15 {$/;"	s
 _IO_WRITE_COMMAND_DW12	hil/nvme.h	/^typedef struct _IO_WRITE_COMMAND_DW12 {$/;"	s
 _IO_WRITE_COMMAND_DW13	hil/nvme.h	/^typedef struct _IO_WRITE_COMMAND_DW13 {$/;"	s
 _IO_WRITE_COMMAND_DW15	hil/nvme.h	/^typedef struct _IO_WRITE_COMMAND_DW15 {$/;"	s
+_InitRequestInfo	fil/nand_orig/fil_request.c	/^static void _InitRequestInfo(void)$/;"	f	file:
+_InitRequestPool	fil/nand_orig/fil_request.c	/^static void _InitRequestPool(void)$/;"	f	file:
+_IsCMDIssuable	fil/nand_orig/fil_nand.c	/^static int _IsCMDIssuable(int nPCh, int nPWay)$/;"	f	file:
+_IsCmdDone	fil/nand_orig/fil_nand.c	/^static int _IsCmdDone(volatile unsigned int nStatusResult)$/;"	f	file:
+_IsCmdSuccess	fil/nand_orig/fil_nand.c	/^static int _IsCmdSuccess(volatile unsigned int nStatusResult)$/;"	f	file:
+_IsRequestComplete	fil/nand_orig/fil_nand.c	/^static int _IsRequestComplete(unsigned int nResult)$/;"	f	file:
+_IsRequestFail	fil/nand/fil_nand.c	/^static int _IsRequestFail(unsigned int nResult)$/;"	f	file:
+_IsRequestFail	fil/nand_orig/fil_nand.c	/^static int _IsRequestFail(unsigned int nResult)$/;"	f	file:
+_IsValidAddress	fil/nand_orig/fil_nand.c	/^static int _IsValidAddress(int nCh, int nWay, int nBlock, int nPage)$/;"	f	file:
+_IsValidAddress	fil/nand_orig/fil_request.c	/^static int _IsValidAddress(NAND_ADDR* pstAddr)$/;"	f	file:
+_IsWayIdle	fil/nand_orig/fil_nand.c	/^static int _IsWayIdle(int nPCh, int nPWay)$/;"	f	file:
 _NVME_ADMIN_COMMAND	hil/nvme.h	/^typedef struct _NVME_ADMIN_COMMAND {$/;"	s
 _NVME_ADMIN_QUEUE_SET_REG	hil/host_lld.h	/^typedef struct _NVME_ADMIN_QUEUE_SET_REG {$/;"	s
 _NVME_ADMIN_QUEUE_STATUS	hil/nvme.h	/^typedef struct _NVME_ADMIN_QUEUE_STATUS {$/;"	s
@@ -562,15 +833,40 @@ _NVME_STATUS	hil/nvme.h	/^typedef struct _NVME_STATUS {$/;"	s
 _NVME_STATUS_REG	hil/host_lld.h	/^typedef struct _NVME_STATUS_REG {$/;"	s
 _PCIE_FUNC_REG	hil/host_lld.h	/^typedef struct _PCIE_FUNC_REG {$/;"	s
 _PCIE_STATUS_REG	hil/host_lld.h	/^typedef struct _PCIE_STATUS_REG {$/;"	s
+_ProcessDoneQ	fil/nand_orig/fil_request.c	/^static void _ProcessDoneQ(void)$/;"	f	file:
+_ProcessIssuedQ	fil/nand_orig/fil_request.c	/^static void _ProcessIssuedQ(int nCh, int nWay)$/;"	f	file:
+_ProcessWaitQ	fil/nand_orig/fil_request.c	/^static void _ProcessWaitQ(int nCh, int nWay)$/;"	f	file:
+_ReleaseRequest	fil/nand_orig/fil_request.c	/^static void _ReleaseRequest(FTL_REQUEST* pstRequest)$/;"	f	file:
+_RemoveFromRequestDoneQ	fil/nand_orig/fil_request.c	/^static void _RemoveFromRequestDoneQ(FTL_REQUEST* pstRequest)$/;"	f	file:
+_RemoveFromRequestIssuedQ	fil/nand_orig/fil_request.c	/^static void _RemoveFromRequestIssuedQ(FTL_REQUEST* pstRequest)$/;"	f	file:
+_RemoveFromRequestWaitQ	fil/nand_orig/fil_request.c	/^static void _RemoveFromRequestWaitQ(FTL_REQUEST* pstRequest)$/;"	f	file:
 __ASSERT	util/debug.h	8;"	d
 __COSMOS_PLUS_SYSTEM_H__	common/cosmos_plus_system.h	3;"	d
 __COSMOS_TYPES_H__	common/cosmos_types.h	2;"	d
+__FIL_CONFIG_H__	fil/nand_orig/fil_config.h	17;"	d
+__FIL_NAND_H__	fil/nand_orig/fil_nand.h	2;"	d
+__FIL_REQUEST_H__	fil/nand_orig/fil_request.h	2;"	d
 __IO_ACCESS_H_	util/io_access.h	2;"	d
 __list_add	util/list.h	/^static inline void __list_add(struct list_head *new, struct list_head *prev,$/;"	f
 __list_del	util/list.h	/^static inline void __list_del(struct list_head *prev, struct list_head *next)$/;"	f
+_nand_addr	common/cmd_internal.h	/^typedef struct _nand_addr$/;"	s
+addr	common/cmd_internal.h	/^    nand_addr_t addr;$/;"	m	struct:dma_buf
+addr	common/cmd_internal.h	/^    nand_addr_t addr;$/;"	m	struct:nand_req
 address_space_init	common/address_space.c	/^void address_space_init(void)$/;"	f
+adlIssued	fil/nand_orig/fil_request.c	/^	struct list_head		adlIssued[USER_CHANNELS][USER_WAYS];		\/\/ issued queue$/;"	m	struct:__anon132	typeref:struct:__anon132::list_head	file:
+adlWait	fil/nand_orig/fil_request.c	/^	struct list_head		adlWait[USER_CHANNELS][USER_WAYS];		\/\/ wait queue, adl: array double linked list$/;"	m	struct:__anon132	typeref:struct:__anon132::list_head	file:
 adminQueueInfo	hil/nvme.h	/^	NVME_ADMIN_QUEUE_STATUS adminQueueInfo;$/;"	m	struct:_NVME_STATUS
-arr	common/cmd_internal.h	/^	struct cmd **arr;$/;"	m	struct:cmd_queue	typeref:struct:cmd_queue::cmd
+anData	fil/nand/fil_nand.c	/^    unsigned int anData[USER_CHANNELS][USER_WAYS];$/;"	m	struct:__anon110	file:
+anData	fil/nand/fil_nand.c	/^    unsigned int anData[USER_CHANNELS][USER_WAYS];$/;"	m	struct:__anon111	file:
+anData	fil/nand/fil_nand.c	/^    unsigned int anData[USER_CHANNELS][USER_WAYS][ERROR_INFO_WORD_COUNT];$/;"	m	struct:__anon112	file:
+anData	fil/nand_orig/fil_nand.c	/^	unsigned int anData[USER_CHANNELS][USER_WAYS];$/;"	m	struct:__anon119	file:
+anData	fil/nand_orig/fil_nand.c	/^	unsigned int anData[USER_CHANNELS][USER_WAYS];$/;"	m	struct:__anon120	file:
+anData	fil/nand_orig/fil_nand.c	/^	unsigned int anData[USER_CHANNELS][USER_WAYS][ERROR_INFO_WORD_COUNT];$/;"	m	struct:__anon121	file:
+anIssuedCount	fil/nand_orig/fil_request.c	/^	int						anIssuedCount[USER_CHANNELS][USER_WAYS];	\/\/ issued count is always 1 or 0$/;"	m	struct:__anon132	file:
+anVerificationData	fil/nand_orig/fil_nand.c	/^	unsigned int anVerificationData[USER_CHANNELS][USER_WAYS][TOTAL_BLOCKS_PER_DIE][ROWS_PER_MLC_BLOCK][LPN_PER_PHYSICAL_PAGE];			\/\/ 4 BYTE VERIFICATION DATA$/;"	m	struct:__anon122	file:
+anWaitCount	fil/nand_orig/fil_request.c	/^	int						anWaitCount[USER_CHANNELS][USER_WAYS];$/;"	m	struct:__anon132	file:
+arr	common/cmd_internal.h	/^    struct cmd **arr;$/;"	m	struct:cmd_queue	typeref:struct:cmd_queue::cmd
+astRequest	fil/nand_orig/fil_request.h	/^	FTL_REQUEST			astRequest[FTL_REQUEST_COUNT];$/;"	m	struct:__anon131
 autoCompletion	hil/host_lld.h	/^				unsigned int autoCompletion	:1;	\/\/ dy, NVME_COMMAND_AUTO_COMPLETION_ON or OFF$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
 autoDmaRx	hil/host_lld.h	/^			unsigned char autoDmaRx;	\/\/ dy, DMA index for Rx, DMA done\/request index, MAX 255, increment only$/;"	m	struct:_HOST_DMA_FIFO_CNT_REG::__anon87::__anon88
 autoDmaRxCnt	hil/host_lld.h	/^	unsigned int autoDmaRxCnt;		\/\/ dy, Total auto DMA Rx Count, (cumulative)$/;"	m	struct:_HOST_DMA_STATUS
@@ -581,26 +877,42 @@ autoDmaTxOverFlowCnt	hil/host_lld.h	/^	unsigned int autoDmaTxOverFlowCnt;$/;"	m	
 base_DMA	common/address_space.c	/^void *base_DMA;$/;"	v
 base_NAND	common/address_space.c	/^void *base_NAND;$/;"	v
 base_NVME	common/address_space.c	/^void *base_NVME;$/;"	v
-buf	common/cmd_internal.c	/^	void *buf;$/;"	m	struct:dma_buf	file:
-buf	common/cmd_internal.h	/^	void *buf;$/;"	m	struct:cmd
-buf	common/cmd_internal.h	/^	void *buf;$/;"	m	struct:nand_req
+block	common/cmd_internal.h	/^    unsigned int block: 14;$/;"	m	struct:_nand_addr
+buf	common/cmd_internal.h	/^    struct list_head *buf;$/;"	m	struct:cmd	typeref:struct:cmd::list_head
+buf_main	common/cmd_internal.h	/^    void *buf_main;$/;"	m	struct:dma_buf
+buf_main	common/cmd_internal.h	/^    void *buf_main;$/;"	m	struct:nand_req
+buf_spare	common/cmd_internal.h	/^    void *buf_spare;$/;"	m	struct:dma_buf
+buf_spare	common/cmd_internal.h	/^    void *buf_spare;$/;"	m	struct:nand_req
 busMaster	hil/host_lld.h	/^			unsigned int busMaster		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
 busMaster	hil/host_lld.h	/^			unsigned int busMaster		:1;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
 cacheEn	hil/nvme.h	/^	unsigned int cacheEn;$/;"	m	struct:_NVME_STATUS
 ccEn	hil/host_lld.h	/^			unsigned int ccEn		:1;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
 ccShn	hil/host_lld.h	/^			unsigned int ccShn		:2;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+ch	common/cmd_internal.h	/^    unsigned int ch: 3;$/;"	m	struct:_nand_addr
+chCtlReg	fil/nand_orig/fil_nand.c	/^V2FMCRegisters* chCtlReg[USER_CHANNELS];$/;"	v
+channelBusy	fil/nand/nsc_driver.h	/^	unsigned int channelBusy;		\/\/ dy, 1: busy, 0: idle, HW Simulator.$/;"	m	struct:__anon113
+channelBusy	fil/nand_orig/nsc_driver.h	/^	unsigned int channelBusy;$/;"	m	struct:__anon126
+check_addr_valid	fil/nand/fil_nand.c	/^static int check_addr_valid(int ch, int way, int block, int page)$/;"	f	file:
 check_auto_rx_dma_done	hil/host_lld.c	/^void check_auto_rx_dma_done()$/;"	f
 check_auto_rx_dma_partial_done	hil/host_lld.c	/^unsigned int check_auto_rx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex) {$/;"	f
 check_auto_tx_dma_done	hil/host_lld.c	/^void check_auto_tx_dma_done()$/;"	f
 check_auto_tx_dma_partial_done	hil/host_lld.c	/^unsigned int check_auto_tx_dma_partial_done(unsigned int tailIndex, unsigned int tailAssistIndex) {$/;"	f
+check_bad_block	fil/nand/fil_nand.c	/^static int check_bad_block(int pbn)$/;"	f	file:
+check_cmd_done	fil/nand/fil_nand.c	/^static int check_cmd_done(volatile unsigned int nStatusResult)$/;"	f	file:
+check_cmd_success	fil/nand/fil_nand.c	/^static int check_cmd_success(volatile unsigned int nStatusResult)$/;"	f	file:
 check_direct_rx_dma_done	hil/host_lld.c	/^void check_direct_rx_dma_done()$/;"	f
 check_direct_tx_dma_done	hil/host_lld.c	/^void check_direct_tx_dma_done()$/;"	f
+check_issuable	fil/nand/fil_nand.c	/^static int check_issuable(int ch, int way)$/;"	f	file:
 check_nvme_cc_en	hil/host_lld.c	/^unsigned int check_nvme_cc_en()$/;"	f
+check_request_complete	fil/nand/fil_nand.c	/^static int check_request_complete(unsigned int nResult)$/;"	f	file:
+check_way_idle	fil/nand/fil_nand.c	/^static int check_way_idle(int ch, int way)$/;"	f	file:
 cid	hil/host_lld.h	/^				unsigned int cid			:16;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon78
-cmd	common/cmd_internal.h	/^	struct cmd_struct *cmd;$/;"	m	struct:nand_req	typeref:struct:nand_req::cmd_struct
-cmd	common/cmd_internal.h	/^struct cmd {$/;"	s
+cmd	common/cmd_internal.h	/^    struct cmd *cmd;$/;"	m	struct:nand_req	typeref:struct:nand_req::cmd
+cmd	common/cmd_internal.h	/^struct cmd$/;"	s
 cmd4KBOffset	hil/host_lld.h	/^				unsigned int cmd4KBOffset	:9;	\/\/ dy, 4KB offset in a request$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
 cmdDword	hil/nvme.h	/^	unsigned int cmdDword[16];$/;"	m	struct:_NVME_COMMAND
+cmdSelect	fil/nand/nsc_driver.h	/^	unsigned int cmdSelect;			\/\/ dy, NAND command, V2FCommand_ReadPageTrigger.$/;"	m	struct:__anon113
+cmdSelect	fil/nand_orig/nsc_driver.h	/^	unsigned int cmdSelect;$/;"	m	struct:__anon126
 cmdSeqNum	hil/host_lld.h	/^			unsigned int cmdSeqNum			:8;$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
 cmdSeqNum	hil/nvme.h	/^	unsigned int cmdSeqNum;$/;"	m	struct:_NVME_COMMAND
 cmdSlotTag	hil/host_lld.h	/^				unsigned int cmdSlotTag		:7;$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
@@ -611,8 +923,11 @@ cmdValid	hil/host_lld.h	/^			unsigned int cmdValid			:1;$/;"	m	struct:_NVME_CMD_
 cmd_internal_init	common/cmd_internal.c	/^void cmd_internal_init(void)$/;"	f
 cmd_mem	common/cmd_internal.c	/^static struct cmd *cmd_mem;$/;"	v	typeref:struct:cmd	file:
 cmd_pool_q	common/cmd_internal.c	/^static struct cmd_queue cmd_pool_q;$/;"	v	typeref:struct:cmd_queue	file:
-cmd_queue	common/cmd_internal.h	/^struct cmd_queue {$/;"	s
+cmd_queue	common/cmd_internal.h	/^struct cmd_queue$/;"	s
+completionAddress	fil/nand/nsc_driver.h	/^	unsigned int completionAddress;$/;"	m	struct:__anon113
+completionAddress	fil/nand_orig/nsc_driver.h	/^	unsigned int completionAddress;$/;"	m	struct:__anon126
 cplType	hil/host_lld.h	/^			unsigned short cplType				:2;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77
+cprint	util/debug.h	35;"	d
 cqIrqEn	hil/host_lld.h	/^			unsigned int cqIrqEn			:1;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
 cqSize	hil/host_lld.h	/^			unsigned int cqSize			:8;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
 cqValid	hil/host_lld.h	/^			unsigned int cqValid			:1;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
@@ -621,6 +936,8 @@ cqVector	hil/host_lld.h	/^			unsigned int cqVector			:4;$/;"	m	struct:_NVME_IO_S
 cqVector	hil/nvme.h	/^	unsigned char cqVector;$/;"	m	struct:_NVME_IO_SQ_STATUS
 cstsRdy	hil/host_lld.h	/^			unsigned int cstsRdy		:1;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
 cstsShst	hil/host_lld.h	/^			unsigned int cstsShst		:2;$/;"	m	struct:_NVME_STATUS_REG::__anon72::__anon73
+dataAddress	fil/nand/nsc_driver.h	/^	unsigned int dataAddress;$/;"	m	struct:__anon113
+dataAddress	fil/nand_orig/nsc_driver.h	/^	unsigned int dataAddress;$/;"	m	struct:__anon126
 del_cmd	common/cmd_internal.c	/^void del_cmd(struct cmd *cmd)$/;"	f
 devAddr	hil/host_lld.h	/^			unsigned int devAddr;				\/\/ dy, Memory Address$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90
 dev_irq_handler	hil/host_lld.c	/^void dev_irq_handler()$/;"	f
@@ -631,30 +948,31 @@ directDmaRxCnt	hil/host_lld.h	/^	unsigned int directDmaRxCnt;$/;"	m	struct:_HOST
 directDmaTx	hil/host_lld.h	/^			unsigned char directDmaTx;$/;"	m	struct:_HOST_DMA_FIFO_CNT_REG::__anon87::__anon88
 directDmaTxCnt	hil/host_lld.h	/^	unsigned int directDmaTxCnt;$/;"	m	struct:_HOST_DMA_STATUS
 disk	fil/ram/fil.c	/^static void *disk;$/;"	v	file:
-disk_block	common/cmd_internal.h	/^	void *disk_block;$/;"	m	struct:nand_req
-disk_size	ftl/passthru/ftl.c	/^static int disk_size = 1 << 26; \/\/ default 64 MiB$/;"	v	file:
+disk_size	ftl/passthru/ftl.c	/^static int disk_size = 4096 * HOST_BLOCK_CNT; \/\/ default 64 MiB$/;"	v	file:
+disk_size	ftl/simple/ftl.c	/^static int disk_size = 4096 * HOST_BLOCK_CNT; \/\/ default 64 MiB$/;"	v	file:
+dlDoneQ	fil/nand_orig/fil_request.c	/^	struct list_head		dlDoneQ;									\/\/ request will be callbeck to FTL$/;"	m	struct:__anon132	typeref:struct:__anon132::list_head	file:
+dlFree	fil/nand_orig/fil_request.c	/^	struct list_head		dlFree;									\/\/ free NVMeRequest$/;"	m	struct:__anon132	typeref:struct:__anon132::list_head	file:
+dlList	fil/nand_orig/fil_request.h	/^	struct list_head	dlList;$/;"	m	struct:__anon130	typeref:struct:__anon130::list_head
 dmaDirection	hil/host_lld.h	/^				unsigned int dmaDirection	:1;	\/\/ dy, HOST_DMA_TX_DIRECTION, HOST_DMA_RX_DIRECTION$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
 dmaLen	hil/host_lld.h	/^				unsigned int dmaLen		:13;$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
 dmaType	hil/host_lld.h	/^				unsigned int dmaType		:1;	\/\/ dy, HOST_DMA_AUTO_TYPE or HOST_DMA_DIRECT_TYPE$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90::__anon91
 dma_address_init	common/address_space.c	/^static void dma_address_init(void)$/;"	f	file:
-dma_buf	common/cmd_internal.c	/^struct dma_buf {$/;"	s	file:
-dma_issue_q	common/cmd_internal.c	/^struct cmd_queue dma_issue_q;$/;"	v	typeref:struct:cmd_queue
-dma_list_1	common/cmd_internal.c	/^LIST_HEAD(dma_list_1);$/;"	v
-dma_list_256	common/cmd_internal.c	/^LIST_HEAD(dma_list_256);$/;"	v
+dma_buf	common/cmd_internal.h	/^struct dma_buf$/;"	s
+dma_buf_cnt	common/cmd_internal.c	/^static int dma_buf_cnt;$/;"	v	file:
 dma_malloc	common/dma_memory.c	/^void *dma_malloc(size_t size, size_t alignment)$/;"	f
-dma_mem_1	common/cmd_internal.c	/^static void *dma_mem_1;$/;"	v	file:
-dma_mem_256	common/cmd_internal.c	/^static void *dma_mem_256;$/;"	v	file:
+dma_mem_main	common/cmd_internal.c	/^static void *dma_mem_main;$/;"	v	file:
+dma_mem_spare	common/cmd_internal.c	/^static void *dma_mem_spare;$/;"	v	file:
 dma_memory_init	common/dma_memory.c	/^void dma_memory_init(void)$/;"	f
-dma_meta_1	common/cmd_internal.c	/^static struct dma_buf *dma_meta_1;$/;"	v	typeref:struct:dma_buf	file:
-dma_meta_256	common/cmd_internal.c	/^static struct dma_buf *dma_meta_256;$/;"	v	typeref:struct:dma_buf	file:
+dma_meta	common/cmd_internal.c	/^static struct dma_buf *dma_meta;$/;"	v	typeref:struct:dma_buf	file:
 dma_rx_head	hil/hil.c	/^static unsigned int dma_rx_head = 0;$/;"	v	file:
 dma_rx_slots	hil/hil.c	/^static inline int dma_rx_slots(void)$/;"	f	file:
 dma_rx_tail	hil/hil.c	/^static unsigned int dma_rx_tail = 0;$/;"	v	file:
 dma_tx_head	hil/hil.c	/^static unsigned int dma_tx_head = 0;$/;"	v	file:
 dma_tx_slots	hil/hil.c	/^static inline int dma_tx_slots(void)$/;"	f	file:
 dma_tx_tail	hil/hil.c	/^static unsigned int dma_tx_tail = 0;$/;"	v	file:
-dmabuf_get	common/cmd_internal.c	/^void *dmabuf_get(int nblock)$/;"	f
-dmabuf_put	common/cmd_internal.c	/^void dmabuf_put(void *ptr)$/;"	f
+dmabuf_get	common/cmd_internal.c	/^struct list_head *dmabuf_get(int nblock)$/;"	f
+dmabuf_init	common/cmd_internal.c	/^static void dmabuf_init(void)$/;"	f	file:
+dmabuf_put	common/cmd_internal.c	/^void dmabuf_put(struct list_head *buf_list, int nblock)$/;"	f
 done_q	common/cmd_internal.c	/^struct cmd_queue done_q;$/;"	v	typeref:struct:cmd_queue
 dprint	util/debug.h	29;"	d
 dprint	util/debug.h	31;"	d
@@ -704,26 +1022,47 @@ dword14	hil/nvme.h	/^			unsigned int dword14;$/;"	m	struct:_NVME_IO_COMMAND::__a
 dword15	hil/nvme.h	/^			unsigned int dword15;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2
 dword15	hil/nvme.h	/^			unsigned int dword15;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5
 enable	hil/nvme.h	/^	unsigned char enable;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
+errorCountAddress	fil/nand/nsc_driver.h	/^	unsigned int errorCountAddress;		\/\/ dy, read error information, ERROR_INFO_FAIL, ERROR_INFO_PASS, ERROR_INFO_WARNING$/;"	m	struct:__anon113
+errorCountAddress	fil/nand_orig/nsc_driver.h	/^	unsigned int errorCountAddress;$/;"	m	struct:__anon126
 fifoHead	hil/host_lld.h	/^	HOST_DMA_FIFO_CNT_REG fifoHead;		\/\/ dy, DMA IP SFR. HW update$/;"	m	struct:_HOST_DMA_STATUS
 fifoTail	hil/host_lld.h	/^	HOST_DMA_FIFO_CNT_REG fifoTail;		\/\/ dy, Insert Issue DMA, tail insert head, FW update$/;"	m	struct:_HOST_DMA_STATUS
+fil_add_req	fil/nand/fil_nand.c	/^void fil_add_req(struct cmd *cmd, int type, void *buf_main, void *buf_spare, nand_addr_t addr)$/;"	f
+fil_add_req	fil/ram/fil.c	/^static void fil_add_req(struct cmd *cmd, int type, void *buf_main, void *buf_spare, nand_addr_t addr)$/;"	f	file:
 fil_init	fil/file/fil.c	/^void fil_init(void)$/;"	f
+fil_init	fil/nand/fil.c	/^void fil_init(void)$/;"	f
+fil_init	fil/nand_orig/fil.c	/^void fil_init(void)$/;"	f
 fil_init	fil/nofil/fil.c	/^void fil_init(void)$/;"	f
 fil_init	fil/ram/fil.c	/^void fil_init(void)$/;"	f
-fil_process_nandq	fil/ram/fil.c	/^static void fil_process_nandq(void)$/;"	f	file:
+fil_nand_init	fil/nand/fil_nand.c	/^void fil_nand_init(void)$/;"	f
+fil_nand_run	fil/nand/fil_nand.c	/^void fil_nand_run(void)$/;"	f
+fil_process_nand	fil/ram/fil.c	/^static void fil_process_nand(void)$/;"	f	file:
+fil_process_wait	fil/nand/fil.c	/^static void fil_process_wait(void)$/;"	f	file:
+fil_process_wait	fil/ram/fil.c	/^static void fil_process_wait(void)$/;"	f	file:
 fil_run	fil/file/fil.c	/^void fil_run(void)$/;"	f
+fil_run	fil/nand/fil.c	/^void fil_run(void)$/;"	f
+fil_run	fil/nand_orig/fil.c	/^void fil_run(void)$/;"	f
 fil_run	fil/nofil/fil.c	/^void fil_run(void)$/;"	f
 fil_run	fil/ram/fil.c	/^void fil_run(void)$/;"	f
 firstFirmwareSlotReadOnly	hil/nvme.h	/^		unsigned char firstFirmwareSlotReadOnly					:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon36
 formatAppliesToAllNamespaces	hil/nvme.h	/^		unsigned char formatAppliesToAllNamespaces				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
 ftl_init	ftl/passthru/ftl.c	/^void ftl_init(void)$/;"	f
+ftl_init	ftl/simple/ftl.c	/^void ftl_init(void)$/;"	f
 ftl_process_q	ftl/passthru/ftl.c	/^static void ftl_process_q(void)$/;"	f	file:
+ftl_process_q	ftl/simple/ftl.c	/^static void ftl_process_q(void)$/;"	f	file:
 ftl_run	ftl/passthru/ftl.c	/^void ftl_run(void)$/;"	f
+ftl_run	ftl/simple/ftl.c	/^void ftl_run(void)$/;"	f
 ftl_wait_q	common/cmd_internal.c	/^struct cmd_queue ftl_wait_q;$/;"	v	typeref:struct:cmd_queue
 g_hostDmaAssistStatus	hil/host_lld.c	/^HOST_DMA_ASSIST_STATUS g_hostDmaAssistStatus;$/;"	v
 g_hostDmaStatus	hil/host_lld.c	/^HOST_DMA_STATUS g_hostDmaStatus;$/;"	v
 g_nvmeTask	hil/nvme_main.c	/^volatile NVME_CONTEXT g_nvmeTask;$/;"	v
+g_pstFTLRequestInfo	fil/nand_orig/fil_request.c	/^static FTL_REQUEST_INFO*		g_pstFTLRequestInfo;$/;"	v	file:
+g_pstFTLRequestPool	fil/nand_orig/fil_request.c	/^static FTL_REQUEST_POOL*		g_pstFTLRequestPool;$/;"	v	file:
+g_pstNAND	fil/nand_orig/fil_nand.c	/^NAND_GLOBAL	*g_pstNAND;$/;"	v
+get_lun_base_addr	fil/nand/fil_nand.c	/^static unsigned int get_lun_base_addr(int nLUN)$/;"	f	file:
 get_num_of_queue	hil/nvme_admin_cmd.c	/^unsigned int get_num_of_queue(unsigned int dword11)$/;"	f
 get_nvme_cmd	hil/host_lld.c	/^unsigned int get_nvme_cmd(unsigned short *qID, unsigned short *cmdSlotTag, unsigned int *cmdSeqNum, unsigned int *cmdDword)$/;"	f
+get_row_addr	fil/nand/fil_nand.c	/^static unsigned int get_row_addr(int ch, int way, int block, int page)$/;"	f	file:
+get_transfer_result	fil/nand/fil_nand.c	/^static int get_transfer_result(unsigned int *panErrorFlag)$/;"	f	file:
 handle_create_io_cq	hil/nvme_admin_cmd.c	/^void handle_create_io_cq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
 handle_create_io_sq	hil/nvme_admin_cmd.c	/^void handle_create_io_sq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
 handle_delete_io_cq	hil/nvme_admin_cmd.c	/^void handle_delete_io_cq(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
@@ -736,7 +1075,7 @@ handle_nvme_io_cmd	hil/nvme_io_cmd.c	/^void handle_nvme_io_cmd(NVME_COMMAND *nvm
 handle_nvme_io_read	hil/nvme_io_cmd.c	/^void handle_nvme_io_read(unsigned int cmdSlotTag, NVME_IO_COMMAND *nvmeIOCmd)$/;"	f
 handle_nvme_io_write	hil/nvme_io_cmd.c	/^void handle_nvme_io_write(unsigned int cmdSlotTag, NVME_IO_COMMAND *nvmeIOCmd)$/;"	f
 handle_set_features	hil/nvme_admin_cmd.c	/^void handle_set_features(NVME_ADMIN_COMMAND *nvmeAdminCmd, NVME_COMPLETION *nvmeCPL)$/;"	f
-head	common/cmd_internal.h	/^	volatile int head;$/;"	m	struct:cmd_queue
+head	common/cmd_internal.h	/^    volatile int head;$/;"	m	struct:cmd_queue
 hil_get_storage_blocks	hil/hil.c	/^unsigned int hil_get_storage_blocks(void)$/;"	f
 hil_init	hil/hil.c	/^void hil_init(void)$/;"	f
 hil_proces_tmp	hil/hil.c	/^void hil_proces_tmp(void)$/;"	f
@@ -748,6 +1087,11 @@ hil_read_block	hil/hil.c	/^void hil_read_block(unsigned int cmd_tag, unsigned in
 hil_run	hil/hil.c	/^void hil_run(void)$/;"	f
 hil_set_storage_blocks	hil/hil.c	/^void hil_set_storage_blocks(unsigned int nblock)$/;"	f
 hil_write_block	hil/hil.c	/^void hil_write_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int lba_count)$/;"	f
+i_block	ftl/simple/ftl.c	/^static unsigned int i_block = 0;$/;"	v	file:
+i_ch	ftl/simple/ftl.c	/^static unsigned int i_ch = 0;$/;"	v	file:
+i_page	ftl/simple/ftl.c	/^static unsigned int i_page = 0;$/;"	v	file:
+i_way	ftl/simple/ftl.c	/^static unsigned int i_way = 0;$/;"	v	file:
+id	common/cmd_internal.h	/^    int id; \/\/ TODO debug use only, delete later$/;"	m	struct:dma_buf
 identify_controller	hil/nvme_identify.c	/^void identify_controller(unsigned int pBuffer)$/;"	f
 identify_namespace	hil/nvme_identify.c	/^void identify_namespace(unsigned int pBuffer)$/;"	f
 init_cmd_queue	common/cmd_internal.c	/^static void init_cmd_queue(struct cmd_queue *q, int size)$/;"	f	file:
@@ -760,24 +1104,27 @@ irqEn	hil/nvme.h	/^	unsigned char irqEn;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
 irqEn	hil/nvme.h	/^	unsigned char irqEn;$/;"	m	struct:_NVME_IO_CQ_STATUS
 irqVector	hil/host_lld.h	/^			unsigned int irqVector			:3;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
 irqVector	hil/nvme.h	/^	unsigned short irqVector;$/;"	m	struct:_NVME_IO_CQ_STATUS
-lba	common/cmd_internal.h	/^	unsigned int lba;$/;"	m	struct:cmd
+l2p_table	ftl/passthru/ftl.c	/^static nand_addr_t l2p_table[HOST_BLOCK_CNT];$/;"	v	file:
+l2p_table	ftl/simple/ftl.c	/^static nand_addr_t l2p_table[HOST_BLOCK_CNT];$/;"	v	file:
+lba	common/cmd_internal.h	/^    unsigned int lba;$/;"	m	struct:cmd
 lengthInLogicalBlocks	hil/nvme.h	/^	unsigned int lengthInLogicalBlocks;$/;"	m	struct:_DATASET_MANAGEMENT_RANGE
-list	common/cmd_internal.c	/^	struct list_head list;$/;"	m	struct:dma_buf	typeref:struct:dma_buf::list_head	file:
+list	common/cmd_internal.h	/^    struct list_head list;$/;"	m	struct:dma_buf	typeref:struct:dma_buf::list_head
+list	common/cmd_internal.h	/^    struct list_head list;$/;"	m	struct:nand_req	typeref:struct:nand_req::list_head
 list_add	util/list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
 list_add_tail	util/list.h	/^static inline void list_add_tail(struct list_head *new, struct list_head *head)$/;"	f
 list_del	util/list.h	/^static inline void list_del(struct list_head *entry)$/;"	f
 list_empty	util/list.h	/^static inline int list_empty(struct list_head *head)$/;"	f
-list_entry	util/list.h	67;"	d
-list_first_entry	util/list.h	70;"	d
-list_for_each	util/list.h	79;"	d
-list_for_each_entry	util/list.h	89;"	d
-list_for_each_prev	util/list.h	82;"	d
-list_for_each_safe	util/list.h	85;"	d
+list_entry	util/list.h	66;"	d
+list_first_entry	util/list.h	69;"	d
+list_for_each	util/list.h	78;"	d
+list_for_each_entry	util/list.h	88;"	d
+list_for_each_prev	util/list.h	81;"	d
+list_for_each_safe	util/list.h	84;"	d
 list_head	util/list.h	/^struct list_head {$/;"	s
-list_last_entry	util/list.h	73;"	d
+list_last_entry	util/list.h	72;"	d
 list_move	util/list.h	/^static inline void list_move(struct list_head *list, struct list_head *head)$/;"	f
 list_move_tail	util/list.h	/^static inline void list_move_tail(struct list_head *list, struct list_head *head)$/;"	f
-list_next_entry	util/list.h	76;"	d
+list_next_entry	util/list.h	75;"	d
 ltssm	hil/host_lld.h	/^			unsigned int ltssm		:6;$/;"	m	struct:_PCIE_STATUS_REG::__anon68::__anon69
 mAxiReadErr	hil/host_lld.h	/^			unsigned int mAxiReadErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
 mAxiWriteErr	hil/host_lld.h	/^			unsigned int mAxiWriteErr	:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
@@ -793,32 +1140,58 @@ msiVecNum	hil/host_lld.h	/^			unsigned int msiVecNum		:3;$/;"	m	struct:_PCIE_FUN
 msixEnable	hil/host_lld.h	/^			unsigned int msixEnable		:1;$/;"	m	struct:_PCIE_FUNC_REG::__anon70::__anon71
 nActiveBlockIndex	common/cosmos_types.h	/^	unsigned int	nActiveBlockIndex : 16;			\/\/ Index of active block$/;"	m	struct:__anon103
 nActiveBlockIndex	common/cosmos_types.h	/^	unsigned int	nActiveBlockIndex : ACTIVE_BLOCK_COUNT_BITS;			\/\/ Index of HIL to FTL Request$/;"	m	struct:__anon98
+nBlock	fil/nand_orig/fil2.h	/^    unsigned int nBlock     : NUM_BIT_BLOCK;$/;"	m	struct:__anon125
 nBufferingIndex	common/cosmos_types.h	/^	unsigned int	nBufferingIndex : ACTIVE_BLOCK_BUFFERING_INDEX_BITS;	\/\/ index of active block buffering $/;"	m	struct:__anon98
+nCh	fil/nand_orig/fil2.h	/^    unsigned int nCh        : CHANNEL_BITS;            \/\/ LSB position, bit 0$/;"	m	struct:__anon125
+nCommon	fil/nand/fil_nand.c	/^        unsigned int        nCommon;$/;"	m	union:__anon108::__anon109	file:
+nCommon	fil/nand_orig/fil_nand.c	/^		unsigned int		nCommon;$/;"	m	union:__anon117::__anon118	file:
+nDoneCount	fil/nand_orig/fil_request.c	/^	int						nDoneCount;								\/\/ do i need to check count?$/;"	m	struct:__anon132	file:
+nErase	fil/nand/fil_nand.c	/^        NAND_ERASE_STEP     nErase;$/;"	m	union:__anon108::__anon109	file:
+nErase	fil/nand_orig/fil_nand.c	/^		NAND_ERASE_STEP		nErase;$/;"	m	union:__anon117::__anon118	file:
+nFreeCount	fil/nand_orig/fil_request.c	/^	unsigned int			nFreeCount;								\/\/ count of free request$/;"	m	struct:__anon132	file:
 nIOType	common/cosmos_types.h	/^	unsigned int	nIOType : 3;											\/\/ IOTYPE to distinguish Host\/GC$/;"	m	struct:__anon98
 nMoveInfoIndex	common/cosmos_types.h	/^	unsigned int	nMoveInfoIndex : FTL_MOVE_INFO_INDEX_BITS;				\/\/ Index of GCMgr.astMoveInfo$/;"	m	struct:__anon99
+nPPage	fil/nand_orig/fil2.h	/^    unsigned int nPPage     : ROTS_PER_MLC_BLOCK_BITS;    \/\/ physical page number$/;"	m	struct:__anon125
+nProgram	fil/nand/fil_nand.c	/^        NAND_PROGRAM_STEP   nProgram;$/;"	m	union:__anon108::__anon109	file:
+nProgram	fil/nand_orig/fil_nand.c	/^		NAND_PROGRAM_STEP	nProgram;$/;"	m	union:__anon117::__anon118	file:
 nProgramBufferingIndex	common/cosmos_types.h	/^	unsigned int	nProgramBufferingIndex : 16;	\/\/ buffering index$/;"	m	struct:__anon103
+nRead	fil/nand/fil_nand.c	/^        NAND_READ_STEP      nRead;$/;"	m	union:__anon108::__anon109	file:
+nRead	fil/nand_orig/fil_nand.c	/^		NAND_READ_STEP		nRead;$/;"	m	union:__anon117::__anon118	file:
 nRequestBufIndex	common/cosmos_types.h	/^	unsigned int	nRequestBufIndex	: 16;		\/\/ HOST BUFFER INDEX$/;"	m	struct:__anon94
 nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex		: 16;		\/\/ HOST REQUEST INDEXS$/;"	m	struct:__anon94
 nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex : FTL_REQUEST_ID_REQUEST_INDEX_BITS;		\/\/ Index of HIL to FTL Request$/;"	m	struct:__anon97
 nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex: FTL_REQUEST_ID_REQUEST_INDEX_BITS;		\/\/ Index of GC Request$/;"	m	struct:__anon99
 nRequestIndex	common/cosmos_types.h	/^	unsigned int	nRequestIndex: FTL_REQUEST_ID_REQUEST_INDEX_BITS;		\/\/ Index of Meta Request$/;"	m	struct:__anon100
+nRetry	fil/nand/fil_nand.c	/^    unsigned int            nRetry;$/;"	m	struct:__anon108	file:
+nRetry	fil/nand_orig/fil_nand.c	/^	unsigned int			nRetry;$/;"	m	struct:__anon117	file:
+nStatus	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_STATUS	nStatus;$/;"	m	struct:__anon130
 nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon100
 nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon96
 nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon97
 nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon98
 nType	common/cosmos_types.h	/^	unsigned int	nType : FTL_REQUEST_ID_TYPE_BITS;						\/\/ FTL_REQUEST_ID_TYPE, common part$/;"	m	struct:__anon99
+nType	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_TYPE	nType;$/;"	m	struct:__anon130
+nWay	fil/nand_orig/fil2.h	/^    unsigned int nWay       : NUM_BIT_WAY;$/;"	m	struct:__anon125
+nand_addr_t	common/cmd_internal.h	/^} nand_addr_t;$/;"	t	typeref:struct:_nand_addr
 nand_address_init	common/address_space.c	/^static void nand_address_init(void)$/;"	f	file:
-nand_issue_q	common/cmd_internal.c	/^struct cmd_queue nand_issue_q;$/;"	v	typeref:struct:cmd_queue
-nand_req	common/cmd_internal.h	/^struct nand_req {$/;"	s
+nand_completion	fil/nand/fil_nand.c	/^static NAND_COMPLETION *nand_completion;$/;"	v	file:
+nand_ctrl_reg	fil/nand/fil_nand.c	/^V2FMCRegisters *nand_ctrl_reg[USER_CHANNELS];$/;"	v
+nand_error	fil/nand/fil_nand.c	/^static NAND_ERROR *nand_error;$/;"	v	file:
+nand_q	fil/ram/fil.c	/^struct list_head nand_q[USER_CHANNELS][USER_WAYS];$/;"	v	typeref:struct:list_head
+nand_req	common/cmd_internal.h	/^struct nand_req$/;"	s
+nand_status	fil/nand/fil_nand.c	/^static NAND_STATUS *nand_status;$/;"	v	file:
 nand_wait_q	common/cmd_internal.c	/^struct cmd_queue nand_wait_q;$/;"	v	typeref:struct:cmd_queue
-nblock	common/cmd_internal.h	/^	unsigned int nblock;$/;"	m	struct:cmd
-ndone	common/cmd_internal.h	/^	unsigned int ndone;$/;"	m	struct:cmd
+nblock	common/cmd_internal.h	/^    unsigned int nblock;$/;"	m	struct:cmd
+ndone	common/cmd_internal.h	/^    unsigned int ndone;$/;"	m	struct:cmd
 new_cmd	common/cmd_internal.c	/^struct cmd *new_cmd(void)$/;"	f
-next	util/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+next	util/list.h	/^    struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
 nvmeCcEn	hil/host_lld.h	/^			unsigned int nvmeCcEn		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
 nvmeCcShn	hil/host_lld.h	/^			unsigned int nvmeCcShn		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
 nvme_address_init	common/address_space.c	/^static void nvme_address_init(void)$/;"	f	file:
 nvme_run	hil/nvme_main.c	/^void nvme_run(void)$/;"	f
+pMainBuf	fil/nand_orig/fil_request.h	/^	void*		pMainBuf;				\/\/ size must be BYTES_PER_DATA_REGION_OF_NAND_ROW$/;"	m	struct:__anon129
+pSpareBuf	fil/nand_orig/fil_request.h	/^	void*		pSpareBuf;			\/\/ size must be one of belows$/;"	m	struct:__anon129
+page	common/cmd_internal.h	/^    unsigned int page: 8;$/;"	m	struct:_nand_addr
 pcieAddrH	hil/host_lld.h	/^			unsigned int pcieAddrH;				\/\/ dy,$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90
 pcieAddrL	hil/host_lld.h	/^			unsigned int pcieAddrL;				\/\/ dy,$/;"	m	struct:_HOST_DMA_CMD_FIFO_REG::__anon89::__anon90
 pcieBaseAddrH	hil/host_lld.h	/^			unsigned int pcieBaseAddrH		:4;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
@@ -838,9 +1211,15 @@ pcieMreqErr	hil/host_lld.h	/^			unsigned int pcieMreqErr	:1;$/;"	m	struct:_DEV_I
 pcieMsi	hil/host_lld.h	/^			unsigned int pcieMsi		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
 pcieMsix	hil/host_lld.h	/^			unsigned int pcieMsix		:1;$/;"	m	struct:_DEV_IRQ_REG::__anon66::__anon67
 present	hil/nvme.h	/^		unsigned char present									:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon43
-prev	util/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
+prev	util/list.h	/^    struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
+process_erase_request	fil/nand/fil_nand.c	/^static int process_erase_request(int ch, int way, int block, int bSync)$/;"	f	file:
+process_program_request	fil/nand/fil_nand.c	/^static int process_program_request(int ch, int way, int block, int page, void* buf_main, void* buf_spare, int bSync)$/;"	f	file:
+process_read_request	fil/nand/fil_nand.c	/^static int process_read_request(int ch, int way, int block, int page, void *buf_main, void *buf_spare, int ecc, int sync)$/;"	f	file:
 protectionEnabled	hil/nvme.h	/^		unsigned char protectionEnabled						:3;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon49
 protectionInFirst8	hil/nvme.h	/^		unsigned char protectionInFirst8					:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon49
+pstNAND_Completion	fil/nand_orig/fil_nand.c	/^	NAND_COMPLETION *pstNAND_Completion;$/;"	m	struct:__anon123	file:
+pstNAND_Error	fil/nand_orig/fil_nand.c	/^	NAND_ERROR		*pstNAND_Error;$/;"	m	struct:__anon123	file:
+pstNAND_Status	fil/nand_orig/fil_nand.c	/^	NAND_STATUS		*pstNAND_Status;$/;"	m	struct:__anon123	file:
 qID	hil/host_lld.h	/^			unsigned int qID			:4;	\/\/dy, Command QID, 0:admin, 1: IO$/;"	m	struct:_NVME_CMD_FIFO_REG::__anon74::__anon75
 qID	hil/nvme.h	/^	unsigned short qID;$/;"	m	struct:_NVME_COMMAND
 qSzie	hil/nvme.h	/^	unsigned short qSzie;$/;"	m	struct:_NVME_IO_CQ_STATUS
@@ -850,7 +1229,11 @@ q_full	common/cmd_internal.h	/^static inline int q_full(struct cmd_queue *q)$/;"
 q_get_head	common/cmd_internal.h	/^static inline struct cmd *q_get_head(struct cmd_queue *q)$/;"	f
 q_pop_head	common/cmd_internal.h	/^static inline void q_pop_head(struct cmd_queue *q)$/;"	f
 q_push_tail	common/cmd_internal.h	/^static inline void q_push_tail(struct cmd_queue *q, struct cmd *cmd)$/;"	f
+read_dma_issue_q	common/cmd_internal.c	/^struct cmd_queue read_dma_issue_q;$/;"	v	typeref:struct:cmd_queue
 read_dma_wait_q	common/cmd_internal.c	/^struct cmd_queue read_dma_wait_q;$/;"	v	typeref:struct:cmd_queue
+readyBusy	fil/nand/nsc_driver.h	/^	unsigned int readyBusy;			\/\/ dy, channel way ready bitmap, 1b: ready, 0b: busy$/;"	m	struct:__anon113
+readyBusy	fil/nand_orig/nsc_driver.h	/^	unsigned int readyBusy;$/;"	m	struct:__anon126
+request_q	fil/nand/fil_nand.c	/^static struct list_head request_q[USER_CHANNELS][USER_WAYS];$/;"	v	typeref:struct:list_head	file:
 requiredCompletionQueueEntrySize	hil/nvme.h	/^		unsigned char requiredCompletionQueueEntrySize			:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon39
 requiredSubmissionQueueEntrySize	hil/nvme.h	/^		unsigned char requiredSubmissionQueueEntrySize			:4;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon38
 reserved	hil/nvme.h	/^	unsigned char reserved			:6;$/;"	m	struct:_ADMIN_IDENTIFY_FORMAT_DATA
@@ -933,6 +1316,8 @@ reserved6	hil/nvme.h	/^	unsigned char reserved6;$/;"	m	struct:_ADMIN_IDENTIFY_CO
 reserved7	hil/nvme.h	/^	unsigned char reserved7[2];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
 reserved8	hil/nvme.h	/^	unsigned char reserved8[164];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
 reserved9	hil/nvme.h	/^	unsigned char reserved9[1344];$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER
+rowAddress	fil/nand/nsc_driver.h	/^	unsigned int rowAddress;		\/\/ dy, IO adress$/;"	m	struct:__anon113
+rowAddress	fil/nand_orig/nsc_driver.h	/^	unsigned int rowAddress;$/;"	m	struct:__anon126
 run_func_t	target/run.h	/^typedef void (*run_func_t)(void);$/;"	t
 secureEraseAppliesToAllNamespaces	hil/nvme.h	/^		unsigned char secureEraseAppliesToAllNamespaces			:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon42
 set_auto_nvme_cpl	hil/host_lld.c	/^void set_auto_nvme_cpl(unsigned int cmdSlotTag, unsigned int specific, unsigned int statusFieldWord)$/;"	f
@@ -949,19 +1334,24 @@ set_nvme_csts_shst	hil/host_lld.c	/^void set_nvme_csts_shst(unsigned int shst)$/
 set_nvme_slot_release	hil/host_lld.c	/^void set_nvme_slot_release(unsigned int cmdSlotTag)$/;"	f
 sig_debug	hil/hil.c	/^static void sig_debug(int sig)$/;"	f	file:
 signal_handler	hil/host_lld.c	/^void signal_handler(int signo)$/;"	f
-size	common/cmd_internal.c	/^	int size;$/;"	m	struct:dma_buf	file:
-size	common/cmd_internal.h	/^	int size;$/;"	m	struct:cmd_queue
+size	common/cmd_internal.h	/^    int size;$/;"	m	struct:cmd_queue
+spareAddress	fil/nand/nsc_driver.h	/^	unsigned int spareAddress;$/;"	m	struct:__anon113
+spareAddress	fil/nand_orig/nsc_driver.h	/^	unsigned int spareAddress;$/;"	m	struct:__anon126
 specific	hil/host_lld.h	/^			unsigned int specific;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77
 specific	hil/nvme.h	/^			unsigned int specific;$/;"	m	struct:_NVME_COMPLETION::__anon7::__anon8
 sqId	hil/host_lld.h	/^				unsigned int sqId			:4;$/;"	m	struct:_NVME_CPL_FIFO_REG::__anon76::__anon77::__anon78
 sqSize	hil/host_lld.h	/^			unsigned int sqSize			:8;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
 sqValid	hil/host_lld.h	/^			unsigned int sqValid			:1;$/;"	m	struct:_NVME_ADMIN_QUEUE_SET_REG::__anon81::__anon82
 sqValid	hil/nvme.h	/^	unsigned char sqValid;$/;"	m	struct:_NVME_ADMIN_QUEUE_STATUS
+stAddr	fil/nand_orig/fil_request.h	/^	NAND_ADDR			stAddr;$/;"	m	struct:__anon130
+stBuf	fil/nand_orig/fil_request.h	/^	NAND_IO_BUF			stBuf;$/;"	m	struct:__anon130
 stCommon	common/cosmos_types.h	/^		FTL_REQUEST_ID_COMMON		stCommon;$/;"	m	union:__anon101::__anon102
 stGC	common/cosmos_types.h	/^		FTL_REQUEST_ID_GC			stGC;$/;"	m	union:__anon101::__anon102
 stHIL	common/cosmos_types.h	/^		FTL_REQUEST_ID_HIL			stHIL;				\/\/ HIL Read \/ Write$/;"	m	union:__anon101::__anon102
 stMeta	common/cosmos_types.h	/^		FTL_REQUEST_ID_META			stMeta;$/;"	m	union:__anon101::__anon102
 stProgram	common/cosmos_types.h	/^		FTL_REQUEST_ID_PROGRAM		stProgram;			\/\/ FTL Program for host and GC$/;"	m	union:__anon101::__anon102
+stRequestID	fil/nand_orig/fil_request.h	/^	FTL_REQUEST_ID		stRequestID;			\/\/ Request ID from HIl$/;"	m	struct:__anon130
+stWayStatus	fil/nand_orig/fil_nand.c	/^	WAY_STATUS		stWayStatus[USER_CHANNELS][USER_WAYS];$/;"	m	struct:__anon123	file:
 start_debug	hil/hil.c	/^int start_debug = 0;$/;"	v
 startingLBA	hil/nvme.h	/^	unsigned int startingLBA[2];$/;"	m	struct:_DATASET_MANAGEMENT_RANGE
 status	hil/hil.c	/^static int status;$/;"	v	file:
@@ -1001,16 +1391,24 @@ supportsWriteExclusiveRegistrants	hil/nvme.h	/^		unsigned char supportsWriteExcl
 supportsWriteExclusiveReservation	hil/nvme.h	/^		unsigned char supportsWriteExclusiveReservation		:1;$/;"	m	struct:_ADMIN_IDENTIFY_NAMESPACE::__anon51
 supportsWriteUncorrectable	hil/nvme.h	/^		unsigned short supportsWriteUncorrectable				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon40
 suppottsCommandEffectsLogPage	hil/nvme.h	/^		unsigned char suppottsCommandEffectsLogPage				:1;$/;"	m	struct:_ADMIN_IDENTIFY_CONTROLLER::__anon37
-tag	common/cmd_internal.h	/^	int tag;$/;"	m	struct:cmd
-tail	common/cmd_internal.h	/^	volatile int tail;$/;"	m	struct:cmd_queue
+tag	common/cmd_internal.h	/^    int tag;$/;"	m	struct:cmd
+tail	common/cmd_internal.h	/^    volatile int tail;$/;"	m	struct:cmd_queue
 th_func	target/run.h	/^void *th_func(void *args)$/;"	f
 tmp_cmd	hil/hil.c	/^static struct cmd tmp_cmd;$/;"	v	typeref:struct:cmd	file:
 tmp_status	hil/hil.c	/^static int tmp_status = 0;$/;"	v	file:
 tttt	target/main.c	/^void tttt(void)$/;"	f
-type	common/cmd_internal.h	/^	int type;$/;"	m	struct:cmd
-type	common/cmd_internal.h	/^	int type;$/;"	m	struct:nand_req
+type	common/cmd_internal.h	/^    int type;$/;"	m	struct:cmd
+type	common/cmd_internal.h	/^    int type;$/;"	m	struct:nand_req
+userData	fil/nand/nsc_driver.h	/^	unsigned int userData;$/;"	m	struct:__anon113
+userData	fil/nand_orig/nsc_driver.h	/^	unsigned int userData;$/;"	m	struct:__anon126
+valid	common/cmd_internal.h	/^    unsigned int valid: 1;$/;"	m	struct:_nand_addr
 valid	hil/host_lld.h	/^			unsigned int valid			:1;$/;"	m	struct:_NVME_IO_CQ_SET_REG::__anon85::__anon86
 valid	hil/host_lld.h	/^			unsigned int valid			:1;$/;"	m	struct:_NVME_IO_SQ_SET_REG::__anon83::__anon84
 valid	hil/nvme.h	/^	unsigned char valid;$/;"	m	struct:_NVME_IO_CQ_STATUS
 valid	hil/nvme.h	/^	unsigned char valid;$/;"	m	struct:_NVME_IO_SQ_STATUS
+way	common/cmd_internal.h	/^    unsigned int way: 3;$/;"	m	struct:_nand_addr
+waySelection	fil/nand/nsc_driver.h	/^	unsigned int waySelection;		\/\/ dy, channel ??? way$/;"	m	struct:__anon113
+waySelection	fil/nand_orig/nsc_driver.h	/^	unsigned int waySelection;$/;"	m	struct:__anon126
+way_status	fil/nand/fil_nand.c	/^static WAY_STATUS way_status[USER_CHANNELS][USER_WAYS];$/;"	v	file:
+write_dma_issue_q	common/cmd_internal.c	/^struct cmd_queue write_dma_issue_q;$/;"	v	typeref:struct:cmd_queue
 write_dma_wait_q	common/cmd_internal.c	/^struct cmd_queue write_dma_wait_q;$/;"	v	typeref:struct:cmd_queue

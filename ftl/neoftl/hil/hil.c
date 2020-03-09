@@ -1,4 +1,6 @@
+#include <stdlib.h>
 #include <signal.h>
+#include <unistd.h>
 
 #include "hil.h"
 #include "nvme_main.h"
@@ -64,6 +66,8 @@ void hil_run(void)
 	status++;
 	hil_process_doneq();
 	status++;
+	hil_process_dmadone();
+	status++;
 	hil_process_dmawait();
 	status++;
 	hil_process_init();
@@ -102,6 +106,7 @@ void hil_read_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int l
 		tmp_cmd.buf = NULL;
 
 		dprint("new cmd NULL exit\n");
+		usleep(10000);
 		return;
 	}
 
@@ -134,6 +139,7 @@ void hil_write_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int 
 		tmp_cmd.buf = NULL;
 
 		dprint("new cmd NULL exit\n");
+		usleep(10000);
 		return;
 	}
 
@@ -181,51 +187,67 @@ void hil_process_init(void)
 
 void hil_process_dmawait(void)
 {
-	// TODO async dma check
-	if (!q_empty(&write_dma_wait_q)) {
+	while (!q_empty(&write_dma_wait_q)) {
 		dprint("[hil_process_dmawait] write dma\n");
 		struct cmd *cmd = q_get_head(&write_dma_wait_q);
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
 		struct list_head *lp = cmd->buf;
 		for (int i = 0; i < cmd->nblock; i++) {
-			set_auto_rx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf,
+			set_auto_rx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf_main,
 					NVME_COMMAND_AUTO_COMPLETION_ON);
 			lp = lp->next;
 			dma_rx_tail++;
 		}
-		check_auto_rx_dma_done();
+		//check_auto_rx_dma_done();
 		dprint("dma done\n");
-		printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf)[0]);
+		//printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf_main)[0]);
 		while (q_full(&ftl_wait_q)) {
 			dprint("ftl wait q full\n");
 		}
-		q_push_tail(&ftl_wait_q, cmd);
+		//q_push_tail(&ftl_wait_q, cmd);
+		q_push_tail(&write_dma_issue_q, cmd);
 		q_pop_head(&write_dma_wait_q);
 	}
-	if (!q_empty(&read_dma_wait_q)) {
+	while (!q_empty(&read_dma_wait_q)) {
 		dprint("[hil_process_dmawait] read dma\n");
 		struct cmd *cmd = q_get_head(&read_dma_wait_q);
-		printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf)[0]);
+		//printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf_main)[0]);
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
 		struct list_head *lp = cmd->buf;
 		for (int i = 0; i < cmd->nblock; i++) {
-			set_auto_tx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf,
+			set_auto_tx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf_main,
 					NVME_COMMAND_AUTO_COMPLETION_ON);
 			lp = lp->next;
 			dma_tx_tail++;
 		}
-		check_auto_tx_dma_done();
-		dprint("dma done\n");
+		//check_auto_tx_dma_done();
+		dprint("dma issued\n");
 
+		q_push_tail(&read_dma_issue_q, cmd);
 		q_pop_head(&read_dma_wait_q);
-		dmabuf_put(cmd->buf, cmd->nblock);
-		dprint("delet cmd\n");
-		del_cmd(cmd);
 	}
 }
 
 void hil_process_dmadone(void)
 {
+	if (!q_empty(&write_dma_issue_q)) {
+		dprint("[hil proces dmadone] write\n");
+		check_auto_rx_dma_done();
+		while (!q_empty(&write_dma_issue_q)) {
+			struct cmd *cmd = q_get_head(&write_dma_issue_q);
+			q_push_tail(&ftl_wait_q, cmd);
+			q_pop_head(&write_dma_issue_q);
+		}
+	}
+	if (!q_empty(&read_dma_issue_q)) {
+		dprint("[hil proces dmadone] read\n");
+		check_auto_tx_dma_done();
+		while (!q_empty(&read_dma_issue_q)) {
+			struct cmd *cmd = q_get_head(&read_dma_issue_q);
+			q_push_tail(&done_q, cmd);
+			q_pop_head(&read_dma_issue_q);
+		}
+	}
 }
 
 void hil_process_doneq(void)
@@ -244,10 +266,11 @@ void hil_process_doneq(void)
 void hil_proces_tmp(void)
 {
 	struct cmd *cmd;
-	dprint("[hil read block]\n");
+	dprint("[hil proces tmp]\n");
 	cmd = new_cmd();
 	if (cmd == NULL || q_full(&init_q)) {
 		dprint("new cmd NULL exit\n");
+		usleep(10000);
 		return;
 	}
 

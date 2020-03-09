@@ -32,6 +32,8 @@
 #endif
 #define dindent(x) dprint("%" #x "0s", "")
 
+#define cprint(cond, ...) do { if (cond) printf(__VA_ARGS__); } while (0)
+
 #define TV_DEF(name) \
 	struct timeval name
 
