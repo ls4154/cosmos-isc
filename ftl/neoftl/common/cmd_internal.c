@@ -36,7 +36,6 @@ static void init_cmd_queue(struct cmd_queue *q, int size)
     q->arr = malloc(size * sizeof(struct cmd *));
 }
 
-
 struct cmd *new_cmd(void)
 {
     struct cmd *ret = NULL;
@@ -49,10 +48,58 @@ struct cmd *new_cmd(void)
     return ret;
 }
 
+int out_of_cmd(void)
+{
+    return q_empty(&cmd_pool_q);
+}
+
 void del_cmd(struct cmd *cmd)
 {
     q_push_tail(&cmd_pool_q, cmd);
 }
+
+
+
+static struct cmd_queue req_pool_q;
+
+#define REQ_POOL_SIZE (CMD_POOL_SIZE * 32)
+static struct nand_req *req_mem;
+
+static void req_pool_init(void)
+{
+    init_cmd_queue(&req_pool_q, REQ_POOL_SIZE + 1);
+
+    req_mem = malloc(REQ_POOL_SIZE * sizeof(struct nand_req));
+    if (!req_mem)
+    {
+        perror("malloc req");
+        exit(1);
+    }
+
+    for(int i = 0; i < REQ_POOL_SIZE; i++)
+    {
+        struct nand_req *r = req_mem + i;
+        q_push_tail(&req_pool_q, (struct cmd *)r);
+    }
+}
+
+struct nand_req *new_req(void)
+{
+    struct nand_req *ret = NULL;
+    if (q_empty(&req_pool_q))
+    {
+        return ret;
+    }
+    ret = (struct nand_req *)q_get_head(&req_pool_q);
+    q_pop_head(&req_pool_q);
+    return ret;
+}
+
+void del_req(struct nand_req *req)
+{
+    q_push_tail(&req_pool_q, (struct cmd *)req);
+}
+
 
 #define DMA_PAGE_MAX (256 * 32)
 
@@ -192,7 +239,7 @@ void cmd_internal_init(void)
     cmd_mem = malloc(CMD_POOL_SIZE * sizeof(struct cmd));
     if (!cmd_mem)
     {
-        perror("malloc");
+        perror("malloc cmd");
         exit(1);
     }
 
@@ -203,4 +250,6 @@ void cmd_internal_init(void)
     }
 
     dmabuf_init();
+
+    req_pool_init();
 }

@@ -31,7 +31,7 @@ void ftl_init(void)
 
 static void ftl_process_q(void)
 {
-    if (!q_empty(&ftl_wait_q))
+    if (!q_empty(&ftl_wait_q) && !q_full(&nand_wait_q))
     {
         struct cmd *cmd = q_get_head(&ftl_wait_q);
 
@@ -101,8 +101,8 @@ static void ftl_process_q(void)
                 lp = lp->next;
             }
         }
-        q_push_tail(&nand_wait_q, cmd);
         q_pop_head(&ftl_wait_q);
+        q_push_tail(&nand_wait_q, cmd);
     }
 }
 

@@ -32,7 +32,7 @@ void fil_add_req(struct cmd *cmd, int type, void *buf_main, void *buf_spare, nan
     dindent(6);
     dprint("[fil_add_req]\n");
 
-    struct nand_req *req = malloc(sizeof(struct nand_req)); //TODO use req pool
+    struct nand_req *req = new_req();
     req->type = type;
     req->addr = addr;
     req->cmd = cmd;
@@ -88,7 +88,6 @@ static void fil_process_wait(void)
             {
                 struct dma_buf *db = list_entry(lp, struct dma_buf, list);
 
-
                 dindent(6);
                 dprint("add_req (bufid:%d) %d/%d/%d/%d\n", db->id, db->addr.ch, db->addr.way,
                                         db->addr.block, db->addr.page);
@@ -123,7 +122,6 @@ static void fil_process_nand(void)
             /* dprint("[process_request_queue] ch %d, way %d\n", i, j); */
 
             struct nand_req *req = list_first_entry(&request_q[i][j], struct nand_req, list);
-
 
             NAND_RESULT result = NAND_RESULT_OP_RUNNING;
 
@@ -160,11 +158,13 @@ static void fil_process_nand(void)
                         dindent(6);
                         if (cmd->type == CMD_TYPE_RD)
                         {
+                            ASSERT(!q_full(&read_dma_wait_q));
                             q_push_tail(&read_dma_wait_q, cmd);
                             dprint("rd cmd done\n");
                         }
                         else
                         {
+                            ASSERT(!q_full(&done_q));
                             q_push_tail(&done_q, cmd);
                             dprint("wr cmd done\n");
                         }
@@ -172,7 +172,7 @@ static void fil_process_nand(void)
                 }
 
                 list_del(&req->list);
-                free(req); // TODO use req pool
+                del_req(req);
             }
         }
     }

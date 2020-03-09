@@ -17,12 +17,6 @@
 
 unsigned int storageCapacity_L;
 
-int start_debug = 0;
-static int status;
-
-static int tmp_status = 0;
-static struct cmd tmp_cmd;
-
 static unsigned int dma_tx_head = 0;
 static unsigned int dma_tx_tail = 0;
 static unsigned int dma_rx_head = 0;
@@ -37,46 +31,24 @@ static inline int dma_rx_slots(void)
 	return 0;
 }
 
-static void sig_debug(int sig)
-{
-	printf("== SIGUSR2 debug status %d == ", status);
-	start_debug = !start_debug;
-}
-
 void hil_init(void)
 {
 	printf("hil_init\n");
 	DEBUG_ASSERT(LOGICAL_PAGE_SIZE == HOST_BLOCK_SIZE); // if this is not same, HIL must convert block number to LPN
-
-	signal(SIGUSR2, sig_debug);
 }
 
 void hil_process_init(void);
 void hil_process_dmawait(void);
 void hil_process_dmadone(void);
 void hil_process_doneq(void);
-void hil_proces_tmp(void);
 
 void hil_run(void)
 {
-	if (!tmp_status)
-		nvme_run();
-	else
-		hil_proces_tmp();
-	status++;
+    nvme_run();
 	hil_process_doneq();
-	status++;
 	hil_process_dmadone();
-	status++;
 	hil_process_dmawait();
-	status++;
 	hil_process_init();
-	status = 0;
-
-	if (start_debug) {
-		puts("======================================");
-		start_debug = 0;
-	}
 }
 
 void hil_set_storage_blocks(unsigned int nblock)
@@ -95,20 +67,8 @@ void hil_read_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int l
 {
 	struct cmd *cmd;
 	dprint("[hil read block]\n");
+
 	cmd = new_cmd();
-	if (cmd == NULL || q_full(&init_q)) {
-		tmp_status = 1;
-
-		tmp_cmd.tag = cmd_tag;
-		tmp_cmd.type = CMD_TYPE_RD;
-		tmp_cmd.lba = start_lba;
-		tmp_cmd.nblock = lba_count;
-		tmp_cmd.buf = NULL;
-
-		dprint("new cmd NULL exit\n");
-		usleep(10000);
-		return;
-	}
 
 	cmd->tag = cmd_tag;
 	cmd->type = CMD_TYPE_RD;
@@ -128,20 +88,8 @@ void hil_write_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int 
 {
 	struct cmd *cmd;
 	dprint("[hil write block]\n");
+
 	cmd = new_cmd();
-	if (cmd == NULL || q_full(&init_q)) {
-		tmp_status = 1;
-
-		tmp_cmd.tag = cmd_tag;
-		tmp_cmd.type = CMD_TYPE_WR;
-		tmp_cmd.lba = start_lba;
-		tmp_cmd.nblock = lba_count;
-		tmp_cmd.buf = NULL;
-
-		dprint("new cmd NULL exit\n");
-		usleep(10000);
-		return;
-	}
 
 	cmd->tag = cmd_tag;
 	cmd->type = CMD_TYPE_WR;
@@ -159,27 +107,41 @@ void hil_write_block(unsigned int cmd_tag, unsigned int start_lba, unsigned int 
 
 void hil_process_init(void)
 {
-	while (!q_empty(&init_q)) {
+	while (!q_empty(&init_q))
+    {
 		struct cmd *cmd = q_get_head(&init_q);
+
 		dprint("[hil_process_init]\n");
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
+
 		if (cmd->buf == NULL)
+        {
 			cmd->buf = dmabuf_get(cmd->nblock);
-		if (cmd->buf == NULL)
-			return;
-		if (cmd->type == CMD_TYPE_RD) {
-			if (q_full(&ftl_wait_q)) {
-				dprint("hil process initq rd full\n");
+            if (cmd->buf == NULL)
+            {
+                return;
+            }
+        }
+
+		if (cmd->type == CMD_TYPE_RD)
+        {
+			if (q_full(&ftl_wait_q))
+            {
+				printf("hil process initq rd full\n");
 				return;
 			}
 			q_push_tail(&ftl_wait_q, cmd);
-		} else {
-			if (q_full(&write_dma_wait_q)) {
-				dprint("hil process initq wr full\n");
+		}
+        else
+        {
+			if (q_full(&write_dma_wait_q))
+            {
+				printf("hil process initq wr full\n");
 				return;
 			}
 			q_push_tail(&write_dma_wait_q, cmd);
 		}
+
 		dprint("pop from init_q\n");
 		q_pop_head(&init_q);
 	}
@@ -187,104 +149,115 @@ void hil_process_init(void)
 
 void hil_process_dmawait(void)
 {
-	while (!q_empty(&write_dma_wait_q)) {
+	while (!q_empty(&write_dma_wait_q))
+    {
 		dprint("[hil_process_dmawait] write dma\n");
+
 		struct cmd *cmd = q_get_head(&write_dma_wait_q);
+
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
+
+		if (q_full(&write_dma_issue_q))
+        {
+			printf("write_dma_issue_q full\n");
+            break;
+		}
+
 		struct list_head *lp = cmd->buf;
-		for (int i = 0; i < cmd->nblock; i++) {
+
+		for (int i = 0; i < cmd->nblock; i++)
+        {
 			set_auto_rx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf_main,
 					NVME_COMMAND_AUTO_COMPLETION_ON);
 			lp = lp->next;
 			dma_rx_tail++;
 		}
-		//check_auto_rx_dma_done();
-		dprint("dma done\n");
-		//printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf_main)[0]);
-		while (q_full(&ftl_wait_q)) {
-			dprint("ftl wait q full\n");
-		}
-		//q_push_tail(&ftl_wait_q, cmd);
-		q_push_tail(&write_dma_issue_q, cmd);
+		dprint("dma issued\n");
+
 		q_pop_head(&write_dma_wait_q);
+		q_push_tail(&write_dma_issue_q, cmd);
 	}
-	while (!q_empty(&read_dma_wait_q)) {
+	while (!q_empty(&read_dma_wait_q))
+    {
 		dprint("[hil_process_dmawait] read dma\n");
+
 		struct cmd *cmd = q_get_head(&read_dma_wait_q);
-		//printf("[%d]\n", ((char *)list_entry(cmd->buf, struct dma_buf, list)->buf_main)[0]);
+
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
+
+		if (q_full(&read_dma_issue_q))
+        {
+			printf("read_dma_issue_q full\n");
+            break;
+		}
+
 		struct list_head *lp = cmd->buf;
-		for (int i = 0; i < cmd->nblock; i++) {
+
+		for (int i = 0; i < cmd->nblock; i++)
+        {
 			set_auto_tx_dma(cmd->tag, i, (unsigned int)list_entry(lp, struct dma_buf, list)->buf_main,
 					NVME_COMMAND_AUTO_COMPLETION_ON);
 			lp = lp->next;
 			dma_tx_tail++;
 		}
-		//check_auto_tx_dma_done();
 		dprint("dma issued\n");
 
-		q_push_tail(&read_dma_issue_q, cmd);
 		q_pop_head(&read_dma_wait_q);
+		q_push_tail(&read_dma_issue_q, cmd);
 	}
 }
 
 void hil_process_dmadone(void)
 {
-	if (!q_empty(&write_dma_issue_q)) {
+	if (!q_empty(&write_dma_issue_q))
+    {
 		dprint("[hil proces dmadone] write\n");
 		check_auto_rx_dma_done();
-		while (!q_empty(&write_dma_issue_q)) {
+
+		while (!q_empty(&write_dma_issue_q))
+        {
 			struct cmd *cmd = q_get_head(&write_dma_issue_q);
-			q_push_tail(&ftl_wait_q, cmd);
+            if (q_full(&ftl_wait_q))
+            {
+                printf("ftl_wait_q full");
+                break;
+            }
 			q_pop_head(&write_dma_issue_q);
+			q_push_tail(&ftl_wait_q, cmd);
 		}
 	}
-	if (!q_empty(&read_dma_issue_q)) {
+
+	if (!q_empty(&read_dma_issue_q))
+    {
 		dprint("[hil proces dmadone] read\n");
 		check_auto_tx_dma_done();
-		while (!q_empty(&read_dma_issue_q)) {
+
+		while (!q_empty(&read_dma_issue_q))
+        {
 			struct cmd *cmd = q_get_head(&read_dma_issue_q);
-			q_push_tail(&done_q, cmd);
+
 			q_pop_head(&read_dma_issue_q);
+
+            dmabuf_put(cmd->buf, cmd->nblock);
+            del_cmd(cmd);
 		}
 	}
 }
 
 void hil_process_doneq(void)
 {
-	while (!q_empty(&done_q)) {
+	while (!q_empty(&done_q))
+    {
 		dprint("[hil_process_doneq]\n");
+
 		struct cmd *cmd = q_get_head(&done_q);
+
 		dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
+
 		q_pop_head(&done_q);
 		dmabuf_put(cmd->buf, cmd->nblock);
-		dprint("delete cmd\n");
 		del_cmd(cmd);
+
+		dprint("delete cmd\n");
 	}
-}
-
-void hil_proces_tmp(void)
-{
-	struct cmd *cmd;
-	dprint("[hil proces tmp]\n");
-	cmd = new_cmd();
-	if (cmd == NULL || q_full(&init_q)) {
-		dprint("new cmd NULL exit\n");
-		usleep(10000);
-		return;
-	}
-
-	cmd->tag = tmp_cmd.tag;
-	cmd->type = tmp_cmd.type;
-	cmd->lba = tmp_cmd.lba;
-	cmd->nblock = tmp_cmd.nblock;
-	cmd->ndone = 0;
-	cmd->buf = tmp_cmd.buf;
-
-	dprint("tag: %d, lba: %u, cnt: %u\n", cmd->tag, cmd->lba, cmd->nblock);
-
-	ASSERT(!q_full(&init_q));
-	q_push_tail(&init_q, cmd);
-
-	tmp_status = 0;
 }

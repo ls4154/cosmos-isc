@@ -92,10 +92,15 @@ static inline void q_pop_head(struct cmd_queue *q)
 }
 
 struct cmd *new_cmd(void);
+int out_of_cmd(void);
 void del_cmd(struct cmd *cmd);
+
+struct nand_req *new_req(void);
+void del_req(struct nand_req *req);
 
 struct list_head *dmabuf_get(int nblock);
 void dmabuf_put(struct list_head *buf_list, int nblock);
+
 
 void cmd_internal_init(void);
 
