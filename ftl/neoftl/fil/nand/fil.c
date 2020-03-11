@@ -161,6 +161,8 @@ static void fil_process_nand(void)
                             ASSERT(!q_full(&read_dma_wait_q));
                             q_push_tail(&read_dma_wait_q, cmd);
                             dprint("rd cmd done\n");
+
+                            printf("nand done %d/%d/%d/%d\n", i, j, req->addr.block, req->addr.page);
                         }
                         else
                         {
