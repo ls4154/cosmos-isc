@@ -85,15 +85,6 @@
 #define V2FRequestComplete(statusReport) (((statusReport) & 0x60) == 0x60)
 #define V2FRequestFail(statusReport) ((statusReport) & 3)
 
-#ifdef WIN32
-#define V2FRequestReportSetDone(pStatusReport)		((*pStatusReport) |= 1)
-#define V2FRequestReportSetComplete(pStatusReport)	((*pStatusReport) |= (0x60 << 1))		// dy, V2FEliminateReportDoneFlag() �����Ͽ� 1bit left shift ����
-#define V2FClearErrorInfo(pErrorInformation)		((*pErrorInformation) = 0)
-#define V2FCrcSetValid(pErrorInformation)			((*pErrorInformation) |= 0x10000000)
-#define V2FSpareChunkSetValid(pErrorInformation)	((*pErrorInformation) |= 0x01000000)
-#define V2FPageChunkSetValid(pErrorInformation)		((*pErrorInformation) = 0xFFFFFFFF)
-#endif
-
 extern void *base_NVME;
 extern void *base_NAND;
 extern void *base_DMA;

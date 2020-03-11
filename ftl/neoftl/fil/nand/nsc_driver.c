@@ -51,55 +51,21 @@
 
 #include "common/cosmos_plus_system.h"
 
-#ifdef WIN32
-void V2FControllerSetComplete(V2FMCRegisters* dev)
-{
-	if (dev->completionAddress)
-	{
-		V2FRequestReportSetDone((volatile unsigned int *)dev->completionAddress);
-		V2FRequestReportSetComplete((volatile unsigned int *)dev->completionAddress);
-	}
-}
-
-void V2FControllerSetNoError(V2FMCRegisters* dev)
-{
-	V2FClearErrorInfo((volatile unsigned int *)dev->errorCountAddress);
-	V2FCrcSetValid((volatile unsigned int *)dev->errorCountAddress);
-	V2FSpareChunkSetValid((volatile unsigned int *)dev->errorCountAddress);
-
-	V2FClearErrorInfo(&((volatile unsigned int *)dev->errorCountAddress)[1]);
-	V2FPageChunkSetValid(&((volatile unsigned int *)dev->errorCountAddress)[1]);
-}
-
-#endif
-
-unsigned int 
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FIsControllerBusy(V2FMCRegisters* dev)
+unsigned int V2FIsControllerBusy(V2FMCRegisters* dev)
 {
 	volatile unsigned int channelBusy = *((volatile unsigned int*)&(dev->channelBusy));
 
 	return channelBusy;
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FResetSync(V2FMCRegisters* dev, int way)
+void V2FResetSync(V2FMCRegisters* dev, int way)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_Reset;
 	while (V2FIsControllerBusy(dev));
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FSetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int feature0x02, unsigned int feature0x10, unsigned int feature0x01, unsigned int payLoadAddr)
+void V2FSetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int feature0x02, unsigned int feature0x10, unsigned int feature0x01, unsigned int payLoadAddr)
 {
 	unsigned int* payload = (unsigned int*)payLoadAddr;
 	payload[0] = feature0x02;
@@ -111,11 +77,7 @@ V2FSetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int feature0x02, unsig
 	while (V2FIsControllerBusy(dev));
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FGetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int* feature0x01, unsigned int* feature0x02, unsigned int* feature0x10, unsigned int* feature0x30)
+void V2FGetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int* feature0x01, unsigned int* feature0x02, unsigned int* feature0x10, unsigned int* feature0x30)
 {
 	volatile unsigned int buffer[4] = {0};
 	volatile unsigned int completion = 0;
@@ -131,22 +93,14 @@ V2FGetFeaturesSync(V2FMCRegisters* dev, int way, unsigned int* feature0x01, unsi
 	*feature0x30 = buffer[3];
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FReadPageTriggerAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)
+void V2FReadPageTriggerAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->rowAddress)) = rowAddress;
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_ReadPageTrigger;
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0"))) 
-#endif
-V2FReadPageTransferAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, void* spareDataBuffer, unsigned int* errorInformation, unsigned int* completion, unsigned int rowAddress)
+void V2FReadPageTransferAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, void* spareDataBuffer, unsigned int* errorInformation, unsigned int* completion, unsigned int rowAddress)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->dataAddress)) = (unsigned int)DMA_PHY(pageDataBuffer);
@@ -156,80 +110,43 @@ V2FReadPageTransferAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, voi
 	*((volatile unsigned int*)&(dev->rowAddress)) = rowAddress;
 	*completion = 0;
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_ReadPageTransfer;
-
-#ifdef WIN32
-	V2FControllerSetComplete(dev);
-	V2FControllerSetNoError(dev);
-#endif
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FReadPageTransferRawAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, unsigned int* completion)
+void V2FReadPageTransferRawAsync(V2FMCRegisters* dev, int way, void* pageDataBuffer, unsigned int* completion)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->dataAddress)) = (unsigned int)DMA_PHY(pageDataBuffer);
 	*((volatile unsigned int*)&(dev->completionAddress)) = (unsigned int)DMA_PHY(completion);
 	*completion = 0;
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_ReadPageTransferRaw;
-
-#ifdef WIN32
-	V2FControllerSetComplete(dev);
-#endif
 }
 
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FProgramPageAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress, void* pageDataBuffer, void* spareDataBuffer)
+void V2FProgramPageAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress, void* pageDataBuffer, void* spareDataBuffer)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->rowAddress)) = rowAddress;
 	*((volatile unsigned int*)&(dev->dataAddress)) = (unsigned int)DMA_PHY(pageDataBuffer);
 	*((volatile unsigned int*)&(dev->spareAddress)) = (unsigned int)DMA_PHY(spareDataBuffer);
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_ProgramPage;
-
-#ifdef WIN32
-	V2FControllerSetComplete(dev);
-#endif
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FEraseBlockAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)
+void V2FEraseBlockAsync(V2FMCRegisters* dev, int way, unsigned int rowAddress)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->rowAddress)) = rowAddress;
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_BlockErase;
 }
 
-void
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FStatusCheckAsync(V2FMCRegisters* dev, int way, unsigned int* statusReport)
+void V2FStatusCheckAsync(V2FMCRegisters* dev, int way, unsigned int* statusReport)
 {
 	*((volatile unsigned int*)&(dev->waySelection)) = way;
 	*((volatile unsigned int*)&(dev->completionAddress)) = (unsigned int)DMA_PHY(statusReport);
 	*statusReport = 0;
 	*((volatile unsigned int*)&(dev->cmdSelect)) = V2FCommand_StatusCheck;
-
-#ifdef WIN32
-	V2FControllerSetComplete(dev);
-#endif
 }
 
-unsigned int
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FStatusCheckSync(V2FMCRegisters* dev, int way)
+unsigned int V2FStatusCheckSync(V2FMCRegisters* dev, int way)
 {
 	volatile unsigned int status;
 	V2FStatusCheckAsync(dev, way, (unsigned int*)&status);
@@ -237,11 +154,7 @@ V2FStatusCheckSync(V2FMCRegisters* dev, int way)
 	return (status >> 1);
 }
 
-unsigned int
-#ifndef WIN32
-__attribute__((optimize("O0")))
-#endif
-V2FReadyBusyAsync(V2FMCRegisters* dev)
+unsigned int V2FReadyBusyAsync(V2FMCRegisters* dev)
 {
 	volatile unsigned int readyBusy = dev->readyBusy;
 
