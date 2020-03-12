@@ -159,6 +159,7 @@ static void fil_process_nand(void)
                     } else {
                         printf("sync read done\n");
                     }
+                    asdf = 0;
                 }
 
                 dindent(6);
