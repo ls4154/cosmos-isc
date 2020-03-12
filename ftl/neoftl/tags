@@ -72,6 +72,8 @@ BYTES_PER_NAND_ROW	common/cosmos_plus_system.h	47;"	d
 BYTES_PER_NVME_BLOCK	common/cosmos_plus_system.h	114;"	d
 BYTES_PER_SPARE_REGION_OF_NAND_ROW	common/cosmos_plus_system.h	46;"	d
 BYTES_PER_SPARE_REGION_OF_PAGE	common/cosmos_plus_system.h	95;"	d
+CC	Makefile	/^	CC = arm-linux-gnueabi-gcc$/;"	m
+CC	Makefile	/^CC = gcc$/;"	m
 CEIL	util/util.h	10;"	d
 CID	hil/nvme.h	/^				unsigned short CID;$/;"	m	struct:_NVME_ADMIN_COMMAND::__anon1::__anon2::__anon3
 CID	hil/nvme.h	/^				unsigned short CID;$/;"	m	struct:_NVME_IO_COMMAND::__anon4::__anon5::__anon6

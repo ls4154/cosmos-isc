@@ -33,6 +33,9 @@ void fil_add_req(struct cmd *cmd, int type, void *buf_main, void *buf_spare, nan
     dprint("[fil_add_req]\n");
 
     struct nand_req *req = new_req();
+
+    assert(req != NULL);
+
     req->type = type;
     req->addr = addr;
     req->cmd = cmd;
@@ -161,8 +164,6 @@ static void fil_process_nand(void)
                             ASSERT(!q_full(&read_dma_wait_q));
                             q_push_tail(&read_dma_wait_q, cmd);
                             dprint("rd cmd done\n");
-
-                            printf("nand done %d/%d/%d/%d\n", i, j, req->addr.block, req->addr.page);
                         }
                         else
                         {
