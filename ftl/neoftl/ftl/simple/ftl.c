@@ -32,7 +32,7 @@ void ftl_init(void)
 void print_table(unsigned int lba, unsigned int n)
 {
     for (int i = 0; i < n; i++) {
-        printf("%d: %d/%d/%d/%d (%s)     ", lba,
+        printf("%d: %d/%d/%d/%d (%s)     ", lba + i,
                 l2p_table[lba + i].ch,
                 l2p_table[lba + i].way,
                 l2p_table[lba + i].block,

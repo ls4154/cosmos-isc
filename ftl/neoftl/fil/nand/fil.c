@@ -152,12 +152,12 @@ static void fil_process_nand(void)
                 if (asdf) {
                     print_table(cmd->lba, cmd->nblock);
                     asdf = 0;
-                    print("sync read start\n");
+                    printf("sync read start\n");
                     result = NAND_ProcessRead(i, j, req->addr.block, req->addr.page, req->buf_main, req->buf_spare, 1, 1);
                     if (result != NAND_RESULT_DONE) {
-                        print("sync read failed\n");
+                        printf("sync read failed\n");
                     } else {
-                        print("sync read done\n");
+                        printf("sync read done\n");
                     }
                 }
 
