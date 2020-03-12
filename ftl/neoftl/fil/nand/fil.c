@@ -12,6 +12,8 @@
 
 struct list_head request_q[USER_CHANNELS][USER_WAYS];
 
+int asdf = 0;
+
 void fil_init(void)
 {
     printf("\t\tNAND_Initialize - Start\n");
@@ -146,6 +148,18 @@ static void fil_process_nand(void)
             if (result == NAND_RESULT_DONE)
             {
                 struct cmd *cmd = req->cmd;
+
+                if (asdf) {
+                    print_table(cmd->lba, cmd->nblock);
+                    asdf = 0;
+                    print("sync read start\n");
+                    result = NAND_ProcessRead(i, j, req->addr.block, req->addr.page, req->buf_main, req->buf_spare, 1, 1);
+                    if (result != NAND_RESULT_DONE) {
+                        print("sync read failed\n");
+                    } else {
+                        print("sync read done\n");
+                    }
+                }
 
                 dindent(6);
                 dprint("nand done %d/%d/%d/%d\n", i, j, req->addr.block, req->addr.page);

@@ -18,6 +18,7 @@
 #define ERROR_INFO_WARNING 2
 
 
+extern int asdf;
 
 typedef enum
 {
@@ -477,7 +478,11 @@ NAND_RESULT NAND_ProcessRead(int nPCh, int nPWay, int nBlock, int nPage, void* p
                         g_pstNAND->stWayStatus[nPCh][nPWay].nRetry++;
                         if (g_pstNAND->stWayStatus[nPCh][nPWay].nRetry > FIL_READ_RETRY)
                         {
-                            *pnCurStatus = NAND_READ_STEP_DONE;
+                            //*pnCurStatus = NAND_READ_STEP_DONE;
+                            *pnCurStatus = NAND_READ_STEP_NONE;
+                            asdf = 1;
+                            g_pstNAND->stWayStatus[nPCh][nPWay].nRetry = 0;
+                            return NAND_RESULT_DONE;
                         }
                         else
                         {

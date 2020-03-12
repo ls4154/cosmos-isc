@@ -29,6 +29,22 @@ void ftl_init(void)
     hil_set_storage_blocks(HOST_BLOCK_CNT);
 }
 
+void print_table(unsigned int lba, unsigned int n)
+{
+    for (int i = 0; i < n; i++) {
+        printf("%d: %d/%d/%d/%d (%s)     ", lba,
+                l2p_table[lba + i].ch,
+                l2p_table[lba + i].way,
+                l2p_table[lba + i].block,
+                l2p_table[lba + i].page,
+                l2p_table[lba + i].valid ? "valid" : "invalid"
+                );
+        if (i % 4 == 3)
+            puts("");
+    }
+    puts("");
+}
+
 static void ftl_process_q(void)
 {
     while (!q_empty(&ftl_wait_q))
